@@ -1,6 +1,4 @@
-# Next.js でブログを構築する
-
-情報発信と、副業を始めるためのポートフォリオを兼ねて、ブログサイトを構築します。
+# Next.js
 
 # 環境構築
 
@@ -15,7 +13,7 @@ npx create-next-app
 npm run dev
 ```
 
-## Next.js の雛形
+# Next.js の雛形
 
 create-next-app で生成される各ファイルの役割  
 基本的には、pages, publc, styles, の３つのファイルを開発者が編集する
@@ -40,3 +38,18 @@ create-next-app で生成される各ファイルの役割
   スクリプトをや外部からインストールしたライブラリを管理するファイル
 - yarn.lock
   package.json で記載されたモジュールのバージョンを固定するためのファイル
+
+# 絶対パスでモジュールをインポートする方法
+
+[参考ページ]<https://fwywd.com/tech/next-base-url>
+
+import する際に絶対パス基準にすると、パスの位置関係を気にする必要がなくなり開発が捗る  
+tsconfig.json に baseUrl を設定する。"."でルートディレクトリが基準となる
+
+```javascript
+{
+  "compilerOptions": {
+    "baseUrl": "."
+  },
+}
+```
