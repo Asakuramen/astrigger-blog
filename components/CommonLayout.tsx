@@ -15,7 +15,7 @@ const CommonLayout: React.FC<Props> = (props) => {
       </Head>
 
       <Header pageKind="home" />
-      <main>{props.children}</main>
+      <main className="mx-6 my-6">{props.children}</main>
     </div>
   );
 };
