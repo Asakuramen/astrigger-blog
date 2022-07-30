@@ -1,16 +1,16 @@
-import CommonLayout from "components/CommonLayout";
 import Head from "next/head";
+import Header from "components/Header";
 
 const works = () => {
   return (
-    <CommonLayout>
+    <>
       <Head>
-        <title>asTrigger Works</title>
+        <title>asTriggerのポートフォリオ</title>
+        <meta name="description" content="blog" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
-        <h1>Works</h1>
-      </div>
-    </CommonLayout>
+      <Header pageKind="works" />
+    </>
   );
 };
 

@@ -1,8 +1,16 @@
+import Head from "next/head";
+import Header from "components/Header";
+
 const aboutme = () => {
   return (
-    <div>
-      <h1>About me</h1>
-    </div>
+    <>
+      <Head>
+        <title>asTriggerのホームページ</title>
+        <meta name="description" content="blog" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Header pageKind="works" />
+    </>
   );
 };
 

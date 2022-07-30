@@ -2,12 +2,12 @@ import Link from "next/link";
 import React from "react";
 
 type Props = {
-  pageKind: "home" | "blog" | "aboutme" | "works" | "contant";
+  pageKind: "home" | "blogs" | "aboutme" | "works" | "contact";
 };
 
 const Header: React.FC<Props> = (props) => {
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-3">
+    <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-3 shadow-md">
       <div className="block lg:hidden">
         <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
           <svg
@@ -22,7 +22,7 @@ const Header: React.FC<Props> = (props) => {
       </div>
       <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
         <div className="text-sm lg:flex-grow">
-          <Link href="/blog">
+          <Link href="/blogs">
             <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mx-4">
               Blog
             </a>

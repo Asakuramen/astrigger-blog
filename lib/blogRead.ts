@@ -13,10 +13,26 @@ export type BlogMetaData = {
   tags: string[];
 };
 
-// ./contents/blogフォルダへのパスを取得
-const postsDirecrory = path.join(process.cwd(), "contents/blog");
+// ブログ記事(Markdown)を格納するフォルダへのパスを取得
+const postsDirecrory = path.join(process.cwd(), "contents/blogs");
 
-// mdファイルのデータを取り出す
+/**
+ * 全ての記事ファイル(Markdown)のファイル名を取得する
+ */
+export function getAllBlogsId() {
+  const fileNames = fs.readdirSync(postsDirecrory); // パス配下のファイル群のファイル名を取得
+  return fileNames.map((fileName) => {
+    return {
+      params: {
+        id: fileName.replace(/\.md$/, ""), // ファイル名から".md"を削除
+      },
+    };
+  });
+}
+
+/**
+ * 全てのブログ記事(Markdown)のファイル名とメタデータを取り出す
+ */
 export function getBlogsMetaData() {
   const fileNames = fs.readdirSync(postsDirecrory); // パス配下のファイル群のファイル名を取得
   const allBlogsMetaData: BlogMetaData[] = fileNames.map((fileName) => {
@@ -25,8 +41,9 @@ export function getBlogsMetaData() {
     // mdファイルを文字列として読み取る
     const fullPath = path.join(postsDirecrory, fileName);
     const fileContents = fs.readFileSync(fullPath, "utf-8");
-    const matterResult = matter(fileContents); // メタデータを読み取り
+    const matterResult = matter(fileContents);
 
+    // Markdown解析結果から必要な情報を抽出する
     const title: string = matterResult.data.title;
     const date: string = matterResult.data.date;
     const thumbnail: string = matterResult.data.thumbnail;
@@ -42,4 +59,34 @@ export function getBlogsMetaData() {
     };
   });
   return allBlogsMetaData;
+}
+
+/**
+ * 指定ファイル名のブログ記事(Markdown)のメタデータ、およびHTMLに変換した本文を返す
+ */
+export async function getBlogContentData(id: string) {
+  const fullpath = path.join(postsDirecrory, `${id}.md`);
+  const fileContent = fs.readFileSync(fullpath, "utf-8");
+  const matterResult = matter(fileContent);
+
+  // Markdown解析結果から必要な情報を抽出する
+  const title: string = matterResult.data.title;
+  const date: string = matterResult.data.date;
+  const thumbnail: string = matterResult.data.thumbnail;
+  const tags: string[] = matterResult.data.tag.split(",");
+
+  console.log(matterResult.content);
+
+  // 記事本文(matterResult.content)を解析してHTMLに変換する
+  const blogContent = await remark().use(html).process(matterResult.content);
+  const blogContentHtml = blogContent.toString();
+
+  return {
+    id,
+    title,
+    date,
+    thumbnail,
+    tags,
+    blogContentHtml,
+  };
 }

@@ -1,16 +1,17 @@
 import CommonLayout from "components/CommonLayout";
 import Head from "next/head";
+import Header from "components/Header";
 
 const contact = () => {
   return (
-    <CommonLayout>
+    <>
       <Head>
-        <title>asTrigger Contact</title>
+        <title>asTriggerへの問い合わせページ</title>
+        <meta name="description" content="blog" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
-        <h1>Contact</h1>
-      </div>
-    </CommonLayout>
+      <Header pageKind="contact" />
+    </>
   );
 };
 
