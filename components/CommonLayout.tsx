@@ -1,8 +1,10 @@
 import Header from "./Header";
 import Head from "next/head";
+import { BlogMetaData } from "./../lib/blogRead";
 
 type Props = {
   children?: React.ReactNode;
+  allBlogsMetaData: BlogMetaData[];
 };
 
 const CommonLayout: React.FC<Props> = (props) => {
@@ -15,7 +17,7 @@ const CommonLayout: React.FC<Props> = (props) => {
       </Head>
 
       <Header pageKind="home" />
-      <main className="mx-6 my-6">{props.children}</main>
+      <main className="max-w-screen-lg mx-auto px-6 py-6">{props.children}</main>
     </div>
   );
 };
