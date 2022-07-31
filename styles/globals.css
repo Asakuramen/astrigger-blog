@@ -2,14 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-/* html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
-    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-} */
+.markdown h1 {
+  @apply mt-8 mb-4 text-3xl font-bold border-b-2;
+}
 
-h1 {
-  font-size: 1.875rem;
+.markdown h2 {
+  @apply mt-8 mb-4 text-2xl font-bold;
+}
+
+.markdown h3 {
+  @apply mt-8 mb-4 text-xl font-bold;
+}
+
+.markdown ol {
+  @apply list-decimal pl-6;
+}
+
+.markdown ul {
+  @apply list-disc pl-6;
+}
+
+.markdown blockquote {
+  @apply border-l-4 pl-4;
+}
+
+.markdown hr {
+  @apply mt-8 mb-4;
+}
+
+.markdown a {
+  @apply text-emerald-600 hover:text-emerald-700 hover:underline;
+}
+
+.markdown .codespan {
+  @apply bg-gray-200;
+}
+
+.markdown .code-title {
+  background: #3e3e3e;
+  color: #dcdcdc;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
 }

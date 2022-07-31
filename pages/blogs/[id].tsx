@@ -53,9 +53,12 @@ const Blog: NextPage<Props> = ({ blogContent }) => {
 
       <div className="max-w-screen-md mx-auto px-6 py-6">
         <article>
-          <h1 className="text-3xl mb-4">{blogContent.title}</h1>
+          <h1>{blogContent.title}</h1>
           <small className="mb-4">{blogContent.date}</small>
-          <div dangerouslySetInnerHTML={{ __html: blogContent.blogContentHtml }} />
+          <div
+            className="markdown"
+            dangerouslySetInnerHTML={{ __html: blogContent.blogContentHtml }}
+          />
         </article>
       </div>
     </>

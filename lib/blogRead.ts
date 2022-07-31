@@ -1,8 +1,8 @@
 import path from "path";
 import fs from "fs";
 import matter from "gray-matter";
-import { remark } from "remark";
-import html from "remark-html";
+import { marked } from "marked";
+import hljs from "highlightjs";
 
 // ブログのメタデータ
 export type BlogMetaData = {
@@ -75,10 +75,36 @@ export async function getBlogContentData(id: string) {
   const thumbnail: string = matterResult.data.thumbnail;
   const tags: string[] = matterResult.data.tag.split(",");
 
-  console.log(matterResult.content);
-
   // 記事本文(matterResult.content)を解析してHTMLに変換する
-  const blogContent = await remark().use(html).process(matterResult.content);
+
+  // remark.jsのパース処理を一部カスタマイズする
+
+  const renderer = new marked.Renderer();
+
+  renderer.code = function (code, language) {
+    return (
+      `<span class="code-title">${language}</span>` +
+      "<pre" +
+      '><code class="hljs">' +
+      hljs.highlightAuto(code).value +
+      "</code></pre>"
+    );
+  };
+
+  renderer.codespan = function (text) {
+    return `<code class="codespan">${text}</code>`;
+  };
+
+  marked.setOptions({
+    langPrefix: "",
+    breaks: true,
+    renderer: renderer,
+    headerPrefix: "",
+    gfm: true,
+  });
+
+  const blogContent = marked.parse(matterResult.content);
+
   const blogContentHtml = blogContent.toString();
 
   return {
