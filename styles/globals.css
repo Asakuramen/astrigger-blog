@@ -2,45 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.markdown h1 {
-  @apply mt-8 mb-4 text-3xl font-bold border-b-2;
-}
-
-.markdown h2 {
-  @apply mt-8 mb-4 text-2xl font-bold;
-}
-
-.markdown h3 {
-  @apply mt-8 mb-4 text-xl font-bold;
-}
-
-.markdown ol {
-  @apply list-decimal pl-6;
-}
-
-.markdown ul {
-  @apply list-disc pl-6;
-}
-
-.markdown blockquote {
-  @apply border-l-4 pl-4;
-}
-
-.markdown hr {
-  @apply mt-8 mb-4;
-}
-
-.markdown a {
-  @apply text-emerald-600 hover:text-emerald-700 hover:underline;
-}
-
-.markdown .codespan {
-  @apply bg-gray-200;
-}
-
-.markdown .code-title {
-  background: #3e3e3e;
-  color: #dcdcdc;
-  border-radius: 0.5rem;
-  padding: 0.3rem;
+body {
+  @apply bg-gray-100;
 }

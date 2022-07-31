@@ -3,14 +3,15 @@ import fs from "fs";
 import matter from "gray-matter";
 import { marked } from "marked";
 import hljs from "highlightjs";
+import markdownHtml from "zenn-markdown-html";
 
 // ブログのメタデータ
 export type BlogMetaData = {
   id: string;
   title: string;
-  date: string;
+  topics: string[];
+  published_at: string;
   thumbnail: string;
-  tags: string[];
 };
 
 // ブログ記事(Markdown)を格納するフォルダへのパスを取得
@@ -45,17 +46,17 @@ export function getBlogsMetaData() {
 
     // Markdown解析結果から必要な情報を抽出する
     const title: string = matterResult.data.title;
-    const date: string = matterResult.data.date;
+    const topics: string[] = matterResult.data.topics;
+    const published_at: string = matterResult.data.published_at;
     const thumbnail: string = matterResult.data.thumbnail;
-    const tags: string[] = matterResult.data.tag.split(",");
 
     // idとデータを返す
     return {
       id,
       title,
-      date,
+      topics,
+      published_at,
       thumbnail,
-      tags,
     };
   });
   return allBlogsMetaData;
@@ -71,48 +72,17 @@ export async function getBlogContentData(id: string) {
 
   // Markdown解析結果から必要な情報を抽出する
   const title: string = matterResult.data.title;
-  const date: string = matterResult.data.date;
+  const topics: string[] = matterResult.data.topics;
+  const published_at: string = matterResult.data.published_at;
   const thumbnail: string = matterResult.data.thumbnail;
-  const tags: string[] = matterResult.data.tag.split(",");
-
-  // 記事本文(matterResult.content)を解析してHTMLに変換する
-
-  // remark.jsのパース処理を一部カスタマイズする
-
-  const renderer = new marked.Renderer();
-
-  renderer.code = function (code, language) {
-    return (
-      `<span class="code-title">${language}</span>` +
-      "<pre" +
-      '><code class="hljs">' +
-      hljs.highlightAuto(code).value +
-      "</code></pre>"
-    );
-  };
-
-  renderer.codespan = function (text) {
-    return `<code class="codespan">${text}</code>`;
-  };
-
-  marked.setOptions({
-    langPrefix: "",
-    breaks: true,
-    renderer: renderer,
-    headerPrefix: "",
-    gfm: true,
-  });
-
-  const blogContent = marked.parse(matterResult.content);
-
-  const blogContentHtml = blogContent.toString();
+  const blogContentHtml = markdownHtml(matterResult.content);
 
   return {
     id,
     title,
-    date,
+    topics,
+    published_at,
     thumbnail,
-    tags,
     blogContentHtml,
   };
 }

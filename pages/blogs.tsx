@@ -52,19 +52,21 @@ const Blog: NextPage<Props> = ({ allBlogsMetaData }) => {
                       height="100px"
                     />
                     <div className="px-6 py-4">
-                      <p className="text-gray-400 text-base">{blogMetaData.date}</p>
+                      <p className="text-gray-400 text-base">
+                        {blogMetaData.published_at}
+                      </p>
                       <div className="font-bold text-xl mt-1 mb-1">
                         {blogMetaData.title}
                       </div>
                     </div>
                     <div className="px-6 pt-2 pb-2">
-                      {blogMetaData.tags.map((tag) => {
+                      {blogMetaData.topics.map((topics) => {
                         return (
                           <span
                             className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-                            key={tag}
+                            key={topics}
                           >
-                            {`#${tag}`}
+                            {`#${topics}`}
                           </span>
                         );
                       })}
