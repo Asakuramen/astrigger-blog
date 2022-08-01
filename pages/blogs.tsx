@@ -33,7 +33,7 @@ const Blog: NextPage<Props> = ({ allBlogsMetaData }) => {
       <Header pageKind="blogs" />
 
       <div className="max-w-screen-lg mx-auto px-6 py-6">
-        <h1 className="text-5xl mb-4">Blog</h1>
+        <h1 className="text-7xl text-bold mt-5 mb-10 text-center">Blog</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {allBlogsMetaData.map((blogMetaData: BlogMetaData) => {
             return (

@@ -10,6 +10,9 @@ const aboutme = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header pageKind="works" />
+
+      <h1 className="text-7xl text-bold mt-5 mb-10 text-center">About me</h1>
+      <h1 className="text-7xl text-bold mt-5 mb-10 text-center">🕑Commig Soon...</h1>
     </>
   );
 };

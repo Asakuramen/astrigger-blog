@@ -11,6 +11,9 @@ const contact = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header pageKind="contact" />
+
+      <h1 className="text-7xl text-bold mt-5 mb-10 text-center">Contact</h1>
+      <h1 className="text-7xl text-bold mt-5 mb-10 text-center">🕑Commig Soon...</h1>
     </>
   );
 };
