@@ -12,7 +12,9 @@ const contact = () => {
       </Head>
       <Header pageKind="contact" />
 
-      <h1 className="text-7xl text-bold mt-5 mb-10 text-center">Contact</h1>
+      <h1 className="p-4 mt-4 mb-10 mx-48 text-center font-extrabold text-transparent text-7xl bg-clip-text bg-gradient-to-r from-green-200 via-green-400 to-purple-700">
+        Contact
+      </h1>
       <h1 className="text-7xl text-bold mt-5 mb-10 text-center">🕑Commig Soon...</h1>
     </>
   );

@@ -30,10 +30,15 @@ const Blog: NextPage<Props> = ({ allBlogsMetaData }) => {
         <meta name="description" content="blog" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header pageKind="blogs" />
+      <Header pageKind="blog" />
 
       <div className="max-w-screen-lg mx-auto px-6 py-6">
-        <h1 className="text-7xl text-bold mt-5 mb-10 text-center">Blog</h1>
+        <h1 className="p-4 mt-4 mb-10 mx-64 text-center font-extrabold text-transparent text-7xl bg-clip-text bg-gradient-to-l from-pink-500 via-red-500 to-yellow-500">
+          Blog
+        </h1>
+        <p className="pt-14 -mt-14" id="templink">
+          Tempolary link
+        </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {allBlogsMetaData.map((blogMetaData: BlogMetaData) => {
             return (
@@ -78,6 +83,9 @@ const Blog: NextPage<Props> = ({ allBlogsMetaData }) => {
           })}
         </div>
       </div>
+      <Link href="#templink">
+        <a>トップへ</a>
+      </Link>
     </>
   );
 };
