@@ -1,3 +1,4 @@
+import styles from "./[id].module.css";
 import Head from "next/head";
 import Header from "components/Header";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
@@ -48,15 +49,15 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
   const domHtml = new JSDOM(blogData.blogContentHtml).window.document;
 
   // DOMから目次を検索し、{hタグレベル、タイトル名、リンク先}、を取得する
-
   const elements = domHtml.querySelectorAll<HTMLElement>("h1, h2");
   const tableOfContent: TableOfContent[] = [];
   elements.forEach((element) => {
     const level = element.tagName;
     const title = element.innerHTML.split("</a> ")[1];
-    const href = element.id;
+    const href = "#" + element.id;
     const record = { level: level, title: title, href: href };
     tableOfContent.push(record);
+    console.log(record);
   });
 
   return {
@@ -106,25 +107,26 @@ const Blog: NextPage<Props> = ({ blogData, tableOfContent }) => {
             />
           </div>
           <div className="hidden md:block w-72 ml-3">
-            <div className="flex flex-col">
-              <div className="p-4 shadow-md rounded-xl mb-6 bg-white">
+            <div className="flex flex-col sticky top-6">
+              <div className="p-4 shadow-md rounded-xl mb-6 bg-white ">
                 <p className="text-xl text-bold mb-4">目次</p>
-                <ol>
-                  <li className="list-disc list-inside text-gray-500 mb-1">
-                    {blogData.title}
-                  </li>
-                  <li className="list-disc list-inside text-gray-500 mb-1">
-                    目次機能は開発中です
-                  </li>
-                </ol>
-              </div>
-              <div className="p-4 shadow-md rounded-xl mb-6 bg-white">
-                <p className="text-xl text-bold mb-4">最近の記事</p>
-                <ol>
-                  <li className="list-disc list-inside text-gray-500 mb-1">
-                    最近の記事表示機能は開発中です
-                  </li>
-                </ol>
+                <ul className={`${styles.ul_h1} ${styles.ul_h2}`}>
+                  {tableOfContent.map((anchor: TableOfContent) => {
+                    if (anchor.level === "H1") {
+                      return (
+                        <li className={styles.li_h1} key={anchor.href}>
+                          <a href={anchor.href}>{anchor.title}</a>
+                        </li>
+                      );
+                    } else {
+                      return (
+                        <li className={styles.li_h2} key={anchor.href}>
+                          <a href={anchor.href}>{anchor.title}</a>
+                        </li>
+                      );
+                    }
+                  })}
+                </ul>
               </div>
             </div>
           </div>
