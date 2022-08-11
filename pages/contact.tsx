@@ -10,7 +10,7 @@ const contact = () => {
         <meta name="description" content="blog" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header pageKind="contact" />
+      <Header pageKind="contact" stickey={false} />
 
       <h1 className="p-4 mt-4 mb-10 mx-48 text-center font-extrabold text-transparent text-7xl bg-clip-text bg-gradient-to-r from-green-200 via-green-400 to-purple-700">
         Contact

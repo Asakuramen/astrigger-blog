@@ -32,34 +32,52 @@ export function getAllBlogsId() {
 }
 
 /**
- * 全てのブログ記事(Markdown)のファイル名とメタデータを取り出す
+ * ブログ記事(Markdown)のファイル名とメタデータを取り出す
+ * @param startIndex 取得する記事の開始インデックス　最新（0）〜
+ * @param num 取得する記事数
  */
-export function getBlogsMetaData() {
+export function getBlogsMetaData(startIndex: number, num: number) {
   const fileNames = fs.readdirSync(postsDirecrory); // パス配下のファイル群のファイル名を取得
-  const allBlogsMetaData: BlogMetaData[] = fileNames.map((fileName) => {
-    const id = fileName.replace(/\.md$/, ""); // ファイル名から拡張子を削除
 
-    // mdファイルを文字列として読み取る
-    const fullPath = path.join(postsDirecrory, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf-8");
-    const matterResult = matter(fileContents);
+  // 正常系
+  if (startIndex < fileNames.length) {
+    const allBlogsMetaData: BlogMetaData[] = fileNames.map((fileName) => {
+      const id = fileName.replace(/\.md$/, ""); // ファイル名から拡張子を削除
 
-    // Markdown解析結果から必要な情報を抽出する
-    const title: string = matterResult.data.title;
-    const topics: string[] = matterResult.data.topics;
-    const published_at: string = matterResult.data.published_at;
-    const thumbnail: string = matterResult.data.thumbnail;
+      // mdファイルを文字列として読み取る
+      const fullPath = path.join(postsDirecrory, fileName);
+      const fileContents = fs.readFileSync(fullPath, "utf-8");
+      const matterResult = matter(fileContents);
 
-    // idとデータを返す
-    return {
-      id,
-      title,
-      topics,
-      published_at,
-      thumbnail,
-    };
-  });
-  return allBlogsMetaData;
+      // Markdown解析結果から必要な情報を抽出する
+      const title: string = matterResult.data.title;
+      const topics: string[] = matterResult.data.topics;
+      const published_at: string = matterResult.data.published_at;
+      const thumbnail: string = matterResult.data.thumbnail;
+
+      // idとデータを返す
+      return {
+        id,
+        title,
+        topics,
+        published_at,
+        thumbnail,
+      };
+    });
+    return allBlogsMetaData.slice(startIndex, startIndex + num);
+  }
+  // 異常系　指定インデックス範囲にブログ記事が１つもない場合はundefinedを返す
+  else {
+    return undefined;
+  }
+}
+
+/**
+ * 全てのブログ記事の総数を取得する
+ */
+export function getBlogsNumber() {
+  const fileNames = fs.readdirSync(postsDirecrory); // パス配下のファイル群のファイル名を取得
+  return fileNames.length;
 }
 
 /**

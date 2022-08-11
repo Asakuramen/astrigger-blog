@@ -16,7 +16,7 @@ const CommonLayout: React.FC<Props> = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header pageKind="home" />
+      <Header pageKind="top" />
       <main className="max-w-screen-lg mx-auto px-6 py-6">{props.children}</main>
     </div>
   );

@@ -7,5 +7,46 @@ body {
 }
 
 html {
-  @apply scroll-smooth;
+  @apply scroll-smooth h-full;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* bulletsをカードの外側に表示させたいため、absoluteを解除する */
+.skill-swiper .swiper-pagination {
+  @apply relative top-0 mt-6;
+}
+
+.skill-swiper .swiper-pagination-bullet {
+  @apply w-36 h-auto p-2 m-1 bg-gray-300 rounded-full font-semibold text-gray-800;
+}
+
+.skill-swiper .swiper-pagination-bullet-active {
+  @apply bg-blue-500 text-gray-50;
 }

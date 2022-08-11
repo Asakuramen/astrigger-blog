@@ -84,7 +84,7 @@ const Blog: NextPage<Props> = ({ blogData, tableOfContent }) => {
         <meta name="description" content="blog" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header pageKind="blog" />
+      <Header pageKind="blog" stickey={false} />
 
       <div className="max-w-screen-lg mx-auto px-6 py-6" id="article">
         <div className="flex flex-row">

@@ -3,17 +3,18 @@ import React from "react";
 
 type Props = {
   pageKind: "top" | "blog" | "works" | "contact" | "shop";
+  stickey: boolean;
 };
 
 const Header: React.FC<Props> = (props) => {
   return (
-    <nav className="bg-gray-800">
+    <nav className={props.stickey ? "bg-gray-800 sticky top-0 z-10" : "bg-gray-800"}>
       <div className="container px-6 py-2 mx-auto flex justify-between items-center">
         <div className="flex items-center justify-between">
           <div>
             <Link href="/">
               <a className="text-2xl font-bold transition-colors duration-200 transform text-white lg:text-3xl hover:text-gray-300">
-                asTrigger
+                A
               </a>
             </Link>
           </div>
@@ -33,7 +34,7 @@ const Header: React.FC<Props> = (props) => {
           </div>
         </div>
 
-        <div className="items-center flex">
+        <div className="hidden items-center sm:flex">
           <div className="flex flex-row mx-6">
             <Link href="/">
               <a className="mx-4 text-sm transform transition-colors duration-200 text-gray-200 border-b-2 border-transparent hover:border-blue-500">
@@ -52,7 +53,7 @@ const Header: React.FC<Props> = (props) => {
             </Link>
             <Link href="/contact">
               <a className="mx-4 text-sm transform transition-colors duration-200 text-gray-200 border-b-2 border-transparent hover:border-blue-500">
-                Contect
+                Contact
               </a>
             </Link>
           </div>

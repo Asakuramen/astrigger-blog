@@ -9,7 +9,7 @@ const works = () => {
         <meta name="description" content="blog" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header pageKind="works" />
+      <Header pageKind="works" stickey={false} />
 
       <h1 className="p-4 mt-4 mb-10 mx-64 text-center font-extrabold text-transparent text-7xl bg-clip-text bg-gradient-to-r from-green-300 via-blue-500 to-purple-600">
         Works
