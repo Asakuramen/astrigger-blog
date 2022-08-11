@@ -1,8 +1,8 @@
 import styles from "./[id].module.css";
 import Head from "next/head";
-import Header from "components/Header";
+import Header from "components/Header/Header";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
-import { getAllBlogsId, getBlogContentData } from "lib/blogRead";
+import { getAllBlogsId, getBlogContentData } from "lib/getBlogContent";
 import "zenn-content-css";
 import { JSDOM } from "jsdom";
 

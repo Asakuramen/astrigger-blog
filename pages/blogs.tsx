@@ -1,8 +1,8 @@
 import { NextPage } from "next";
-import { getBlogsMetaData } from "lib/blogRead";
+import { getBlogsMetaData } from "lib/getBlogContent";
 import Head from "next/head";
-import Header from "components/Header";
-import { BlogMetaData } from "lib/blogRead";
+import Header from "components/Header/Header";
+import { BlogMetaData } from "lib/getBlogContent";
 import BlogList from "components/BlogList/BlogList";
 
 // ServerSideGeneration

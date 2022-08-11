@@ -1,13 +1,48 @@
 /* eslint-disable @next/next/no-img-element */
 import { NextPage } from "next";
+import { WorkContentMetadata } from "lib/getWorkContent";
+import styles from "./WorkList.module.css";
+import Link from "next/link";
 
-const WorkList: NextPage = () => {
+type Props = {
+  allWorkContentsMetaData: WorkContentMetadata[] | undefined;
+};
+
+const WorkList: NextPage<Props> = ({ allWorkContentsMetaData }) => {
   return (
     <div className="grid grid-col-1 sm:grid-cols-3">
-      <div>
-        <img src="/top/top.jpg" alt="works" className=""></img>
-        <div className="mt-3 mb-10 text-gray-700 text-sm">熱帯魚全自動育成システム</div>
-      </div>
+      {allWorkContentsMetaData ? (
+        allWorkContentsMetaData.map((workMetaData: WorkContentMetadata) => {
+          return (
+            <div className="w-full" key={workMetaData.title}>
+              <Link href={`/works/${workMetaData.id}`}>
+                <a>
+                  <div className={styles.work_img_div}>
+                    <img
+                      src={workMetaData.thumbnail[1]}
+                      alt="thumbnail_top"
+                      className={styles.work_img_back}
+                    ></img>
+                    <div className={styles.work_img_caption}>
+                      {workMetaData.description}
+                    </div>
+
+                    <img
+                      src={workMetaData.thumbnail[0]}
+                      alt="thumbnail_back"
+                      className={styles.work_img_front}
+                    ></img>
+                  </div>
+                </a>
+              </Link>
+
+              <div className="mt-3 mb-10 text-gray-700 text-sm">{workMetaData.title}</div>
+            </div>
+          );
+        })
+      ) : (
+        <div>Internal Server Error! No content found</div>
+      )}
     </div>
   );
 };

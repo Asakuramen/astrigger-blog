@@ -40,11 +40,11 @@ html {
 
 /* bulletsをカードの外側に表示させたいため、absoluteを解除する */
 .skill-swiper .swiper-pagination {
-  @apply relative top-0 mt-6;
+  @apply relative top-0 mt-4;
 }
 
 .skill-swiper .swiper-pagination-bullet {
-  @apply w-36 h-auto p-2 m-1 bg-gray-300 rounded-full font-semibold text-gray-800;
+  @apply w-36 h-auto m-2 p-2 bg-gray-300 rounded-full font-semibold text-gray-800;
 }
 
 .skill-swiper .swiper-pagination-bullet-active {

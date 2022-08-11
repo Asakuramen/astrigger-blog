@@ -22,16 +22,16 @@
 /* h2タグ相当目次のmarker */
 .ul_h2 .li_h2 {
   position: relative;
-  padding-left: 25px;
+  padding-left: 40px;
   @apply py-1 text-gray-500 hover:text-gray-800;
 }
 
 .ul_h2 .li_h2:before {
   content: "";
   top: 14px;
-  left: 3.5px;
-  width: 6px;
-  height: 6px;
+  left: 20px;
+  width: 5px;
+  height: 5px;
   position: absolute;
   @apply rounded-lg bg-teal-500;
 }

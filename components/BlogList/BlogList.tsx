@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import Image from "next/image";
-import { BlogMetaData } from "lib/blogRead";
+import { BlogMetaData } from "lib/getBlogContent";
 import Link from "next/link";
 
 type Props = {

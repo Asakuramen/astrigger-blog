@@ -1,0 +1,44 @@
+.work_img_div {
+  position: relative;
+  overflow: hidden;
+  width: auto;
+  height: 15rem;
+}
+
+.work_img_front {
+  position: absolute;
+  width: 100%;
+
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  transition: 0.5s ease;
+}
+
+.work_img_back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(50%);
+  transform: scale(1.2);
+  transition-delay: 0.5s;
+}
+
+.work_img_caption {
+  position: absolute;
+  padding: 10% 8%;
+  white-space: pre-line;
+  word-wrap: break-word;
+  @apply text-gray-50 text-sm;
+}
+
+.work_img_div:hover .work_img_front {
+  opacity: 0;
+  transition: 0.5s ease;
+}
+
+.work_img_div:hover .work_img_back {
+  transform: scale(1);
+  transition: all 2000ms cubic-bezier(0.175, 0.695, 0.29, 0.985);
+}
