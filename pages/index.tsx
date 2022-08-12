@@ -7,7 +7,7 @@ import ServiceList from "components/ServiceList/ServiceList";
 import BlogList from "components/BlogList/BlogList";
 import { getBlogsMetaData, BlogMetaData } from "lib/getBlogContent";
 import { getWorksMetaData, WorkContentMetadata } from "lib/getWorkContent";
-import Button from "components/UIparts/Button";
+import Button from "components/UIparts/ButtonLink";
 import WorkList from "components/WorkList/WorkList";
 import Aboutme from "components/Aboutme/Aboutme";
 import Job from "components/Job/Job";
@@ -29,7 +29,7 @@ export async function getStaticProps() {
 }
 
 type Props = {
-  allBlogsMetaData: BlogMetaData[] | undefined;
+  allBlogsMetaData: BlogMetaData[];
   allWorkContentsMetaData: WorkContentMetadata[] | undefined;
 };
 
@@ -56,7 +56,7 @@ const Home: NextPage<Props> = ({ allBlogsMetaData, allWorkContentsMetaData }) =>
    */
   function handlerIntersection(
     entries: IntersectionObserverEntry[],
-    observer: IntersectionObserver
+    _observer: IntersectionObserver
   ) {
     // 交差検知をしたもののなかで、isIntersectingがtrueのDOMを色を変える関数に渡す
     entries.forEach((entry: IntersectionObserverEntry) => {

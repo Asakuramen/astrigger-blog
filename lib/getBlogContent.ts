@@ -71,7 +71,7 @@ export function getBlogsMetaData(startIndex: number, num: number) {
   // 異常系　指定インデックス範囲にコンテンツがが１つもない場合はundefinedを返す
   else {
     console.error("指定インデックス範囲にコンテンツが１つも見つかりません");
-    return undefined;
+    return [];
   }
 }
 
