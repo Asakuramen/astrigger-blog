@@ -36,6 +36,7 @@ export function getAllBlogsId() {
  * Markdownのメタデータおよび本文を取得する
  * @param startIndex 取得するファイルの開始インデックス　最新（0）〜
  * @param num 取得するファイル数
+ * @param num topicによるコンテンツのいフィルタ
  */
 export function getBlogsMetaData(startIndex: number, num: number) {
   const fileNames = fs.readdirSync(directoryBlogs); // パス配下のファイル群のファイル名を取得

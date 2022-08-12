@@ -5,7 +5,7 @@ const Job: NextPage = () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
       <div className="bg-white rounded overflow-hidden shadow-md ">
-        <div className="px-6 py-4 text-gray-700">
+        <div className="p-3 sm:px-6 sm:py-4 text-gray-700">
           <div className="inline-block bg-gray-700 text-gray-200 rounded-full px-3 py-1 font-semibold  mr-2 mb-2">
             Main
           </div>
@@ -20,7 +20,7 @@ const Job: NextPage = () => {
       </div>
 
       <div className="bg-white rounded overflow-hidden shadow-md ">
-        <div className="px-6 py-4  text-gray-700">
+        <div className="p-3 sm:px-6 sm:py-4 text-gray-700">
           <div className="inline-block bg-gray-200 rounded-full px-3 py-1 font-semibold text-gray-700 mr-2 mb-2">
             Sub
           </div>
@@ -29,7 +29,7 @@ const Job: NextPage = () => {
             フロントエンド、バックエンド、ハードウェア系ものづくりなど多種多様な技術領域を駆使して、様々なシステム・アプリの開発を行っています。
           </p>
           <p>
-            もともとは趣味でしたが、この力を世の中の問題解決に役立てられればと思っています。
+            趣味の延長線上から始まりましたが、微力ながらも私の力を世の中の問題解決に役立てられればと思っています。
           </p>
         </div>
       </div>

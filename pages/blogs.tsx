@@ -36,7 +36,7 @@ const Blog: NextPage<Props> = ({ allBlogsMetaData }) => {
           Blog
         </h1>
 
-        <BlogList allBlogsMetaData={allBlogsMetaData}></BlogList>
+        <BlogList allBlogsMetaData={allBlogsMetaData} showThumbnail={true}></BlogList>
       </div>
     </>
   );

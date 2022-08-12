@@ -125,18 +125,18 @@ const Home: NextPage<Props> = ({ allBlogsMetaData, allWorkContentsMetaData }) =>
             <WorkList allWorkContentsMetaData={allWorkContentsMetaData} />
           </div>
           <div className="my-10 text-center">
-            <Button text={"View more"} href={"/works"}></Button>
+            <Button text={"View more"} href={"/works"} />
           </div>
         </div>
 
         <div className="intersection-observed mb-10">
           <h1 className="text-3xl mb-10 animate-tracking-in-expand">Blog</h1>
           <div>
-            <BlogList allBlogsMetaData={allBlogsMetaData} />
+            <BlogList allBlogsMetaData={allBlogsMetaData} showThumbnail={true} />
           </div>
         </div>
         <div className="my-10 text-center">
-          <Button text={"View more"} href={"/blogs"}></Button>
+          <Button text={"View more"} href={"/blogs"} />
         </div>
       </div>
     </>
