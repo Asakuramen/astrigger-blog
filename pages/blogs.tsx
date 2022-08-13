@@ -1,13 +1,14 @@
 import { NextPage } from "next";
 import { getBlogsMetaData } from "lib/getBlogContent";
 import Head from "next/head";
-import Header from "components/Header/Header";
 import { BlogMetaData } from "lib/getBlogContent";
 import BlogList from "components/BlogList/BlogList";
 import Pagination from "components/Pagination/Pagination";
 import path from "path";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Header2 from "components/Header/Header2";
+import H1anchor from "components/UIparts/H1anchor";
 
 // ServerSideGeneration
 export async function getStaticProps() {
@@ -114,19 +115,29 @@ const Blog: NextPage<Props> = ({ allBlogsMetaData }) => {
         <meta name="description" content="blog" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header pageKind="blog" stickey={false} />
+      <Header2 sticky={false} />
 
-      <div className="max-w-screen-lg mx-auto px-6 py-6">
-        <h1 className="p-4 mt-4 mb-10 mx-64 text-center font-extrabold text-transparent text-7xl bg-clip-text bg-gradient-to-l from-pink-500 via-red-500 to-yellow-500">
-          Blog
-        </h1>
+      <div className="max-w-screen-lg mx-auto px-3 py-3">
+        <div className="h-10" />
 
-        <div className="mb-10">
-          <BlogList
-            allBlogsMetaData={allBlogsMetaDataFilterd}
-            showThumbnail={true}
-          ></BlogList>
+        <div className="text-center">
+          <H1anchor text="BLOG" />
         </div>
+
+        <div className="h-10" />
+        <div className="flex flex-row items-end">
+          <H1anchor text="All Articles" />
+          <div className="mr-0 ml-auto">{allBlogsMetaData!.length + " Articles"}</div>
+        </div>
+
+        <div className="h-6" />
+
+        <BlogList
+          allBlogsMetaData={allBlogsMetaDataFilterd}
+          showThumbnail={true}
+        ></BlogList>
+
+        <div className="h-10" />
 
         <div>
           <Pagination

@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import ButtonLink from "components/UIparts/ButtonLink";
+import ButtonCommon from "components/UIparts/ButtonCommon";
+import ButtonLink from "components/UIparts/ButtonCommon";
 import { NextPage } from "next";
 
 type Props = {
@@ -30,10 +31,14 @@ const Pagination: NextPage<Props> = ({ currentPage, totalPage, currentUrl }) => 
     <>
       <div className="flex justify-between">
         <div className={previousVisibility}>
-          <ButtonLink text={"Previous"} href={urlPrevious.href}></ButtonLink>
+          <a href={urlPrevious.href}>
+            <ButtonCommon>Previous</ButtonCommon>
+          </a>
         </div>
         <div className={nextVisibility}>
-          <ButtonLink text={"Next"} href={urlNext.href}></ButtonLink>
+          <a href={urlNext.href}>
+            <ButtonCommon>Next</ButtonCommon>
+          </a>
         </div>
       </div>
     </>

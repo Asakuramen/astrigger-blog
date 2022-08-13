@@ -1,11 +1,9 @@
 import { NextPage } from "next";
-import { getBlogsMetaData } from "lib/getBlogContent";
 import Head from "next/head";
-import Header from "components/Header/Header";
-import { BlogMetaData } from "lib/getBlogContent";
-import BlogList from "components/BlogList/BlogList";
 import { getWorksMetaData, WorkContentMetadata } from "lib/getWorkContent";
 import WorkList from "components/WorkList/WorkList";
+import Header2 from "components/Header/Header2";
+import H1anchor from "components/UIparts/H1anchor";
 
 // ServerSideGeneration
 export async function getStaticProps() {
@@ -31,12 +29,16 @@ const Blog: NextPage<Props> = ({ allWorkContentsMetaData }) => {
         <meta name="description" content="works" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header pageKind="works" stickey={false} />
+      <Header2 sticky={false} />
 
-      <div className="max-w-screen-lg mx-auto px-6 py-6">
-        <h1 className="p-4 mt-4 mb-10 mx-64 text-center font-extrabold text-transparent text-7xl bg-clip-text bg-gradient-to-l from-pink-500 via-red-500 to-yellow-500">
-          Works
-        </h1>
+      <div className="max-w-screen-lg mx-auto px-3 py-3">
+        <div className="h-10" />
+
+        <div className="text-center">
+          <H1anchor text="WORKS" />
+        </div>
+
+        <div className="h-10" />
 
         <WorkList allWorkContentsMetaData={allWorkContentsMetaData}></WorkList>
       </div>

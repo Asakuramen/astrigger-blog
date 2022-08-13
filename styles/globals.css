@@ -10,6 +10,10 @@ html {
   @apply scroll-smooth h-full;
 }
 
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
 .swiper {
   width: 100%;
   height: 100%;

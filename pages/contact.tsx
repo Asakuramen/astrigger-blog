@@ -2,8 +2,10 @@ import Head from "next/head";
 import Header from "components/Header/Header";
 import { NextPage } from "next";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import ButtonLink from "components/UIparts/ButtonLink";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Header2 from "components/Header/Header2";
+import H1anchor from "components/UIparts/H1anchor";
+import ButtonCommon from "components/UIparts/ButtonCommon";
 
 const Contact: NextPage = () => {
   const [arrowSend, setArrowSend] = useState(true);
@@ -15,6 +17,26 @@ const Contact: NextPage = () => {
 
   // googleからtokenを取得する
   const { executeRecaptcha } = useGoogleReCaptcha();
+
+  // reCaptchaのカードの要素を取得する
+  let elementRecaptcha: HTMLDivElement | null = null;
+  if (typeof window !== "undefined") {
+    elementRecaptcha = document.querySelector(".grecaptcha-badge");
+  }
+
+  // ContactページのみreCaptchaのカードを表示する
+  useEffect(() => {
+    console.log(elementRecaptcha);
+    if (elementRecaptcha) {
+      elementRecaptcha!.style.visibility = "visible";
+    }
+    // Contactページから離れたらreCaptchaのカードを非表示にする
+    return () => {
+      if (elementRecaptcha) {
+        elementRecaptcha!.style.visibility = "hidden";
+      }
+    };
+  }, [elementRecaptcha]);
 
   // 送信ボタン押下
   const submitForm = async () => {
@@ -52,7 +74,7 @@ const Contact: NextPage = () => {
       errorFlag = true;
     }
     // email メールアドレス形式チェック
-    const pattern = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]{1}@[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/;
+    const pattern = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/;
     if (!pattern.test(email)) {
       document.getElementById("contact-errormessage-email")!.innerText =
         "E-mailアドレスの入力形式が不正です";
@@ -104,7 +126,13 @@ const Contact: NextPage = () => {
       // recaptcha認証およびSlack通知が成功
       if (postResult.status == 200) {
         alert("問い合わせ内容を送信しました。");
-        setArrowSend(false); // リロードするまで再送信を禁止する
+        // フォームの入力値を消去する
+        inputName.current!.value = "";
+        inputEmail.current!.value = "";
+        inputTitle.current!.value = "";
+        inputMessage.current!.value = "";
+        // リロードするまで再送信を禁止する
+        setArrowSend(false);
       } else {
         const result = await postResult.json();
         alert(`問い合わせ内容の送信に失敗しました。${result}`);
@@ -123,13 +151,17 @@ const Contact: NextPage = () => {
         <meta name="description" content="blog" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header pageKind="contact" stickey={false} />
+      <Header2 sticky={false} />
 
-      <div className="max-w-screen-md mx-auto px-6 py-6">
-        <h1 className="text-center text-bold text-3xl mb-10">Contact</h1>
+      <div className="max-w-screen-md mx-auto px-3 py-3">
+        <div className="h-10" />
+        <div className="text-center">
+          <H1anchor text="WORKS" />
+        </div>
+        <div className="h-10" />
 
         <p className="text-center text-gray-700 mb-10">
-          本サイトの内容に関するご質問やご依頼等は下記問い合わせフォームよりお願い致します。
+          本サイトに関するご質問やご依頼等は、下記問い合わせフォームよりお願いいたします。
         </p>
         <form>
           <div className="flex flex-wrap -mx-3 mb-6">
@@ -205,17 +237,16 @@ const Contact: NextPage = () => {
           <div className="md:flex md:items-center">
             <div className="md:w-1/3">
               <div onClick={submitForm}>
-                <button
-                  className="shadow bg-teal-400 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                  type="button"
-                >
-                  Send
-                </button>
+                <ButtonCommon>Send</ButtonCommon>
               </div>
             </div>
             <div className="md:w-2/3"></div>
           </div>
         </form>
+
+        <p className="text-right text-xs text-gray-400 mt-2">
+          不正アクセス対策のため、reCAPTCHA v3 による認証機能を設けております。
+        </p>
       </div>
     </>
   );

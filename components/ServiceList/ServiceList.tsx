@@ -37,7 +37,7 @@ const ServiceList: React.FC = () => {
         <SwiperSlide>
           <div className="px-0 sm:px-14">
             <div className="h-96 sm:h-80 mx-auto flex text-left bg-gray-50">
-              <div className="w-full relative hidden sm:block  sm:basis-1/4 rounded-l-xl overflow-hidden">
+              <div className="w-full relative hidden sm:block  sm:basis-1/4 rounded-l-md overflow-hidden">
                 <Image
                   src="/top/frontend.jpg"
                   alt="thumbnail"
@@ -46,13 +46,13 @@ const ServiceList: React.FC = () => {
                 />
               </div>
 
-              <div className="w-full sm:basis-3/4 p-4 border-2 sm:border-l-0 rounded-xl sm:rounded-l-none sm:rounded-r-xl overflow-hidden border-gray-400 ">
-                <div className="mb-8 text-gray-700">
-                  <div className="flex items-center text-pink-600 font-bold text-2xl mb-3">
-                    <div className="">
+              <div className="sm:basis-3/4 p-4 border-2 sm:border-l-0 rounded-md sm:rounded-l-none sm:rounded-r-md overflow-hidden border-gray-400 ">
+                <div className="mb-8 text-gray-800">
+                  <div className="flex items-center text-pink-500 font-bold text-2xl mb-3">
+                    <div>
                       <BsGlobe2 />
                     </div>
-                    <div className="ml-2">フロントエンド開発</div>
+                    <span className={styles.text_gradient_hyper}>フロントエンド開発</span>
                   </div>
 
                   <p>WEBサイト制作、WEBアプリケーション開発を承ります。</p>
@@ -84,7 +84,7 @@ const ServiceList: React.FC = () => {
         <SwiperSlide>
           <div className="px-0 sm:px-14">
             <div className="h-96 sm:h-80 mx-auto flex text-left bg-gray-50">
-              <div className="hidden sm:block sm:basis-1/4 rounded-l-xl overflow-hidden">
+              <div className="hidden sm:block sm:basis-1/4 rounded-l-md overflow-hidden">
                 <img
                   src="/top/backend.jpg"
                   width="128px"
@@ -94,13 +94,13 @@ const ServiceList: React.FC = () => {
                 ></img>
               </div>
 
-              <div className="sm:basis-3/4 p-4 border-2 sm:border-l-0 rounded-xl sm:rounded-l-none sm:rounded-r-xl overflow-hidden border-gray-400 ">
+              <div className="sm:basis-3/4 p-4 border-2 sm:border-l-0 rounded-md sm:rounded-l-none sm:rounded-r-md overflow-hidden border-gray-400 ">
                 <div className="mb-8 text-gray-700">
-                  <div className="flex items-center text-pink-600 font-bold text-2xl mb-3">
-                    <div className="">
+                  <div className="flex items-center text-purple-600 font-bold text-2xl mb-3">
+                    <div>
                       <BsFileEarmarkCode />
                     </div>
-                    <div className="ml-2">バックエンド開発</div>
+                    <span className={styles.text_gradient_oceanic}>バックエンド開発</span>
                   </div>
                   <p>バックエンド開発を承ります。</p>
                   <p>
@@ -125,7 +125,7 @@ const ServiceList: React.FC = () => {
         <SwiperSlide>
           <div className="px-0 sm:px-14">
             <div className="h-96 sm:h-80 mx-auto flex text-left bg-gray-50">
-              <div className="w-full relative hidden sm:block  sm:basis-1/4 rounded-l-xl overflow-hidden">
+              <div className="w-full relative hidden sm:block  sm:basis-1/4 rounded-l-md overflow-hidden">
                 <Image
                   src="/top/hardware.png"
                   alt="thumbnail"
@@ -134,20 +134,22 @@ const ServiceList: React.FC = () => {
                 />
               </div>
 
-              <div className="sm:basis-3/4 p-4 border-2 sm:border-l-0 rounded-xl sm:rounded-l-none sm:rounded-r-xl overflow-hidden border-gray-400 ">
+              <div className="sm:basis-3/4 p-4 border-2 sm:border-l-0 rounded-md sm:rounded-l-none sm:rounded-r-md overflow-hidden border-gray-400 ">
                 <div className="mb-8 text-gray-700">
-                  <div className="flex items-center text-pink-600 font-bold text-2xl mb-3">
-                    <div className="">
+                  <div className="flex items-center text-pink-300 font-bold text-2xl mb-3">
+                    <div>
                       <MdPrecisionManufacturing />
                     </div>
-                    <div className="ml-2">ものづくり・HW開発</div>
+                    <span className={styles.text_gradient_cottoncandy}>
+                      HW開発・ものづくり
+                    </span>
                   </div>
 
                   <p>
                     様々なものづくりの技術・ノウハウを駆使してアイデアを実物化し、デジタル世界とリアル世界の接点を広げます。
                   </p>
                   <p>
-                    センサー・センシング系の知識やノウハウは自信があり、リアル世界の情報を適切に前処理してバックエンドに渡します。(本業でレーダー装置の開発を担当しています)
+                    特にセンサー・センシング系のシステムの経験が豊富です。リアル世界の情報を適切に前処理してバックエンドに提供します。
                   </p>
                   <hr className="my-4" />
 
@@ -169,7 +171,7 @@ const ServiceList: React.FC = () => {
         <SwiperSlide>
           <div className="px-0 sm:px-14">
             <div className="h-96 sm:h-80 mx-auto flex text-left bg-white">
-              <div className="hidden sm:block sm:basis-1/4 rounded-l-xl overflow-hidden">
+              <div className="hidden sm:block sm:basis-1/4 rounded-l-md overflow-hidden">
                 <img
                   src="/top/other.jpg"
                   width="128px"
@@ -179,30 +181,30 @@ const ServiceList: React.FC = () => {
                 ></img>
               </div>
 
-              <div className="sm:basis-3/4 p-4 border-2 sm:border-l-0 rounded-xl sm:rounded-l-none sm:rounded-r-xl overflow-hidden border-gray-400 ">
+              <div className="sm:basis-3/4 p-4 border-2 sm:border-l-0 rounded-md sm:rounded-l-none sm:rounded-r-md overflow-hidden border-gray-400 ">
                 <div className="mb-8 text-gray-700">
-                  <div className="flex items-center text-pink-600 font-bold text-2xl mb-3">
-                    <div className="">
+                  <div className="flex items-center text-black font-bold text-2xl mb-3">
+                    <div>
                       <BsPencilFill />
                     </div>
-                    <div className="ml-2">Other</div>
+                    <span className={styles.text_gradient_bluesteel}>寄せ集め</span>
                   </div>
 
-                  <p>動画・画像編集の実務経験もあります。</p>
+                  <p>動画・画像の制作編集の実務経験もあります。</p>
                   <p>PC・ソフトウェア・電気製品全般の知識も自信あります。</p>
                   <hr className="my-4" />
                   <span className={styles.badge}>
-                    ⭐画像編集 (Figma,Illustrator,Photoshop)
+                    ⭐画像制作編集 (Figma,Illustrator,Photoshop)
                   </span>
-                  <span className={styles.badge}>⭐動画制作 (DaVinci,AfterEffects)</span>
+                  <span className={styles.badge}>
+                    ⭐動画制作編集 (DaVinci,AfterEffects)
+                  </span>
                   <span className={styles.badge}>⭐3DCG制作 (Cinema4D)</span>
+                  <span className={styles.badge}>⭐写真撮影(NIKON)</span>
+                  <span className={styles.badge}>🌟Officeソフト系 (マクロ)</span>
                   <span className={styles.badge}>⭐家電修理</span>
-                  <span className={styles.badge}>🌟PC自作・修理</span>
                   <span className={styles.badge}>簿記3級</span>
                   <span className={styles.badge}>TOEIC 820点</span>
-                  <span className={styles.badge}>
-                    🌟Office (Word,Excel,Powerpoint,Visio,Onenote,Project)
-                  </span>
                 </div>
               </div>
             </div>

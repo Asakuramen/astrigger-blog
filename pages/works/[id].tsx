@@ -5,6 +5,7 @@ import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import "zenn-content-css";
 import { JSDOM } from "jsdom";
 import { getWorkContent, getWorksContentId, WorkContent } from "lib/getWorkContent";
+import Header2 from "components/Header/Header2";
 
 /**
  * 生成する全てのブログ記事の静的ページのパスを生成し、getStaticPropsに渡す
@@ -76,7 +77,7 @@ const Work: NextPage<Props> = ({ content, tableOfContent }) => {
         <meta name="description" content="blog" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header pageKind="blog" stickey={false} />
+      <Header2 sticky={false} />
 
       <div className="max-w-screen-lg mx-auto px-6 py-6" id="article">
         <div className="flex flex-row">

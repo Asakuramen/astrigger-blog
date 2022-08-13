@@ -17,7 +17,7 @@ const BlogList: NextPage<Props> = ({ allBlogsMetaData, showThumbnail }) => {
         allBlogsMetaData.map((blogMetaData: BlogMetaData, index) => {
           return (
             <div
-              className="bg-gray-50 rounded overflow-hidden shadow-md hover:shadow-xl transition duration-500 hover:-translate-y-2"
+              className="bg-gray-50 rounded overflow-hidden shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-2"
               key={blogMetaData.id}
             >
               <Link href={`/blogs/${blogMetaData.id}`}>
@@ -34,17 +34,17 @@ const BlogList: NextPage<Props> = ({ allBlogsMetaData, showThumbnail }) => {
                     </div>
                   )}
 
-                  <div className="px-6 py-4">
+                  <div className="p-3 sm:p-6">
                     <p className="text-gray-400 text-sm">{blogMetaData.published_at}</p>
                     <div className="font-bold text-xl mt-1 mb-1">
                       {blogMetaData.title}
                     </div>
                   </div>
-                  <div className="px-6 pb-4">
+                  <div className="pb-3 px-3 sm:px-6">
                     {blogMetaData.topics.map((topic) => {
                       return (
                         <span
-                          className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+                          className="inline-block bg-gray-200 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 mr-2 my-1"
                           key={topic}
                         >
                           {`#${topic}`}

@@ -80,7 +80,8 @@
 }
 .znc h1,
 .znc h2 {
-  margin-top: 2.1em;
+  padding-top: 2.3rem;
+  margin-top: 0em;
   margin-bottom: 0.5em;
 }
 .znc h3,
