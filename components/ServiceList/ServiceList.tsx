@@ -34,6 +34,7 @@ const ServiceList: React.FC = () => {
           disableOnInteraction: true,
         }}
         speed={700}
+        spaceBetween={100}
         className="skill-swiper"
       >
         <SwiperSlide>

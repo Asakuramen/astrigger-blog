@@ -15,10 +15,10 @@ const Aboutme: NextPage = () => {
       </div>
       <div className="w-1 h-32 border-l-2 border-gray-700 mx-5"></div>
       <div className="flex-auto text-gray-700">
-        <p>ペンネーム：asTrigger</p>
+        <p>ペンネーム : AsTrigger</p>
         <p>　</p>
         <p>20代、東京在住。</p>
-        <p>本業も休みの日も、いつも何か設計開発しているのが好きな人です。</p>
+        <p>仕事でも休日でも、いつも手を動かして何か作るのが好きな人です。</p>
       </div>
     </div>
   );

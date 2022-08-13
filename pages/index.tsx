@@ -66,7 +66,6 @@ const Home: NextPage<Props> = ({ allBlogsMetaData, allWorkContentsMetaData }) =>
     // 交差を検知したDOM要素のアニメーションを変化させる
     entries.forEach((entry: IntersectionObserverEntry) => {
       const element = entry.target as HTMLElement;
-      console.log(entry.intersectionRatio);
       if (entry.intersectionRatio) {
         element.classList.remove("animate-slide-out-bottom");
         element.classList.add("animate-slide-in-bottom");

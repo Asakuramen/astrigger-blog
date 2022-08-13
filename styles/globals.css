@@ -48,7 +48,9 @@ html {
 }
 
 .skill-swiper .swiper-pagination-bullet {
-  @apply w-36 h-auto m-2 p-2 bg-gray-300 rounded-full font-semibold text-gray-800;
+  margin: 0.5rem !important;
+  @apply w-36 h-auto p-2 bg-gray-300 rounded-full font-semibold
+    text-gray-800;
 }
 
 .skill-swiper .swiper-pagination-bullet-active {
