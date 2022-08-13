@@ -25,7 +25,7 @@ const Blog: NextPage<Props> = ({ allWorkContentsMetaData }) => {
   return (
     <>
       <Head>
-        <title>asTriggerのブログ</title>
+        <title>AsTrigger - Works</title>
         <meta name="description" content="works" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

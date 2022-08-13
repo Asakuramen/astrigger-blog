@@ -1,6 +1,5 @@
 import styles from "./[id].module.css";
 import Head from "next/head";
-import Header from "components/Header/Header";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import "zenn-content-css";
 import { JSDOM } from "jsdom";
@@ -73,8 +72,8 @@ const Work: NextPage<Props> = ({ content, tableOfContent }) => {
   return (
     <>
       <Head>
-        <title>asTriggerのブログ</title>
-        <meta name="description" content="blog" />
+        <title>AsTrigger - Works - {content.title}</title>
+        <meta name="description" content={content.title} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header2 sticky={false} />

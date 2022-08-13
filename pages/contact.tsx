@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Header from "components/Header/Header";
 import { NextPage } from "next";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { useEffect, useRef, useState } from "react";
@@ -147,8 +146,8 @@ const Contact: NextPage = () => {
   return (
     <>
       <Head>
-        <title>asTriggerへの問い合わせページ</title>
-        <meta name="description" content="blog" />
+        <title>AsTrigger - Contact</title>
+        <meta name="description" content="contact" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header2 sticky={false} />
@@ -156,7 +155,7 @@ const Contact: NextPage = () => {
       <div className="max-w-screen-md mx-auto px-3 py-3">
         <div className="h-10" />
         <div className="text-center">
-          <H1anchor text="WORKS" />
+          <H1anchor text="CONTACT" />
         </div>
         <div className="h-10" />
 
@@ -234,17 +233,14 @@ const Contact: NextPage = () => {
               ></p>
             </div>
           </div>
-          <div className="md:flex md:items-center">
-            <div className="md:w-1/3">
-              <div onClick={submitForm}>
-                <ButtonCommon>Send</ButtonCommon>
-              </div>
+          <div>
+            <div className="text-center sm:text-right" onClick={submitForm}>
+              <ButtonCommon>Send</ButtonCommon>
             </div>
-            <div className="md:w-2/3"></div>
           </div>
         </form>
 
-        <p className="text-right text-xs text-gray-400 mt-2">
+        <p className="text-center sm:text-left text-xs text-gray-400 pt-8 pb-16">
           不正アクセス対策のため、reCAPTCHA v3 による認証機能を設けております。
         </p>
       </div>

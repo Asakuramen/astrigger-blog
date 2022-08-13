@@ -29,9 +29,11 @@ const ServiceList: React.FC = () => {
         pagination={pagination}
         modules={[Navigation, Pagination, Autoplay]}
         autoplay={{
-          delay: 5000,
+          delay: 10000,
+          pauseOnMouseEnter: true,
           disableOnInteraction: true,
         }}
+        speed={700}
         className="skill-swiper"
       >
         <SwiperSlide>

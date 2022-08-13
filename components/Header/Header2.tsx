@@ -29,7 +29,7 @@ const Header2: React.FC<Props> = ({ sticky }) => {
 
   return (
     <nav
-      className={`h-12 mx-auto flex items-center z-20 bg-gray-800 shadow-sm ${
+      className={`h-12 mx-auto flex items-center z-10 bg-gray-800 shadow-sm ${
         sticky && "sticky top-0"
       }`}
     >
@@ -87,10 +87,10 @@ const Header2: React.FC<Props> = ({ sticky }) => {
 
       <div
         id="header-humbergermenu"
-        className="absolute invisible w-full top-12 bg-gray-800 "
+        className="absolute invisible w-full top-12 z-10 bg-gray-800 "
       >
         <div className="flex flex-col ">
-          <Link href="/">
+          <Link href="/#top-aboutme">
             <a className="px-8 py-8 text-sm  text-gray-200 border-y border-gray-600 transition-colors transform duration-200  hover:bg-gray-600">
               About
             </a>

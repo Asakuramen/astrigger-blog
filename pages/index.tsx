@@ -82,7 +82,7 @@ const Home: NextPage<Props> = ({ allBlogsMetaData, allWorkContentsMetaData }) =>
   return (
     <>
       <Head>
-        <title>asTriggerのホームページ</title>
+        <title>AsTrigger - Top</title>
         <meta name="description" content="blog" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -94,7 +94,7 @@ const Home: NextPage<Props> = ({ allBlogsMetaData, allWorkContentsMetaData }) =>
           <div className="col-span-1"></div>
           <div className="col-span-8 sm:col-span-6">
             <div className="h-1/6 sm:h-1/3"></div>
-            <div className="flex flex-row items-center text-5xl text-white font-extrabold">
+            <div className="flex flex-row items-center text-4xl sm:text-5xl text-white font-extrabold">
               <IoPulseSharp />
               <div className="ml-4">AsTrigger</div>
             </div>
