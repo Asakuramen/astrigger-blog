@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper";
 import styles from "./ServiceList.module.css";
