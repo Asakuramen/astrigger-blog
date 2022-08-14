@@ -194,7 +194,7 @@ const ServiceList: React.FC = () => {
                   </div>
 
                   <p>動画・画像の制作編集の実務経験もあります。</p>
-                  <p>PC・ソフトウェア・電気製品全般の知識も自信あります。</p>
+                  <p>PC・ソフトウェア・電気製品全般も得意領域です。</p>
                   <hr className="my-4" />
                   <span className={styles.badge}>
                     ⭐画像制作編集 (Figma,Illustrator,Photoshop)
