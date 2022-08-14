@@ -122,6 +122,9 @@ const Contact: NextPage = () => {
         }),
       });
 
+      console.log("Contact submit");
+      console.log(postResult);
+
       // recaptcha認証およびSlack通知が成功
       if (postResult.status == 200) {
         alert("問い合わせ内容を送信しました。");

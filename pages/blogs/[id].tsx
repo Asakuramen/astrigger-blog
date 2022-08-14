@@ -79,7 +79,7 @@ const Blog: NextPage<Props> = ({ blogData, tableOfContent }) => {
   return (
     <>
       <Head>
-        <title>AsTrigger - Works - {blogData.title}</title>
+        <title>{`AsTrigger - Blog - ${blogData.title}`}</title>
         <meta name="description" content={blogData.title} />
         <link rel="icon" href="/favicon.ico" />
       </Head>

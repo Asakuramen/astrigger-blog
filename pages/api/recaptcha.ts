@@ -6,7 +6,7 @@ type Data = {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-  const serverSecretKey = `secret=${process.env.NEXT_PUBLIC_SERVER_SECRET_KEY}&response=${req.body.token}`;
+  const serverSecretKey = `secret=${process.env.RECAPTCHA_SERVER_SECRET_KEY}&response=${req.body.token}`;
   const recaptchaRes = await fetch("https://www.google.com/recaptcha/api/siteverify", {
     method: "POST",
     headers: {

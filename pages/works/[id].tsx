@@ -72,7 +72,7 @@ const Work: NextPage<Props> = ({ content, tableOfContent }) => {
   return (
     <>
       <Head>
-        <title>AsTrigger - Works - {content.title}</title>
+        <title>{`AsTrigger - Works - ${content.title}`}</title>
         <meta name="description" content={content.title} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
