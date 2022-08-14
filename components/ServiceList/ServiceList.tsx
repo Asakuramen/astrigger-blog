@@ -87,14 +87,13 @@ const ServiceList: React.FC = () => {
         <SwiperSlide>
           <div className="px-0 sm:px-14">
             <div className="h-96 sm:h-80 mx-auto flex text-left bg-gray-50">
-              <div className="hidden sm:block sm:basis-1/4 rounded-l-md overflow-hidden">
-                <img
+              <div className="w-full relative hidden sm:block  sm:basis-1/4 rounded-l-md overflow-hidden">
+                <Image
                   src="/top/backend.jpg"
-                  width="128px"
-                  height="128px"
-                  alt="web"
-                  className=""
-                ></img>
+                  alt="thumbnail"
+                  layout="fill"
+                  objectFit="cover"
+                />
               </div>
 
               <div className="sm:basis-3/4 p-4 border-2 sm:border-l-0 rounded-md sm:rounded-l-none sm:rounded-r-md overflow-hidden border-gray-400 ">
@@ -174,14 +173,13 @@ const ServiceList: React.FC = () => {
         <SwiperSlide>
           <div className="px-0 sm:px-14">
             <div className="h-96 sm:h-80 mx-auto flex text-left bg-white">
-              <div className="hidden sm:block sm:basis-1/4 rounded-l-md overflow-hidden">
-                <img
+              <div className="w-full relative hidden sm:block  sm:basis-1/4 rounded-l-md overflow-hidden">
+                <Image
                   src="/top/other.jpg"
-                  width="128px"
-                  height="128px"
-                  alt="web"
-                  className=""
-                ></img>
+                  alt="thumbnail"
+                  layout="fill"
+                  objectFit="cover"
+                />
               </div>
 
               <div className="sm:basis-3/4 p-4 border-2 sm:border-l-0 rounded-md sm:rounded-l-none sm:rounded-r-md overflow-hidden border-gray-400 ">
