@@ -1,34 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# コンテンツ内容
 
-## Getting Started
+個人向けの WEB サイトを制作しました、こちらで公開しています。
 
-First, run the development server:
+https://astrigger-blog.vercel.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+WEB サイトで配信するコンテンツを次に示します。
+全ページでレスポンシブデザインに対応しています。
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Top ページ
+  WEB サイトの表紙と自己紹介のページです。
+  副業の案件獲得を見据えて、自身のポートフォリオや提供できるサービス・スキルを簡潔に紹介しています。
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- Blog ページ
+  ブログを配信するページです。ブログ記事は Markdown で記述し、ビルド時に HTML へ自動変換して表示しします。一般的な Markdown の記法に加えて、情報共有コミュニティサイト`Zenn`で利用できる拡張記法にも対応しています。つまり、`Zenn` で執筆した記事と互換性があります
+  https://zenn.dev/zenn/articles/markdown-guide
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- Works ページ
+  これまでの仕事内容やポートフォリオを公開するページです。 こちらも Blog ページ と同様に Markdown で記述して作品の詳細情報を公開します。
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Contact ページ
+  問い合わせ内容をサイト運営者に送信するページです。不正アクセス防止対策のため、Google の reCAPTCHAv3 認証を通過したユーザーのみ、問い合わせを送信できる機能を実装しています。
 
-## Learn More
+# 開発言語・フレームワーク
 
-To learn more about Next.js, take a look at the following resources:
+Next.js(React) + Typescript で開発しました。
+ほぼ全てのコンテンツ要素を SSG(Static Site Generation)で生成しており、非常に高速なレスポンスを実現しています。
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+CSS フレームワークには Tailwindcss を利用しています。
+その他のライブラリは package.json で確認してください。

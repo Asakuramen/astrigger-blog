@@ -115,8 +115,9 @@ const ServiceList: React.FC = () => {
                   <span className={styles.badge}>⭐Firebase</span>
                   <span className={styles.badge}>AWS(ECS・RDB・IoT等) </span>
                   <span className={styles.badge}>🌟Linux</span>
+                  <span className={styles.badge}>🌟RaspberryPi</span>
                   <span className={styles.badge}>mariaDB</span>
-                  <span className={styles.badge}>Strapi</span>
+                  <span className={styles.badge}>ヘッドレスCMS</span>
                   <span className={styles.badge}>UML作成</span>
                 </div>
               </div>
@@ -150,15 +151,12 @@ const ServiceList: React.FC = () => {
                   <p>
                     様々なものづくりの技術・ノウハウを駆使してアイデアを実物化し、デジタル世界とリアル世界の接点を広げます。
                   </p>
-                  <p>
-                    特にセンサー・センシング系のシステムの経験が豊富です。リアル世界の情報を適切に前処理してバックエンドに提供します。
-                  </p>
+                  <p>特にセンサー・センシング系のシステムの経験が豊富です。</p>
                   <hr className="my-4" />
 
                   <span className={styles.badge}>🌟アナログ・デシタル回路設計</span>
-                  <span className={styles.badge}>🌟基盤パターン設計・発注・部品実装</span>
-                  <span className={styles.badge}>🌟FPGA・マイコン組み込み開発</span>
-                  <span className={styles.badge}>🌟RaspberryPi</span>
+                  <span className={styles.badge}>🌟プリント基板設計・部品実装</span>
+                  <span className={styles.badge}>🌟組み込み開発(マイコンFPGA)</span>
                   <span className={styles.badge}>🌟3Dプリンター</span>
                   <span className={styles.badge}>⭐2D/3DCAD</span>
                   <span className={styles.badge}>
@@ -202,7 +200,7 @@ const ServiceList: React.FC = () => {
                   </span>
                   <span className={styles.badge}>⭐3DCG制作 (Cinema4D)</span>
                   <span className={styles.badge}>⭐写真撮影(NIKON)</span>
-                  <span className={styles.badge}>🌟Officeソフト系 (マクロ)</span>
+                  <span className={styles.badge}>🌟Officeソフト系(マクロ)</span>
                   <span className={styles.badge}>⭐家電修理</span>
                   <span className={styles.badge}>簿記3級</span>
                   <span className={styles.badge}>TOEIC 820点</span>
