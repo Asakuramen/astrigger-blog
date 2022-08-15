@@ -45,6 +45,7 @@ const ServiceList: React.FC = () => {
                   alt="thumbnail"
                   layout="fill"
                   objectFit="cover"
+                  priority={true}
                 />
               </div>
 
@@ -92,6 +93,7 @@ const ServiceList: React.FC = () => {
                   alt="thumbnail"
                   layout="fill"
                   objectFit="cover"
+                  priority={true}
                 />
               </div>
 
@@ -133,6 +135,7 @@ const ServiceList: React.FC = () => {
                   alt="thumbnail"
                   layout="fill"
                   objectFit="cover"
+                  priority={true}
                 />
               </div>
 
@@ -176,6 +179,7 @@ const ServiceList: React.FC = () => {
                   alt="thumbnail"
                   layout="fill"
                   objectFit="cover"
+                  priority={true}
                 />
               </div>
 

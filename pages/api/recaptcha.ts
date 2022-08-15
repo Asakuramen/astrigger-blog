@@ -33,12 +33,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   // rechptcha認証に成功
   if (recaptchaResult.success) {
-    res.status(200).json({ result: "success" });
+    res.status(200).json({ ...recaptchaResult });
   }
   // rechptcha認証に失敗
   else {
-    res
-      .status(400)
-      .json({ result: "rechptcha認証に失敗しました。メッセージは送信されていません。" });
+    res.status(400).json({ ...recaptchaResult });
   }
 }

@@ -25,7 +25,6 @@ const Contact: NextPage = () => {
 
   // ContactページのみreCaptchaのカードを表示する
   useEffect(() => {
-    console.log(elementRecaptcha);
     if (elementRecaptcha) {
       elementRecaptcha!.style.visibility = "visible";
     }
@@ -121,8 +120,7 @@ const Contact: NextPage = () => {
           message: message,
         }),
       });
-
-      console.log("Contact submit");
+      console.log("from Server");
       console.log(postResult);
 
       // recaptcha認証およびSlack通知が成功
@@ -137,7 +135,9 @@ const Contact: NextPage = () => {
         setArrowSend(false);
       } else {
         const result = await postResult.json();
-        alert(`問い合わせ内容の送信に失敗しました。${result}`);
+        console.log("from Server");
+        console.log(result);
+        alert("問い合わせ内容の送信に失敗しました");
       }
     } else {
       alert(
