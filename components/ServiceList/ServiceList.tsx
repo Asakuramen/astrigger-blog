@@ -45,7 +45,7 @@ const ServiceList: React.FC = () => {
                   alt="thumbnail"
                   layout="fill"
                   objectFit="cover"
-                  priority={true}
+                  loading="eager"
                 />
               </div>
 
@@ -93,7 +93,7 @@ const ServiceList: React.FC = () => {
                   alt="thumbnail"
                   layout="fill"
                   objectFit="cover"
-                  priority={true}
+                  loading="eager"
                 />
               </div>
 
@@ -135,7 +135,7 @@ const ServiceList: React.FC = () => {
                   alt="thumbnail"
                   layout="fill"
                   objectFit="cover"
-                  priority={true}
+                  loading="eager"
                 />
               </div>
 
@@ -179,7 +179,7 @@ const ServiceList: React.FC = () => {
                   alt="thumbnail"
                   layout="fill"
                   objectFit="cover"
-                  priority={true}
+                  loading="eager"
                 />
               </div>
 
@@ -189,7 +189,7 @@ const ServiceList: React.FC = () => {
                     <div>
                       <BsPencilFill />
                     </div>
-                    <span className={styles.text_gradient_bluesteel}>寄せ集め</span>
+                    <span className={styles.text_gradient_bluesteel}>その他</span>
                   </div>
 
                   <p>動画・画像の制作編集の実務経験もあります。</p>
@@ -201,7 +201,7 @@ const ServiceList: React.FC = () => {
                   <span className={styles.badge}>
                     ⭐動画制作編集 (DaVinci,AfterEffects)
                   </span>
-                  <span className={styles.badge}>⭐3DCG制作 (Cinema4D)</span>
+                  <span className={styles.badge}>⭐3DCG制作(Cinema4D)</span>
                   <span className={styles.badge}>⭐写真撮影(NIKON)</span>
                   <span className={styles.badge}>🌟Officeソフト系(マクロ)</span>
                   <span className={styles.badge}>⭐家電修理</span>
