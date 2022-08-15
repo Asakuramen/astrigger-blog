@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import ButtonCommon from "components/UIparts/ButtonCommon";
-import ButtonLink from "components/UIparts/ButtonCommon";
 import { NextPage } from "next";
 
 type Props = {
