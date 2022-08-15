@@ -30,6 +30,7 @@ const BlogList: NextPage<Props> = ({ allBlogsMetaData, showThumbnail }) => {
                         alt="thumbnail"
                         layout="fill"
                         objectFit="cover"
+                        priority={true}
                       />
                     </div>
                   )}

@@ -87,7 +87,13 @@ const Home: NextPage<Props> = ({ allBlogsMetaData, allWorkContentsMetaData }) =>
       </Head>
 
       <div className="relative h-screen">
-        <Image src="/top/top.jpg" alt="thumbnail" layout="fill" objectFit="cover" />
+        <Image
+          src="/top/top.jpg"
+          alt="thumbnail"
+          layout="fill"
+          objectFit="cover"
+          priority={true}
+        />
         <div className="absolute w-full h-screen bg-black opacity-25"></div>
         <div className="absolute grid grid-cols-12 h-screen">
           <div className="col-span-1"></div>

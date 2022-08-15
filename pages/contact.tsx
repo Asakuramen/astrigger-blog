@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import Header2 from "components/Header/Header2";
 import H1anchor from "components/UIparts/H1anchor";
 import ButtonCommon from "components/UIparts/ButtonCommon";
+import { ResponceServer } from "./api/recaptcha";
 
 const Contact: NextPage = () => {
   const [arrowSend, setArrowSend] = useState(true);
@@ -14,7 +15,7 @@ const Contact: NextPage = () => {
   const inputTitle = useRef<HTMLInputElement>(null);
   const inputMessage = useRef<HTMLTextAreaElement>(null);
 
-  // googleからtokenを取得する
+  // reCAPTCHAからtokenを取得する
   const { executeRecaptcha } = useGoogleReCaptcha();
 
   // reCaptchaのカードの要素を取得する
@@ -25,7 +26,6 @@ const Contact: NextPage = () => {
 
   // ContactページのみreCaptchaのカードを表示する
   useEffect(() => {
-    console.log(elementRecaptcha);
     if (elementRecaptcha) {
       elementRecaptcha!.style.visibility = "visible";
     }
@@ -102,13 +102,14 @@ const Contact: NextPage = () => {
       return;
     }
 
-    // recaptcha認証およびサーバーへの問い合わせ内容を送信する処理
+    // 問い合わせ内容を送信する処理
     let token = "";
     if (executeRecaptcha) {
+      // reCAPTCHA認証のtokenを取得する
       token = await executeRecaptcha("Contact");
-      // サーバーにtokenと問い合わせ内容をPOSTする
+      // サーバーへrecaptcha認証および問い合わせ内容送信処理の要求をPOSTし、処理結果を受け取る
       const serverEndpoint = "api/recaptcha";
-      const postResult = await fetch(serverEndpoint, {
+      const responce_server = await fetch(serverEndpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -121,13 +122,13 @@ const Contact: NextPage = () => {
           message: message,
         }),
       });
-
-      console.log("Contact submit");
-      console.log(postResult);
+      const responceJson_server: ResponceServer = await responce_server.json();
+      console.log("responce_server");
+      console.log(responceJson_server);
 
       // recaptcha認証およびSlack通知が成功
-      if (postResult.status == 200) {
-        alert("問い合わせ内容を送信しました。");
+      if (responce_server.status == 200) {
+        alert(responceJson_server.clinetMessage);
         // フォームの入力値を消去する
         inputName.current!.value = "";
         inputEmail.current!.value = "";
@@ -136,12 +137,11 @@ const Contact: NextPage = () => {
         // リロードするまで再送信を禁止する
         setArrowSend(false);
       } else {
-        const result = await postResult.json();
-        alert(`問い合わせ内容の送信に失敗しました。${result}`);
+        alert(responceJson_server.clinetMessage);
       }
     } else {
       alert(
-        "recaptcha認証機能との通信に失敗しました。問い合わせ内容は送信されていません。"
+        "recaptcha認証サーバーとの通信に失敗したため、問い合わせの送信を中止しました。"
       );
     }
   };
