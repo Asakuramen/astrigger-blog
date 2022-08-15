@@ -93,6 +93,7 @@ const Home: NextPage<Props> = ({ allBlogsMetaData, allWorkContentsMetaData }) =>
           layout="fill"
           objectFit="cover"
           priority={true}
+          loading="eager"
         />
         <div className="absolute w-full h-screen bg-black opacity-25"></div>
         <div className="absolute grid grid-cols-12 h-screen">

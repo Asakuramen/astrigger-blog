@@ -1,4 +1,3 @@
-import { request } from "https";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 // クライアントへのresponce
