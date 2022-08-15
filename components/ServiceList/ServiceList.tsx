@@ -41,7 +41,7 @@ const ServiceList: React.FC = () => {
             <div className="h-96 sm:h-80 mx-auto flex text-left bg-gray-50">
               <div className="w-full relative hidden sm:block  sm:basis-1/4 rounded-l-md overflow-hidden">
                 <Image
-                  src="/top/frontend.jpg"
+                  src="/top/frontend.png"
                   alt="thumbnail"
                   layout="fill"
                   objectFit="cover"
@@ -175,7 +175,7 @@ const ServiceList: React.FC = () => {
             <div className="h-96 sm:h-80 mx-auto flex text-left bg-white">
               <div className="w-full relative hidden sm:block  sm:basis-1/4 rounded-l-md overflow-hidden">
                 <Image
-                  src="/top/other.jpg"
+                  src="/top/other.png"
                   alt="thumbnail"
                   layout="fill"
                   objectFit="cover"

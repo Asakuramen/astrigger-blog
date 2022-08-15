@@ -88,14 +88,14 @@ const Home: NextPage<Props> = ({ allBlogsMetaData, allWorkContentsMetaData }) =>
 
       <div className="relative h-screen">
         <Image
-          src="/top/top.png"
+          src="/top/top.jpg"
           alt="thumbnail"
           layout="fill"
           objectFit="cover"
           priority={true}
           loading="eager"
         />
-        <div className="absolute w-full h-screen bg-black opacity-25"></div>
+        <div className="absolute w-full h-screen bg-black opacity-40"></div>
         <div className="absolute grid grid-cols-12 h-screen">
           <div className="col-span-1"></div>
           <div className="col-span-8 sm:col-span-6">
