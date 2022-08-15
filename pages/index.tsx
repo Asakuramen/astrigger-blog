@@ -88,7 +88,7 @@ const Home: NextPage<Props> = ({ allBlogsMetaData, allWorkContentsMetaData }) =>
 
       <div className="relative h-screen">
         <Image
-          src="/top/top.jpg"
+          src="/top/top.png"
           alt="thumbnail"
           layout="fill"
           objectFit="cover"
