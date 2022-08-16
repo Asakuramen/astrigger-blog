@@ -1,4 +1,4 @@
-export const tagList = [
+const tagList = [
   { name: "Next.js", path: "next.js" },
   { name: "React", path: "react" },
   { name: "Typescript", path: "typescript" },
@@ -7,3 +7,5 @@ export const tagList = [
   { name: "3DPrinter", path: "3dprinter" },
   { name: "すべての記事", path: "all" },
 ];
+
+export default tagList;

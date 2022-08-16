@@ -3,7 +3,7 @@ import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import { BlogMetaData, getBlogMetaDatasByTag } from "lib/getBlogContent";
 import "zenn-content-css";
 import Header2 from "components/Header/Header2";
-import { tagList } from "./tags";
+import tagList from "../../contents/tags";
 import BlogList from "components/BlogList/BlogList";
 import SidenavTags from "components/SidenavTags/SidenavTags";
 
