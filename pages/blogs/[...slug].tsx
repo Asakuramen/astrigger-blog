@@ -5,6 +5,7 @@ import "zenn-content-css";
 import Header2 from "components/Header/Header2";
 import { tagList } from "./tags";
 import BlogList from "components/BlogList/BlogList";
+import SidenavTags from "components/SidenavTags/SidenavTags";
 
 /**
  * 生成する全てのブログ記事の静的ページのパスを生成し、getStaticPropsに渡す
@@ -63,12 +64,22 @@ const Blog: NextPage<Props> = ({ blogMetaDatas }) => {
       <Head>
         <title>{`AsTrigger - Blog`}</title>
         <meta name="description" content="blog" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header2 sticky={false} />
 
-      <div className="max-w-screen-lg mx-auto px-3 sm:px-6 py-6" id="article">
-        <BlogList allBlogsMetaData={blogMetaDatas} showThumbnail={true}></BlogList>
+      <div className="max-w-screen-xl mx-auto px-3 sm:px-6 py-6" id="article">
+        <div className="flex flex-row">
+          <div className="w-auto md:w-[calc(100%_-_18rem)] mr-3 ">
+            <BlogList allBlogsMetaData={blogMetaDatas} showThumbnail={true}></BlogList>
+          </div>
+          <div className="hidden md:block w-72 ml-3">
+            <div className="flex flex-col sticky top-6">
+              <div className="p-4 shadow-md rounded-md mb-6 bg-white ">
+                <SidenavTags />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

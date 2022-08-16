@@ -5,5 +5,5 @@ export const tagList = [
   { name: "Tailwind", path: "tailwind" },
   { name: "CSS", path: "css" },
   { name: "3DPrinter", path: "3dprinter" },
-  { name: "All", path: "all" },
+  { name: "すべての記事", path: "all" },
 ];

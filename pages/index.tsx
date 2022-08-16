@@ -102,7 +102,7 @@ const Home: NextPage<Props> = ({ allBlogsMetaData, allWorkContentsMetaData }) =>
             <div className="h-1/6 sm:h-1/3"></div>
             <div className="flex flex-row items-center text-4xl sm:text-5xl text-white font-extrabold">
               <IoPulseSharp />
-              <div className="ml-4">AsTrigger</div>
+              <div className="ml-4">Gourami Engineering</div>
             </div>
 
             <div className="h-12"></div>
@@ -177,7 +177,7 @@ const Home: NextPage<Props> = ({ allBlogsMetaData, allWorkContentsMetaData }) =>
           </div>
           <BlogList allBlogsMetaData={allBlogsMetaData} showThumbnail={true} />
           <div className="my-10 text-center">
-            <Link href={"/blogs"}>
+            <Link href={"/blogs/all/1"}>
               <a>
                 <ButtonCommon>View more</ButtonCommon>
               </a>

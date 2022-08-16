@@ -36,10 +36,10 @@ const Header2: React.FC<Props> = ({ sticky }) => {
       <div className="flex flex-row items-center w-full">
         <div className="ml-8">
           <Link href="/">
-            <a className="text-lg font-bold transition-colors transform text-white lg:text-3xl hover:text-gray-300">
+            <a className="text-lg font-bold transition-colors transform text-white lg:text-xl hover:text-gray-300">
               <div className="flex flex-row items-center">
                 <IoPulseSharp />
-                <div className="mx-2">AsTrigger</div>
+                <div className="mx-2">Gourami Engineering</div>
               </div>
             </a>
           </Link>
@@ -53,7 +53,7 @@ const Header2: React.FC<Props> = ({ sticky }) => {
           </Link>
         </div>
         <div className="mx-4 px-2 text-sm transform transition-colors text-gray-200 border-b-2 border-transparent hover:border-blue-500">
-          <Link href="/blogs">
+          <Link href="/blogs/all/1">
             <a>Blog</a>
           </Link>
         </div>
