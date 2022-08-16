@@ -62,7 +62,7 @@ const Aboutme: NextPage = () => {
       <div className="h-8" />
 
       <div className="flex-auto text-gray-700">
-        <p>ペンネーム：あさくらーめん</p>
+        <p>ペンネーム：AsTrigger</p>
         <p>仕事でも休日でも、いつも手を動かして何か作るのが好きな人です。</p>
         <p>20代、東京在住。</p>
       </div>
