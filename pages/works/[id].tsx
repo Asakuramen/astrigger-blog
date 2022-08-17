@@ -5,6 +5,7 @@ import "zenn-content-css";
 import { JSDOM } from "jsdom";
 import { getWorkContent, getWorksContentId, WorkContent } from "lib/getWorkContent";
 import Header2 from "components/Header/Header2";
+import Footer from "components/Footer/Footer";
 
 /**
  * 生成する全てのブログ記事の静的ページのパスを生成し、getStaticPropsに渡す
@@ -72,7 +73,7 @@ const Work: NextPage<Props> = ({ content, tableOfContent }) => {
   return (
     <>
       <Head>
-        <title>{`AsTrigger - Works - ${content.title}`}</title>
+        <title>{content.title}</title>
         <meta name="description" content={content.title} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -124,6 +125,8 @@ const Work: NextPage<Props> = ({ content, tableOfContent }) => {
           </div>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 };

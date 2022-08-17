@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
+import Badge from "components/UIparts/Badge";
 
 const skillArray = ["フロントエンド", "バックエンド", "ものづくり", "Other"];
 
@@ -38,7 +39,7 @@ const ServiceList: React.FC = () => {
       >
         <SwiperSlide>
           <div className="px-0 sm:px-14">
-            <div className="h-96 sm:h-80 mx-auto flex text-left bg-gray-50">
+            <div className="h-96 sm:h-80 lg:h-72 mx-auto flex text-left bg-gray-50">
               <div className="w-full relative hidden sm:block  sm:basis-1/4 rounded-l-md overflow-hidden">
                 <Image
                   src="/top/frontend.png"
@@ -58,26 +59,23 @@ const ServiceList: React.FC = () => {
                     <span className={styles.text_gradient_hyper}>フロントエンド開発</span>
                   </div>
 
-                  <p>WEBサイト制作、WEBアプリケーション開発を承ります。</p>
+                  <p>WEBサイト制作、WEBアプリケーション開発を行っております。</p>
                   <p>
-                    要件定義 - デザイン - コーディング - テスト -
-                    運用支援まで、柔軟に対応致します。
+                    ReactやNext.jsを主軸に置き、SPA・SSR・SSG構成のシステム開発経験があります。
                   </p>
-
                   <p></p>
                   <hr className="my-4" />
-                  <span className={styles.badge}>🌟HTML</span>
-                  <span className={styles.badge}>⭐CSS</span>
-                  <span className={styles.badge}>Sass</span>
-                  <span className={styles.badge}>🌟Javascript</span>
-                  <span className={styles.badge}>⭐Typescript</span>
-                  <span className={styles.badge}>jquery</span>
-                  <span className={styles.badge}>🌟React</span>
-                  <span className={styles.badge}>Redux</span>
-                  <span className={styles.badge}>⭐Next.js</span>
-                  <span className={styles.badge}>🌟Tailwindcss</span>
-                  <span className={styles.badge}>⭐Bootstrap</span>
-                  <span className={styles.badge}>⭐Material-UI</span>
+                  <Badge>HTML</Badge>
+                  <Badge>CSS</Badge>
+                  <Badge>Javascript</Badge>
+                  <Badge>Typescript</Badge>
+                  <Badge>jquery</Badge>
+                  <Badge>React</Badge>
+                  <Badge>Redux(Toolkit)</Badge>
+                  <Badge>Next.js</Badge>
+                  <Badge>Tailwindcss</Badge>
+                  <Badge>Bootstrap</Badge>
+                  <Badge>Material-UI</Badge>
                 </div>
               </div>
             </div>
@@ -86,7 +84,7 @@ const ServiceList: React.FC = () => {
 
         <SwiperSlide>
           <div className="px-0 sm:px-14">
-            <div className="h-96 sm:h-80 mx-auto flex text-left bg-gray-50">
+            <div className="h-96 sm:h-80 lg:h-72 flex text-left bg-gray-50">
               <div className="w-full relative hidden sm:block  sm:basis-1/4 rounded-l-md overflow-hidden">
                 <Image
                   src="/top/backend.jpg"
@@ -105,21 +103,23 @@ const ServiceList: React.FC = () => {
                     </div>
                     <span className={styles.text_gradient_oceanic}>バックエンド開発</span>
                   </div>
-                  <p>各種言語にてバックエンド開発を承ります。</p>
                   <p>
-                    システム要件定義、基本・詳細設計、コーディング、単体・結合試験、など工程に合わせて柔軟に対応致します。
+                    システム要件定義、基本・詳細設計、コーディング、単体・結合試験まで、全工程の経験があります。Linux系や.NET系の開発経験が最も豊富です。
                   </p>
+                  <p>
+                    また、昨今のクラウド関連技術をキャッチアップし、業務に活かすよう尽力しています。
+                  </p>
+
                   <hr className="my-4" />
-                  <span className={styles.badge}>🌟Node.js</span>
-                  <span className={styles.badge}>🌟C#</span>
-                  <span className={styles.badge}>⭐Python</span>
-                  <span className={styles.badge}>⭐Firebase</span>
-                  <span className={styles.badge}>AWS(ECS・RDB・IoT等) </span>
-                  <span className={styles.badge}>🌟Linux</span>
-                  <span className={styles.badge}>🌟RaspberryPi</span>
-                  <span className={styles.badge}>mariaDB</span>
-                  <span className={styles.badge}>ヘッドレスCMS</span>
-                  <span className={styles.badge}>UML作成</span>
+                  <Badge>Node.js</Badge>
+                  <Badge>C#</Badge>
+                  <Badge>Python</Badge>
+                  <Badge>L2/L3 NW設計</Badge>
+                  <Badge>Linux</Badge>
+                  <Badge>RDB(maridDB等)</Badge>
+                  <Badge>UML作成</Badge>
+                  <Badge>Firebase</Badge>
+                  <Badge>AWS(EC2・RDB・IoT等)</Badge>
                 </div>
               </div>
             </div>
@@ -128,7 +128,7 @@ const ServiceList: React.FC = () => {
 
         <SwiperSlide>
           <div className="px-0 sm:px-14">
-            <div className="h-96 sm:h-80 mx-auto flex text-left bg-gray-50">
+            <div className="h-96 sm:h-80 lg:h-72 flex text-left bg-gray-50">
               <div className="w-full relative hidden sm:block  sm:basis-1/4 rounded-l-md overflow-hidden">
                 <Image
                   src="/top/hardware.png"
@@ -151,19 +151,18 @@ const ServiceList: React.FC = () => {
                   </div>
 
                   <p>
-                    様々なものづくりの技術・ノウハウを駆使して、デジタル世界とリアル世界の接点を広げます。
+                    様々なものづくりの技術を駆使して、デジタル世界とリアル世界を繋ぎます。
                   </p>
-                  <p>特にセンサー・センシング系のシステムの経験が豊富にあります。</p>
+                  <p>
+                    センサー・センシング系のシステムの開発には５年以上携わっており、私の十八番です。
+                  </p>
                   <hr className="my-4" />
-
-                  <span className={styles.badge}>🌟アナログ・デシタル回路設計</span>
-                  <span className={styles.badge}>🌟プリント基板設計・部品実装</span>
-                  <span className={styles.badge}>🌟組み込み開発(マイコンFPGA)</span>
-                  <span className={styles.badge}>🌟3Dプリンター</span>
-                  <span className={styles.badge}>⭐2D/3DCAD</span>
-                  <span className={styles.badge}>
-                    🌟素材加工(木材・プラスチック・金属・アクリル)
-                  </span>
+                  <Badge>アナログ・デシタル回路設計</Badge>
+                  <Badge>プリント基板設計・部品実装</Badge>
+                  <Badge>組み込み開発</Badge>
+                  <Badge>2D/3DCAD</Badge>
+                  <Badge>3Dプリンター</Badge>
+                  <Badge>素材加工(木材/プラスチック/金属/アクリル)</Badge>
                 </div>
               </div>
             </div>
@@ -172,7 +171,7 @@ const ServiceList: React.FC = () => {
 
         <SwiperSlide>
           <div className="px-0 sm:px-14">
-            <div className="h-96 sm:h-80 mx-auto flex text-left bg-white">
+            <div className="h-96 sm:h-80 lg:h-72 mx-auto flex text-left bg-white">
               <div className="w-full relative hidden sm:block  sm:basis-1/4 rounded-l-md overflow-hidden">
                 <Image
                   src="/top/other.png"
@@ -192,21 +191,19 @@ const ServiceList: React.FC = () => {
                     <span className={styles.text_gradient_bluesteel}>その他</span>
                   </div>
 
-                  <p>動画・画像の制作編集の実務経験もあります。</p>
+                  <p>
+                    動画・画像の制作編集の実務経験もあります。コンテンツ素材の作成から対応可能です。
+                  </p>
                   <p>PC・ソフトウェア・電気製品全般も得意領域です。</p>
                   <hr className="my-4" />
-                  <span className={styles.badge}>
-                    ⭐画像制作編集 (Figma,Illustrator,Photoshop)
-                  </span>
-                  <span className={styles.badge}>
-                    ⭐動画制作編集 (DaVinci,AfterEffects)
-                  </span>
-                  <span className={styles.badge}>⭐3DCG制作(Cinema4D)</span>
-                  <span className={styles.badge}>⭐写真撮影(NIKON)</span>
-                  <span className={styles.badge}>🌟Officeソフト系(マクロ)</span>
-                  <span className={styles.badge}>⭐家電修理</span>
-                  <span className={styles.badge}>簿記3級</span>
-                  <span className={styles.badge}>TOEIC 820点</span>
+                  <Badge>画像編集制作 (Figma,Illustrator,Photoshop)</Badge>
+                  <Badge>動画編集制作 (DaVinci,AfterEffects)</Badge>
+                  <Badge>3DCG制作(Cinema4D)</Badge>
+                  <Badge>写真撮影(NIKON)</Badge>
+                  <Badge>Officeソフト系(VBA)</Badge>
+                  <Badge>家電修理</Badge>
+                  <Badge>簿記3級</Badge>
+                  <Badge>TOEIC 820点</Badge>
                 </div>
               </div>
             </div>

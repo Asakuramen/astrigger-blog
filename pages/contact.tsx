@@ -6,6 +6,7 @@ import Header2 from "components/Header/Header2";
 import H1anchor from "components/UIparts/H1anchor";
 import ButtonCommon from "components/UIparts/ButtonCommon";
 import { ResponceServer } from "./api/recaptcha";
+import Footer from "components/Footer/Footer";
 
 const Contact: NextPage = () => {
   const [arrowSend, setArrowSend] = useState(true);
@@ -149,13 +150,13 @@ const Contact: NextPage = () => {
   return (
     <>
       <Head>
-        <title>AsTrigger - Contact</title>
+        <title>Gourami Engineering - Contact</title>
         <meta name="description" content="contact" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header2 sticky={false} />
 
-      <div className="max-w-screen-md mx-auto px-3 py-3">
+      <div className="max-w-screen-md mx-auto px-3 py-3 min-h-[calc(100vh_-_6rem)]">
         <div className="h-10" />
         <div className="text-center">
           <H1anchor text="CONTACT" />
@@ -210,6 +211,7 @@ const Contact: NextPage = () => {
               <input
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 focus:outline-none focus:bg-white focus:border-gray-500"
                 type="email"
+                placeholder="50文字以内"
                 id="contact-input-title"
                 ref={inputTitle}
               />
@@ -226,7 +228,7 @@ const Contact: NextPage = () => {
               </label>
               <textarea
                 className="resize-y appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48"
-                placeholder="500文字以内"
+                placeholder="400文字以内"
                 id="contact-input-message"
                 ref={inputMessage}
               ></textarea>
@@ -247,6 +249,8 @@ const Contact: NextPage = () => {
           不正アクセス対策のため、reCAPTCHA v3 による認証機能を設けております。
         </p>
       </div>
+
+      <Footer />
     </>
   );
 };

@@ -24,12 +24,14 @@ const Job: NextPage = () => {
           <div className="inline-block bg-gray-200 rounded-full px-3 py-1 font-semibold text-gray-700 mr-2 mb-2">
             Sub
           </div>
-          <div className="inline-block font-bold text-xl ml-2">何でも開発屋</div>
+          <div className="inline-block font-bold text-xl ml-2">
+            フルスタックエンジニア
+          </div>
           <p>
             フロントエンド、バックエンド、ハードウェア、電子回路など様々な技術領域を駆使して、システム・アプリの開発を行っています。
           </p>
           <p>
-            趣味の延長線から始まりましたが、微力ながらも私の力を世の中の問題解決に役立てられればと思っています。
+            業務委託のフルスタックエンジニアをご希望でありましたら、ご連絡いただけると幸いです。
           </p>
         </div>
       </div>

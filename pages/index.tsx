@@ -12,9 +12,10 @@ import Header2 from "components/Header/Header2";
 import H1anchor from "components/UIparts/H1anchor";
 import Image from "next/image";
 import ButtonCommon from "components/UIparts/ButtonCommon";
-import { IoPulseSharp } from "react-icons/io5";
+import { IoFish } from "react-icons/io5";
 import Link from "next/link";
 import { useEffect } from "react";
+import Footer from "components/Footer/Footer";
 
 // ServerSideGeneration
 export async function getStaticProps() {
@@ -81,7 +82,7 @@ const Home: NextPage<Props> = ({ allBlogsMetaData, allWorkContentsMetaData }) =>
   return (
     <>
       <Head>
-        <title>AsTrigger - Top</title>
+        <title>Gourami Engineering - Top</title>
         <meta name="description" content="blog" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -101,7 +102,7 @@ const Home: NextPage<Props> = ({ allBlogsMetaData, allWorkContentsMetaData }) =>
           <div className="col-span-8 sm:col-span-6">
             <div className="h-1/6 sm:h-1/3"></div>
             <div className="flex flex-row items-center text-4xl sm:text-5xl text-white font-extrabold">
-              <IoPulseSharp />
+              <IoFish />
               <div className="ml-4">Gourami Engineering</div>
             </div>
 
@@ -111,12 +112,6 @@ const Home: NextPage<Props> = ({ allBlogsMetaData, allWorkContentsMetaData }) =>
               technorogy.
             </h1>
             <div className="h-12"></div>
-
-            <Link href={"/#top-aboutme"}>
-              <a>
-                <ButtonCommon>View more ↓</ButtonCommon>
-              </a>
-            </Link>
           </div>
         </div>
       </div>
@@ -185,6 +180,8 @@ const Home: NextPage<Props> = ({ allBlogsMetaData, allWorkContentsMetaData }) =>
           </div>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 };

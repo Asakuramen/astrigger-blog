@@ -6,6 +6,7 @@ import Header2 from "components/Header/Header2";
 import tagList from "../../contents/tags";
 import BlogList from "components/BlogList/BlogList";
 import SidenavTags from "components/SidenavTags/SidenavTags";
+import Footer from "components/Footer/Footer";
 
 /**
  * 生成する全てのブログ記事の静的ページのパスを生成し、getStaticPropsに渡す
@@ -62,7 +63,7 @@ const Blog: NextPage<Props> = ({ blogMetaDatas }) => {
   return (
     <>
       <Head>
-        <title>{`AsTrigger - Blog`}</title>
+        <title>{`Gourami Engineering - Blog`}</title>
         <meta name="description" content="blog" />
       </Head>
       <Header2 sticky={false} />
@@ -80,6 +81,9 @@ const Blog: NextPage<Props> = ({ blogMetaDatas }) => {
             </div>
           </div>
         </div>
+
+        <div className="h-16"></div>
+        <Footer />
       </div>
     </>
   );
