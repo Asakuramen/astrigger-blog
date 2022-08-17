@@ -2,6 +2,8 @@ import { NextPage } from "next";
 import Image from "next/image";
 import { BlogMetaData } from "lib/getBlogContent";
 import Link from "next/link";
+import Badge from "components/UIparts/Badge";
+import { getTagName } from "contents/tags";
 
 type Props = {
   allBlogsMetaData: BlogMetaData[];
@@ -42,12 +44,9 @@ const BlogList: NextPage<Props> = ({ allBlogsMetaData, showThumbnail }) => {
                   <div className="pb-3 px-3 sm:px-6">
                     {blogMetaData.topics.map((topic) => {
                       return (
-                        <span
-                          className="inline-block bg-gray-200 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 mr-2 my-1"
-                          key={topic}
-                        >
-                          {`#${topic}`}
-                        </span>
+                        <div key={topic} className="inline-block">
+                          <Badge>{getTagName(topic)}</Badge>
+                        </div>
                       );
                     })}
                   </div>
