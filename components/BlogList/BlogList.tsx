@@ -21,7 +21,7 @@ const BlogList: NextPage<Props> = ({ allBlogsMetaData, showThumbnail }) => {
               <Link href={`/blogs/${blogMetaData.id}`}>
                 <a>
                   {showThumbnail && (
-                    <div className="relative w-full h-48">
+                    <div className="relative w-full aspect-video">
                       <Image
                         className="w-full"
                         src={blogMetaData.thumbnail}

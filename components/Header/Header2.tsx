@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { IoPulseSharp } from "react-icons/io5";
+import { IoFish } from "react-icons/io5";
 
 type Props = {
   sticky: boolean;
@@ -38,7 +38,7 @@ const Header2: React.FC<Props> = ({ sticky }) => {
           <Link href="/">
             <a className="text-lg font-bold transition-colors transform text-white lg:text-xl hover:text-gray-300">
               <div className="flex flex-row items-center">
-                <IoPulseSharp />
+                <IoFish />
                 <div className="mx-2">Gourami Engineering</div>
               </div>
             </a>

@@ -12,6 +12,7 @@ html {
 
 .grecaptcha-badge {
   visibility: hidden;
+  bottom: 56px !important;
 }
 
 .swiper {

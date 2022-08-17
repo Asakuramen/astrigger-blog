@@ -5,6 +5,7 @@ import { getAllBlogsId, getBlogContentData } from "lib/getBlogContent";
 import "zenn-content-css";
 import { JSDOM } from "jsdom";
 import Header2 from "components/Header/Header2";
+import Footer from "components/Footer/Footer";
 
 /**
  * 生成する全てのブログ記事の静的ページのパスを生成し、getStaticPropsに渡す
@@ -79,7 +80,7 @@ const Blog: NextPage<Props> = ({ blogData, tableOfContent }) => {
   return (
     <>
       <Head>
-        <title>{`AsTrigger - Blog - ${blogData.title}`}</title>
+        <title>{blogData.title}</title>
         <meta name="description" content={blogData.title} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -131,6 +132,8 @@ const Blog: NextPage<Props> = ({ blogData, tableOfContent }) => {
           </div>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 };

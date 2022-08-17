@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Header2 from "components/Header/Header2";
 import H1anchor from "components/UIparts/H1anchor";
+import Footer from "components/Footer/Footer";
 
 // ServerSideGeneration
 export async function getStaticProps() {
@@ -111,13 +112,13 @@ const Blog: NextPage<Props> = ({ allBlogsMetaData }) => {
   return (
     <>
       <Head>
-        <title>AsTrigger - Blog</title>
+        <title>Gourami Engineering - Blog</title>
         <meta name="description" content="blog" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header2 sticky={false} />
 
-      <div className="max-w-screen-lg mx-auto px-3 py-3">
+      <div className="max-w-screen-lg mx-auto px-3 py-3 min-h-[calc(100vh_-_6rem)]">
         <div className="h-10" />
 
         <div className="text-center">
@@ -147,6 +148,9 @@ const Blog: NextPage<Props> = ({ allBlogsMetaData }) => {
           />
         </div>
       </div>
+
+      <div className="h-16" />
+      <Footer />
     </>
   );
 };

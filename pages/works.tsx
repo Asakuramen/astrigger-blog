@@ -4,6 +4,7 @@ import { getWorksMetaData, WorkContentMetadata } from "lib/getWorkContent";
 import WorkList from "components/WorkList/WorkList";
 import Header2 from "components/Header/Header2";
 import H1anchor from "components/UIparts/H1anchor";
+import Footer from "components/Footer/Footer";
 
 // ServerSideGeneration
 export async function getStaticProps() {
@@ -25,13 +26,13 @@ const Blog: NextPage<Props> = ({ allWorkContentsMetaData }) => {
   return (
     <>
       <Head>
-        <title>AsTrigger - Works</title>
+        <title>Gourami Engineering - Works</title>
         <meta name="description" content="works" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header2 sticky={false} />
 
-      <div className="max-w-screen-lg mx-auto px-3 py-3">
+      <div className="max-w-screen-lg mx-auto px-3 py-3 min-h-[calc(100vh_-_6rem)]">
         <div className="h-10" />
 
         <div className="text-center">
@@ -42,6 +43,8 @@ const Blog: NextPage<Props> = ({ allWorkContentsMetaData }) => {
 
         <WorkList allWorkContentsMetaData={allWorkContentsMetaData}></WorkList>
       </div>
+
+      <Footer />
     </>
   );
 };
