@@ -1,6 +1,6 @@
 import Badge from "components/UIparts/Badge";
 import { NextPage } from "next";
-import tagList from "contents/tags";
+import { tagList } from "contents/tags";
 
 const SidenavTags: NextPage = () => {
   tagList;

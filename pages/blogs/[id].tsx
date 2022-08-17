@@ -6,6 +6,8 @@ import "zenn-content-css";
 import { JSDOM } from "jsdom";
 import Header2 from "components/Header/Header2";
 import Footer from "components/Footer/Footer";
+import Badge from "components/UIparts/Badge";
+import { getTagName } from "contents/tags";
 
 /**
  * 生成する全てのブログ記事の静的ページのパスを生成し、getStaticPropsに渡す
@@ -86,19 +88,19 @@ const Blog: NextPage<Props> = ({ blogData, tableOfContent }) => {
       </Head>
       <Header2 sticky={false} />
 
-      <div className="max-w-screen-lg mx-auto px-3 sm:px-6 py-6" id="article">
+      <div
+        className="max-w-screen-lg mx-auto px-3 sm:px-6 py-6 min-h-[calc(100vh_-_6rem)]"
+        id="article"
+      >
         <div className="flex flex-row">
           <div className="w-auto md:w-[calc(100%_-_18rem)] p-4 sm:p-8 mr-3 shadow-md rounded-xl bg-white">
             <small className="text-gray-500">投稿日 : {blogData.published_at}</small>
             <h1 className="text-3xl font-bold my-3">{blogData.title}</h1>
-            {blogData.topics.map((topics) => {
+            {blogData.topics.map((topic) => {
               return (
-                <span
-                  className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-                  key={topics}
-                >
-                  {`#${topics}`}
-                </span>
+                <div key={topic} className="inline-block">
+                  <Badge>{getTagName(topic)}</Badge>
+                </div>
               );
             })}
             <div

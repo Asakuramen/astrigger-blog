@@ -3,7 +3,7 @@ import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import { BlogMetaData, getBlogMetaDatasByTag } from "lib/getBlogContent";
 import "zenn-content-css";
 import Header2 from "components/Header/Header2";
-import tagList from "../../contents/tags";
+import { getTagName, tagList } from "../../contents/tags";
 import BlogList from "components/BlogList/BlogList";
 import SidenavTags from "components/SidenavTags/SidenavTags";
 import Footer from "components/Footer/Footer";
@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
   const blogMetaDatas = getBlogMetaDatasByTag(tag);
 
   return {
-    props: { blogMetaDatas: blogMetaDatas },
+    props: { blogMetaDatas: blogMetaDatas, tag: tag },
   };
 };
 
@@ -54,21 +54,25 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
 
 type Props = {
   blogMetaDatas: BlogMetaData[];
+  tag: string;
 };
 
 /**
  * １ブログ記事のコンポーネント
  */
-const Blog: NextPage<Props> = ({ blogMetaDatas }) => {
+const Blog: NextPage<Props> = ({ blogMetaDatas, tag }) => {
   return (
     <>
       <Head>
-        <title>{`Gourami Engineering - Blog`}</title>
+        <title>{`Blog -f ${getTagName(tag)}`}</title>
         <meta name="description" content="blog" />
       </Head>
       <Header2 sticky={false} />
 
-      <div className="max-w-screen-xl mx-auto px-3 sm:px-6 py-6" id="article">
+      <div
+        className="max-w-screen-xl mx-auto px-3 sm:px-6 py-6 min-h-[calc(100vh_-_6rem)]"
+        id="article"
+      >
         <div className="flex flex-row">
           <div className="w-auto md:w-[calc(100%_-_18rem)] mr-3 ">
             <BlogList allBlogsMetaData={blogMetaDatas} showThumbnail={true}></BlogList>
