@@ -1,20 +1,23 @@
 import Head from "next/head";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
-import { BlogMetaData, getBlogMetaDatasByTag } from "lib/getBlogContent";
 import "zenn-content-css";
 import Header2 from "components/Header/Header2";
 import { getTagName, tagList } from "../../contents/tags";
-import BlogList from "components/BlogList/BlogList";
+import BlogList, { BlogMetaData } from "components/BlogList/BlogList";
 import SidenavTags from "components/SidenavTags/SidenavTags";
 import Footer from "components/Footer/Footer";
+import { ParsedUrlQuery } from "querystring";
+import { getContentsByTag } from "lib/microcms/api";
+
+interface Params extends ParsedUrlQuery {
+  slug: string[];
+}
 
 /**
  * 生成する全てのブログ記事の静的ページのパスを生成し、getStaticPropsに渡す
  */
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
   // 全てのtag名を取得する
-
-  tagList;
 
   const paths = tagList.map((tag) => {
     return {
@@ -36,13 +39,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
 // ----------------------------------------------------------
 
 /**
+ * コンポーネントに渡すPropsの型
+ */
+interface Props {
+  blogMetaDatas: BlogMetaData[];
+  tag: string;
+}
+
+/**
  * 静的ページ生成に必要なデータを生成し、コンポーネントにpropsとして渡す
  */
-export const getStaticProps: GetStaticProps = async (context: any) => {
-  // 全てのブログ記事から、tag名と一致するブログ記事のMetaDataを取得する
-  const tag = context.params.slug[0];
-  console.log(tag);
-  const blogMetaDatas = getBlogMetaDatasByTag(tag);
+export const getStaticProps: GetStaticProps<Props, Params> = async (context) => {
+  // 特定のtagを持つcontentをmicroCMSから取得して整形し、propsとしてコンポーネントに渡す
+  const SHOW_CONTENT_NUMBER_PER_PAGE = 10;
+  const tag: string = context.params!.slug[0];
+  const blogMetaDatas = await getContentsByTag("blog", SHOW_CONTENT_NUMBER_PER_PAGE, tag);
 
   return {
     props: { blogMetaDatas: blogMetaDatas, tag: tag },
@@ -52,11 +63,6 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
 // ----------------------------------------------------------
 // ----------------------------------------------------------
 
-type Props = {
-  blogMetaDatas: BlogMetaData[];
-  tag: string;
-};
-
 /**
  * １ブログ記事のコンポーネント
  */
@@ -64,8 +70,11 @@ const Blog: NextPage<Props> = ({ blogMetaDatas, tag }) => {
   return (
     <>
       <Head>
-        <title>{`Blog -f ${getTagName(tag)}`}</title>
-        <meta name="description" content="blog" />
+        <title>{`ブログ記事 ${getTagName(tag)}`}</title>
+        <meta
+          name="description"
+          content={`新しい技術のキャッチアップ情報や、エンジニアに役立つ情報をお届けします。`}
+        />
       </Head>
       <Header2 sticky={false} />
 
@@ -75,7 +84,7 @@ const Blog: NextPage<Props> = ({ blogMetaDatas, tag }) => {
       >
         <div className="flex flex-row">
           <div className="w-auto md:w-[calc(100%_-_18rem)] mr-3 ">
-            <BlogList allBlogsMetaData={blogMetaDatas} showThumbnail={true}></BlogList>
+            <BlogList blogMetaDatas={blogMetaDatas} showThumbnail={true}></BlogList>
           </div>
           <div className="hidden md:block w-72 ml-3">
             <div className="flex flex-col sticky top-6">
@@ -85,10 +94,9 @@ const Blog: NextPage<Props> = ({ blogMetaDatas, tag }) => {
             </div>
           </div>
         </div>
-
-        <div className="h-16"></div>
-        <Footer />
       </div>
+      <div className="h-16"></div>
+      <Footer />
     </>
   );
 };
