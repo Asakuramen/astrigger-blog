@@ -1,10 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import ServiceList from "components/ServiceList/ServiceList";
-import BlogList from "components/BlogList/BlogList";
-import { getBlogsMetaData, BlogMetaData } from "lib/getBlogContent";
-import { getWorksMetaData, WorkContentMetadata } from "lib/getWorkContent";
+import BlogList, { BlogMetaData } from "components/BlogList/BlogList";
 import WorkList from "components/WorkList/WorkList";
 import Aboutme from "components/Aboutme/Aboutme";
 import Job from "components/Job/Job";
@@ -16,29 +14,31 @@ import { IoFish } from "react-icons/io5";
 import Link from "next/link";
 import { useEffect } from "react";
 import Footer from "components/Footer/Footer";
+import { ContentMetadata, getContentMetadatasByTag } from "lib/microcms/api";
 
 // ServerSideGeneration
-export async function getStaticProps() {
-  // 最新の3作品のみ表示する
-  const allWorkContentsMetaData = getWorksMetaData(0, 3);
-  // 最新の４記事のみ表示する
-  const allBlogsMetaData = getBlogsMetaData(0, 4);
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  // 最新の3作品のみmicroCMSから取得して整形し、propsとしてコンポーネントに渡す
+  const workContentsMetaDatas = await getContentMetadatasByTag("work", 3, "all");
+  // 最新の４記事のみmicroCMSから取得して整形し、propsとしてコンポーネントに渡す
+  const blogMetaDatas = await getContentMetadatasByTag("blog", 4, "all");
 
   return {
     // コンポーネントに渡すデータ
     props: {
-      allBlogsMetaData,
-      allWorkContentsMetaData,
+      blogMetaDatas,
+      workContentsMetaDatas,
     },
   };
-}
-
-type Props = {
-  allBlogsMetaData: BlogMetaData[];
-  allWorkContentsMetaData: WorkContentMetadata[] | undefined;
 };
 
-const Home: NextPage<Props> = ({ allBlogsMetaData, allWorkContentsMetaData }) => {
+type Props = {
+  blogMetaDatas: BlogMetaData[];
+  workContentsMetaDatas: ContentMetadata[];
+};
+
+const Home: NextPage<Props> = (props) => {
+  const { blogMetaDatas, workContentsMetaDatas } = props;
   // DOM要素の交差を監視する
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -83,7 +83,10 @@ const Home: NextPage<Props> = ({ allBlogsMetaData, allWorkContentsMetaData }) =>
     <>
       <Head>
         <title>Gourami Engineering - Top</title>
-        <meta name="description" content="blog" />
+        <meta
+          name="description"
+          content="Gourami Engineering は、ものづくりから、ハードウェア開発、バックエンド、フロントエンドまで、幅広くかつモダンな技術を駆使したシステム・サービスの開発を行っております。世の中の利益と幸せを最大化するお手伝いをさせていただければと思います。"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -154,9 +157,9 @@ const Home: NextPage<Props> = ({ allBlogsMetaData, allWorkContentsMetaData }) =>
             <p className="text-xs text-gray-400">My Portforio.</p>
             <div className="h-8" />
           </div>
-          <WorkList allWorkContentsMetaData={allWorkContentsMetaData} />
+          <WorkList workContentsMetaDatas={workContentsMetaDatas} />
           <div className="my-10 text-center">
-            <Link href={"/works"}>
+            <Link href={"/works/all/1"}>
               <a>
                 <ButtonCommon>View more</ButtonCommon>
               </a>
@@ -170,7 +173,7 @@ const Home: NextPage<Props> = ({ allBlogsMetaData, allWorkContentsMetaData }) =>
             <p className="text-xs text-gray-400">Technical articles and ideas is here.</p>
             <div className="h-8" />
           </div>
-          <BlogList allBlogsMetaData={allBlogsMetaData} showThumbnail={true} />
+          <BlogList blogMetaDatas={blogMetaDatas} showThumbnail={true} />
           <div className="my-10 text-center">
             <Link href={"/blogs/all/1"}>
               <a>

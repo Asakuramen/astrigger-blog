@@ -6,9 +6,9 @@ body {
   @apply bg-gray-100;
 }
 
-html {
+/* html {
   @apply scroll-smooth h-full;
-}
+} */
 
 .grecaptcha-badge {
   visibility: hidden;

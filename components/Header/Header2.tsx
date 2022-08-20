@@ -58,7 +58,7 @@ const Header2: React.FC<Props> = ({ sticky }) => {
           </Link>
         </div>
         <div className="mx-4 px-2 text-sm transform transition-colors text-gray-200 border-b-2 border-transparent hover:border-blue-500">
-          <Link href="/works">
+          <Link href="/works/all/1">
             <a>Works</a>
           </Link>
         </div>
