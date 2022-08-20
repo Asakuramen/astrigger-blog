@@ -18,7 +18,7 @@ interface Params extends ParsedUrlQuery {
  */
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   // 全てのブログ記事(markdown)のファイル名を取得する
-  const ids = await getContentsIds("work");
+  const ids = await getContentsIds("blog");
   const paths = ids.map((id) => {
     return {
       params: id,
