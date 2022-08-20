@@ -1,23 +1,27 @@
 import axios from "axios";
-import { BlogMetaData } from "components/BlogList/BlogList";
-import { BlogContent } from "pages/blogs/[id]";
 import markdownToHtml from "zenn-markdown-html";
 
 /**
- * Blog または Workの１つのContentの型
+ * Blog または Workの１つのContentのメタデータ（本文以外）の型
  */
-export type Content = {
+export interface ContentMetadata {
+  id: string;
+  publishedAt: string;
+  revisedAt: string;
   contentType: string;
   title: string;
   description: string;
   tags: string[];
   thumbnail: string;
-  thumbnail2?: string;
+  thumbnail2: string;
+}
+
+/**
+ * Blog または Workの１つのContentの型
+ */
+export interface Content extends ContentMetadata {
   body: string;
-  id: string;
-  publishedAt: string;
-  revisedAt: string;
-};
+}
 
 /**
  * microCMSから取得するContentの型
@@ -30,6 +34,7 @@ interface ContentMicrocms {
   revisedAt: string;
   contentType: string[];
   title: string;
+  description?: string;
   tags: string[];
   thumbnail: {
     url: string;
@@ -50,8 +55,12 @@ interface ContentMicrocms {
  * @param limit コンテンツ取得数
  * @param tag 指定タグのコンテンツのみ取得する　"all"指定時は全てのコンテンツを取得する
  */
-export async function getContentsByTag(contentType: string, limit: number, tag: string) {
-  // tag = all の場合は全てのcontentを取得するため、microCMSのGET requestにfiltersを含めない
+export async function getContentMetadatasByTag(
+  contentType: string,
+  limit: number,
+  tag: string
+) {
+  // tag = all の場合は全てのcontentを取得するため、microCMSのGETrequestにfiltersを含めない
   let microcmsParams = {};
   if (tag === "all") {
     microcmsParams = {
@@ -72,21 +81,24 @@ export async function getContentsByTag(contentType: string, limit: number, tag: 
     headers: { "X-MICROCMS-API-KEY": process.env.MICROCMS_API_KEY! },
     params: microcmsParams,
   });
-  const contents: ContentMicrocms[] = res.data.contents;
+  const microcmsContent: ContentMicrocms[] = res.data.contents;
 
   // microCMSのデータを整形してコンポーネントに渡すPropsを作成する。
-  const blogMetaDatas: BlogMetaData[] = contents.map((content) => {
+  const contentMetadatas: ContentMetadata[] = microcmsContent.map((content) => {
     return {
       id: content.id,
-      title: content.title,
       publishedAt: content.publishedAt.split("T")[0],
       revisedAt: content.revisedAt.split("T")[0],
+      contentType: content.contentType[0],
+      title: content.title,
+      description: "description" in content ? content.description! : "",
       tags: content.tags,
       thumbnail: content.thumbnail.url,
+      thumbnail2: "thumbnail2" in content ? content.thumbnail2!.url : "",
     };
   });
 
-  return blogMetaDatas;
+  return contentMetadatas;
 }
 
 /**
@@ -103,22 +115,23 @@ export async function getContentById(id: string) {
     headers: { "X-MICROCMS-API-KEY": process.env.MICROCMS_API_KEY! },
     params: microcmsParams,
   });
-  const content: ContentMicrocms = res.data.contents[0];
+  const microcmsContent: ContentMicrocms = res.data.contents[0];
 
   // microCMSのデータを整形してコンポーネントに渡すPropsを作成する。
-  const blogContent: BlogContent = {
-    id: content.id,
-    title: content.title,
-    // publishedAt: content.publishedAt.split("T")[0],
-    // revisedAt: content.revisedAt.split("T")[0],
-    publishedAt: content.publishedAt,
-    revisedAt: content.revisedAt,
-    tags: content.tags,
-    thumbnail: content.thumbnail.url,
-    body: markdownToHtml(content.body), // markdownをHTML(string)に変換する
+  const content: Content = {
+    id: microcmsContent.id,
+    publishedAt: microcmsContent.publishedAt.split("T")[0],
+    revisedAt: microcmsContent.revisedAt.split("T")[0],
+    contentType: microcmsContent.contentType[0],
+    title: microcmsContent.title,
+    description: "description" in microcmsContent ? microcmsContent.description! : "",
+    tags: microcmsContent.tags,
+    thumbnail: microcmsContent.thumbnail.url,
+    thumbnail2: "thumbnail2" in microcmsContent ? microcmsContent.thumbnail2!.url : "",
+    body: markdownToHtml(microcmsContent.body), // markdownをHTML(string)に変換する
   };
 
-  return blogContent;
+  return content;
 }
 
 /**

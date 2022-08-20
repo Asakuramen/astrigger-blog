@@ -3,11 +3,11 @@ import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import "zenn-content-css";
 import Header2 from "components/Header/Header2";
 import { getTagName, tagList } from "../../contents/tags";
-import BlogList, { BlogMetaData } from "components/BlogList/BlogList";
+import BlogList from "components/BlogList/BlogList";
 import SidenavTags from "components/SidenavTags/SidenavTags";
 import Footer from "components/Footer/Footer";
 import { ParsedUrlQuery } from "querystring";
-import { getContentsByTag } from "lib/microcms/api";
+import { ContentMetadata, getContentMetadatasByTag } from "lib/microcms/api";
 
 interface Params extends ParsedUrlQuery {
   slug: string[];
@@ -42,7 +42,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
  * コンポーネントに渡すPropsの型
  */
 interface Props {
-  blogMetaDatas: BlogMetaData[];
+  contentMetaDatas: ContentMetadata[];
   tag: string;
 }
 
@@ -53,10 +53,14 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
   // 特定のtagを持つcontentをmicroCMSから取得して整形し、propsとしてコンポーネントに渡す
   const SHOW_CONTENT_NUMBER_PER_PAGE = 10;
   const tag: string = context.params!.slug[0];
-  const blogMetaDatas = await getContentsByTag("blog", SHOW_CONTENT_NUMBER_PER_PAGE, tag);
+  const contentMetaDatas = await getContentMetadatasByTag(
+    "blog",
+    SHOW_CONTENT_NUMBER_PER_PAGE,
+    tag
+  );
 
   return {
-    props: { blogMetaDatas: blogMetaDatas, tag: tag },
+    props: { contentMetaDatas: contentMetaDatas, tag: tag },
   };
 };
 
@@ -66,7 +70,8 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
 /**
  * １ブログ記事のコンポーネント
  */
-const Blog: NextPage<Props> = ({ blogMetaDatas, tag }) => {
+const Blog: NextPage<Props> = (props) => {
+  const { contentMetaDatas, tag } = props;
   return (
     <>
       <Head>
@@ -84,7 +89,7 @@ const Blog: NextPage<Props> = ({ blogMetaDatas, tag }) => {
       >
         <div className="flex flex-row">
           <div className="w-auto md:w-[calc(100%_-_18rem)] mr-3 ">
-            <BlogList blogMetaDatas={blogMetaDatas} showThumbnail={true}></BlogList>
+            <BlogList blogMetaDatas={contentMetaDatas} showThumbnail={true}></BlogList>
           </div>
           <div className="hidden md:block w-72 ml-3">
             <div className="flex flex-col sticky top-6">

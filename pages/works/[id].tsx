@@ -8,7 +8,7 @@ import Footer from "components/Footer/Footer";
 import Badge from "components/UIparts/Badge";
 import { getTagName } from "contents/tags";
 import { ParsedUrlQuery } from "querystring";
-import { getContentById, getContentsIds } from "lib/microcms/api";
+import { Content, getContentById, getContentsIds } from "lib/microcms/api";
 
 interface Params extends ParsedUrlQuery {
   id: string;
@@ -18,7 +18,7 @@ interface Params extends ParsedUrlQuery {
  */
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   // 全てのブログ記事(markdown)のファイル名を取得する
-  const ids = await getContentsIds("blog");
+  const ids = await getContentsIds("work");
   const paths = ids.map((id) => {
     return {
       params: id,
@@ -34,16 +34,6 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 // ----------------------------------------------------------
 // ----------------------------------------------------------
 
-export type BlogContent = {
-  id: string;
-  title: string;
-  tags: string[];
-  publishedAt: string;
-  revisedAt: string;
-  thumbnail: string;
-  body: string;
-};
-
 type TableOfContent = {
   level: string;
   title: string;
@@ -51,7 +41,7 @@ type TableOfContent = {
 };
 
 type Props = {
-  blogContent: BlogContent;
+  content: Content;
   tableOfContent: TableOfContent[];
 };
 
@@ -60,10 +50,10 @@ type Props = {
  */
 export const getStaticProps: GetStaticProps<Props, Params> = async (context) => {
   // ブログ記事markdownをHTML(string)に変換する
-  const blogContent: BlogContent = await getContentById(context.params!.id);
+  const content: Content = await getContentById(context.params!.id);
 
   // HTML(string)をHTML(DOM)に変換する
-  const domHtml = new JSDOM(blogContent.body).window.document;
+  const domHtml = new JSDOM(content.body).window.document;
 
   // DOMから目次を検索し、{hタグレベル、タイトル名、リンク先}、を取得する
   const elements = domHtml.querySelectorAll<HTMLElement>("h1, h2");
@@ -77,7 +67,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
   });
 
   return {
-    props: { blogContent: blogContent, tableOfContent: tableOfContent },
+    props: { content: content, tableOfContent: tableOfContent },
   };
 };
 
@@ -88,13 +78,13 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
  * １ブログ記事のコンポーネント
  */
 const Blog: NextPage<Props> = (props: Props) => {
-  const { blogContent, tableOfContent } = props;
+  const { content, tableOfContent } = props;
 
   return (
     <>
       <Head>
-        <title>{blogContent.title}</title>
-        <meta name="description" content={blogContent.title} />
+        <title>{content.title}</title>
+        <meta name="description" content={content.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header2 sticky={false} />
@@ -105,9 +95,9 @@ const Blog: NextPage<Props> = (props: Props) => {
       >
         <div className="flex flex-row">
           <div className="w-auto md:w-[calc(100%_-_18rem)] p-4 sm:p-8 mr-3 shadow-md rounded-xl bg-white">
-            <small className="text-gray-500">投稿日 : {blogContent.revisedAt}</small>
-            <h1 className="text-3xl font-bold my-3">{blogContent.title}</h1>
-            {blogContent.tags.map((tag) => {
+            <small className="text-gray-500">投稿日 : {content.revisedAt}</small>
+            <h1 className="text-3xl font-bold my-3">{content.title}</h1>
+            {content.tags.map((tag) => {
               return (
                 <div key={tag} className="inline-block">
                   <Badge>{getTagName(tag)}</Badge>
@@ -116,7 +106,7 @@ const Blog: NextPage<Props> = (props: Props) => {
             })}
             <div
               className="znc mt-10"
-              dangerouslySetInnerHTML={{ __html: blogContent.body }}
+              dangerouslySetInnerHTML={{ __html: content.body }}
             />
           </div>
           <div className="hidden md:block w-72 ml-3">

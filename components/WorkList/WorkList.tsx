@@ -1,19 +1,18 @@
-/* eslint-disable @next/next/no-img-element */
 import { NextPage } from "next";
-import { WorkContentMetadata } from "lib/getWorkContent";
 import styles from "./WorkList.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import { ContentMetadata } from "lib/microcms/api";
 
 type Props = {
-  allWorkContentsMetaData: WorkContentMetadata[] | undefined;
+  workContentsMetaDatas: ContentMetadata[] | undefined;
 };
 
-const WorkList: NextPage<Props> = ({ allWorkContentsMetaData }) => {
+const WorkList: NextPage<Props> = ({ workContentsMetaDatas }) => {
   return (
     <div className="grid grid-col-1 sm:grid-cols-3">
-      {allWorkContentsMetaData ? (
-        allWorkContentsMetaData.map((workMetaData: WorkContentMetadata) => {
+      {workContentsMetaDatas ? (
+        workContentsMetaDatas.map((workMetaData) => {
           return (
             <div className="w-full" key={workMetaData.title}>
               <Link href={`/works/${workMetaData.id}`}>
@@ -21,7 +20,7 @@ const WorkList: NextPage<Props> = ({ allWorkContentsMetaData }) => {
                   <div className={styles.work_img_div}>
                     <div className={styles.work_img_back}>
                       <Image
-                        src={workMetaData.thumbnail[1]}
+                        src={workMetaData.thumbnail2!}
                         alt="thumbnail_top"
                         layout="fill"
                         objectFit="cover"
@@ -35,7 +34,7 @@ const WorkList: NextPage<Props> = ({ allWorkContentsMetaData }) => {
 
                     <div className={styles.work_img_front}>
                       <Image
-                        src={workMetaData.thumbnail[0]}
+                        src={workMetaData.thumbnail}
                         alt="thumbnail_back"
                         layout="fill"
                         objectFit="cover"
