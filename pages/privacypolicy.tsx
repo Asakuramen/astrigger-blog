@@ -4,14 +4,15 @@ import "zenn-content-css";
 import Header2 from "components/Header/Header2";
 import H1anchor from "components/UIparts/H1anchor";
 import Footer from "components/Footer/Footer";
-import { getContent, PrivacyPolicyContent } from "lib/getContent";
+import { Content, getContentById } from "lib/microcms/api";
 
 /**
  * 静的ページ生成に必要なデータを生成し、コンポーネントにpropsとして渡す
  */
 export const getStaticProps: GetStaticProps = async (context: any) => {
   // ブログ記事markdownをHTML(string)に変換する
-  const content: PrivacyPolicyContent = await getContent("contents/privacypolicy/p1.md");
+  // プライバシーポリシーのID="y70aqtfq6hno" 固定
+  const content: Content = await getContentById("y70aqtfq6h");
 
   return {
     props: { content: content },
@@ -19,7 +20,7 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
 };
 
 type Props = {
-  content: PrivacyPolicyContent;
+  content: Content;
 };
 
 const PrivacyPolicy: NextPage<Props> = ({ content }) => {
@@ -27,7 +28,7 @@ const PrivacyPolicy: NextPage<Props> = ({ content }) => {
     <>
       <Head>
         <title>Gourami Engineering - Praivacy Policy</title>
-        <meta name="description" content="Praivacy Policy" />
+        <meta name="description" content={content.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -41,10 +42,7 @@ const PrivacyPolicy: NextPage<Props> = ({ content }) => {
         <div className="h-10" />
 
         <div className="w-auto p-4 sm:p-8 mr-3 shadow-md rounded-xl bg-white">
-          <div
-            className="znc mt-10"
-            dangerouslySetInnerHTML={{ __html: content.bodyHtml }}
-          />
+          <div className="znc mt-10" dangerouslySetInnerHTML={{ __html: content.body }} />
         </div>
       </div>
 

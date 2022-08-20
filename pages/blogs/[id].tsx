@@ -1,39 +1,38 @@
 import styles from "./[id].module.css";
 import Head from "next/head";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
-import { getAllBlogsId, getBlogContentData } from "lib/getBlogContent";
 import "zenn-content-css";
 import { JSDOM } from "jsdom";
 import Header2 from "components/Header/Header2";
 import Footer from "components/Footer/Footer";
 import Badge from "components/UIparts/Badge";
 import { getTagName } from "contents/tags";
+import { ParsedUrlQuery } from "querystring";
+import { Content, getContentById, getContentsIds } from "lib/microcms/api";
 
+interface Params extends ParsedUrlQuery {
+  id: string;
+}
 /**
  * 生成する全てのブログ記事の静的ページのパスを生成し、getStaticPropsに渡す
  */
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
   // 全てのブログ記事(markdown)のファイル名を取得する
-  const paths = getAllBlogsId();
+  const ids = await getContentsIds("blog");
+  const paths = ids.map((id) => {
+    return {
+      params: id,
+    };
+  });
+
   return {
-    paths,
-    // fallback = falseの場合、pathに含まれないURLにアクセスした際に404ページを表示する
-    // fallback = trueの場合、pathに含まれないURLに基づいた動的なページを生成できる
-    fallback: false,
+    paths: paths,
+    fallback: false, //pathに含まれないURLにアクセスした際に404ページを表示する
   };
 };
 
 // ----------------------------------------------------------
 // ----------------------------------------------------------
-
-type BlogData = {
-  id: string;
-  title: string;
-  topics: string[];
-  published_at: string;
-  thumbnail: string;
-  blogContentHtml: string;
-};
 
 type TableOfContent = {
   level: string;
@@ -41,15 +40,20 @@ type TableOfContent = {
   href: string;
 };
 
+type Props = {
+  content: Content;
+  tableOfContent: TableOfContent[];
+};
+
 /**
  * 静的ページ生成に必要なデータを生成し、コンポーネントにpropsとして渡す
  */
-export const getStaticProps: GetStaticProps = async (context: any) => {
+export const getStaticProps: GetStaticProps<Props, Params> = async (context) => {
   // ブログ記事markdownをHTML(string)に変換する
-  const blogData: BlogData = await getBlogContentData(context.params.id);
+  const content: Content = await getContentById(context.params!.id);
 
   // HTML(string)をHTML(DOM)に変換する
-  const domHtml = new JSDOM(blogData.blogContentHtml).window.document;
+  const domHtml = new JSDOM(content.body).window.document;
 
   // DOMから目次を検索し、{hタグレベル、タイトル名、リンク先}、を取得する
   const elements = domHtml.querySelectorAll<HTMLElement>("h1, h2");
@@ -63,27 +67,24 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
   });
 
   return {
-    props: { blogData: blogData, tableOfContent: tableOfContent },
+    props: { content: content, tableOfContent: tableOfContent },
   };
 };
 
 // ----------------------------------------------------------
 // ----------------------------------------------------------
 
-type Props = {
-  blogData: BlogData;
-  tableOfContent: TableOfContent[];
-};
-
 /**
  * １ブログ記事のコンポーネント
  */
-const Blog: NextPage<Props> = ({ blogData, tableOfContent }) => {
+const Blog: NextPage<Props> = (props: Props) => {
+  const { content, tableOfContent } = props;
+
   return (
     <>
       <Head>
-        <title>{blogData.title}</title>
-        <meta name="description" content={blogData.title} />
+        <title>{content.title}</title>
+        <meta name="description" content={content.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header2 sticky={false} />
@@ -94,18 +95,18 @@ const Blog: NextPage<Props> = ({ blogData, tableOfContent }) => {
       >
         <div className="flex flex-row">
           <div className="w-auto md:w-[calc(100%_-_18rem)] p-4 sm:p-8 mr-3 shadow-md rounded-xl bg-white">
-            <small className="text-gray-500">投稿日 : {blogData.published_at}</small>
-            <h1 className="text-3xl font-bold my-3">{blogData.title}</h1>
-            {blogData.topics.map((topic) => {
+            <small className="text-gray-500">投稿日 : {content.revisedAt}</small>
+            <h1 className="text-3xl font-bold my-3">{content.title}</h1>
+            {content.tags.map((tag) => {
               return (
-                <div key={topic} className="inline-block">
-                  <Badge>{getTagName(topic)}</Badge>
+                <div key={tag} className="inline-block">
+                  <Badge>{getTagName(tag)}</Badge>
                 </div>
               );
             })}
             <div
               className="znc mt-10"
-              dangerouslySetInnerHTML={{ __html: blogData.blogContentHtml }}
+              dangerouslySetInnerHTML={{ __html: content.body }}
             />
           </div>
           <div className="hidden md:block w-72 ml-3">
