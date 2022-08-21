@@ -246,7 +246,7 @@ const Contact: NextPage = () => {
         </form>
 
         <p className="text-center sm:text-left text-xs text-gray-400 pt-8 pb-16">
-          不正アクセス対策のため、reCAPTCHA v3 による認証機能を設けております。
+          ※ 不正アクセス対策のため、reCAPTCHA(v3)による認証機能を設けております。
         </p>
       </div>
 

@@ -31,7 +31,7 @@ const CommentFiledPresentation = (props: Props_CommentFiledPresentation) => {
         {comments.map((comment, index) => {
           return (
             <div className="mb-6" key={"CommentFiled-show-" + index.toString()}>
-              <span className="">{comment.name}</span>
+              <span className="font-bold">{comment.name}</span>
               <span className="pl-4 text-sm text-gray-400">{comment.publishedAt}</span>
 
               <p className="my-4 whitespace-pre">{comment.body}</p>
@@ -41,12 +41,7 @@ const CommentFiledPresentation = (props: Props_CommentFiledPresentation) => {
           );
         })}
 
-        <InputTextBoxE
-          title="お名前"
-          multiLine={false}
-          id={name_id}
-          placeholder="ニックネームを入力"
-        />
+        <InputTextBoxE title="ニックネーム" multiLine={false} id={name_id} />
         <InputTextBoxE
           title="コメント"
           multiLine={true}
@@ -54,9 +49,16 @@ const CommentFiledPresentation = (props: Props_CommentFiledPresentation) => {
           placeholder="記事についてコメントする (400文字以内)"
         />
         <div className="flex flex-col sm:flex-row sm:justify-between">
-          <p className="pb-4 text-center sm:text-left text-xs text-gray-400">
-            bot対策のためreCAPTCHA(v3)による認証機能を設けております。
-          </p>
+          <div>
+            <p className="pb-2 text-left text-xs text-gray-400">
+              ※ bot対策のためreCAPTCHA(v3)による認証機能を設けております。
+            </p>
+            <p className="pb-2 text-left text-xs text-gray-400">
+              ※
+              管理者が社会通念上不適切と判断した投稿は、事前通知なしに削除させていただきます。
+            </p>
+          </div>
+
           <Button onclick={onsubmit}>　送信　</Button>
         </div>
       </div>

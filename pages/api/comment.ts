@@ -45,7 +45,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const contentId = req.query.contentId;
       if (typeof contentId === "string") {
         const comments = await getCommentsById(contentId);
-        console.log(comments);
         res.status(200).json(comments);
       } else {
         res.status(500).json({

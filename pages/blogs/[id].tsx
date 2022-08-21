@@ -8,13 +8,7 @@ import Footer from "components/organisms/Footer/Footer";
 import Badge from "components/molecules/Badge";
 import { getTagName } from "contents/tags";
 import { ParsedUrlQuery } from "querystring";
-import {
-  Comment,
-  Content,
-  getCommentsById,
-  getContentById,
-  getContentsIds,
-} from "lib/microcms/api";
+import { Content, getContentById, getContentsIds } from "lib/microcms/api";
 import CommentFiledContainer from "components/organisms/CommentFiled/CommentFiledContainer";
 
 interface Params extends ParsedUrlQuery {
