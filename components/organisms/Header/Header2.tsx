@@ -95,12 +95,12 @@ const Header2: React.FC<Props> = ({ sticky }) => {
               About
             </a>
           </Link>
-          <Link href="/blogs">
+          <Link href="/blogs/all/1">
             <a className="px-8 py-8 text-sm  text-gray-200 border-y border-gray-600 transition-colors transform duration-200  hover:bg-gray-600">
               Blog
             </a>
           </Link>
-          <Link href="/works">
+          <Link href="/works/all/1">
             <a className="px-8 py-8 text-sm  text-gray-200 border-y border-gray-600 transition-colors transform duration-200  hover:bg-gray-600">
               Works
             </a>

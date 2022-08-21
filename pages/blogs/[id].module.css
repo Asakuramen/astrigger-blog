@@ -9,14 +9,14 @@
   content: "";
   top: 12px;
   left: 2px;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   position: absolute;
-  @apply rounded-lg bg-teal-500;
+  @apply rounded-lg bg-blue-500;
 }
 
 .ul_h1 .li_h1:hover:before {
-  @apply rounded-lg bg-teal-700;
+  @apply rounded-lg bg-blue-700;
 }
 
 /* h2タグ相当目次のmarker */
@@ -30,12 +30,12 @@
   content: "";
   top: 14px;
   left: 20px;
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
   position: absolute;
-  @apply rounded-lg bg-teal-500;
+  @apply rounded-lg bg-blue-500;
 }
 
 .ul_h2 .li_h2:hover:before {
-  @apply rounded-lg bg-teal-700;
+  @apply rounded-lg bg-blue-700;
 }

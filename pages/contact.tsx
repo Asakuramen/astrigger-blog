@@ -2,11 +2,11 @@ import Head from "next/head";
 import { NextPage } from "next";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { useEffect, useRef, useState } from "react";
-import Header2 from "components/Header/Header2";
-import H1anchor from "components/UIparts/H1anchor";
-import ButtonCommon from "components/UIparts/ButtonCommon";
+import Header2 from "components/organisms/Header/Header2";
+import H1anchor from "components/molecules/H1anchor";
 import { ResponceServer } from "./api/recaptcha";
-import Footer from "components/Footer/Footer";
+import Footer from "components/organisms/Footer/Footer";
+import ButtonCommon from "components/molecules/Button/Button";
 
 const Contact: NextPage = () => {
   const [arrowSend, setArrowSend] = useState(true);
@@ -246,7 +246,7 @@ const Contact: NextPage = () => {
         </form>
 
         <p className="text-center sm:text-left text-xs text-gray-400 pt-8 pb-16">
-          不正アクセス対策のため、reCAPTCHA v3 による認証機能を設けております。
+          ※ 不正アクセス対策のため、reCAPTCHA(v3)による認証機能を設けております。
         </p>
       </div>
 
