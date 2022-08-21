@@ -9,7 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
-import Badge from "components/UIparts/Badge";
+import Badge from "components/molecules/Badge";
 
 const skillArray = ["フロントエンド", "バックエンド", "ものづくり", "Other"];
 
@@ -61,9 +61,8 @@ const ServiceList: React.FC = () => {
 
                   <p>WEBサイト制作、WEBアプリケーション開発を行っております。</p>
                   <p>
-                    ReactやNext.jsを主軸に置き、SPA・SSR・SSG構成のシステム開発経験があります。
+                    ReactおよびNext.jsを主軸に置き、SPA・SSR・SSG構成のシステム開発経験があります。全てのプロジェクトでTypescriptを導入しています。
                   </p>
-                  <p></p>
                   <hr className="my-4" />
                   <Badge>HTML</Badge>
                   <Badge>CSS</Badge>
@@ -114,7 +113,7 @@ const ServiceList: React.FC = () => {
                   <Badge>Node.js</Badge>
                   <Badge>C#</Badge>
                   <Badge>Python</Badge>
-                  <Badge>L2/L3 NW設計</Badge>
+                  <Badge>L3 NW設計</Badge>
                   <Badge>Linux</Badge>
                   <Badge>RDB(maridDB等)</Badge>
                   <Badge>UML作成</Badge>
@@ -154,7 +153,7 @@ const ServiceList: React.FC = () => {
                     様々なものづくりの技術を駆使して、デジタル世界とリアル世界を繋ぎます。
                   </p>
                   <p>
-                    センサー・センシング系のシステムの開発には５年以上携わっており、私の十八番です。
+                    センサー・センシング系のシステムの開発には５年以上携わっており得意領域です。
                   </p>
                   <hr className="my-4" />
                   <Badge>アナログ・デシタル回路設計</Badge>
@@ -194,14 +193,15 @@ const ServiceList: React.FC = () => {
                   <p>
                     動画・画像の制作編集の実務経験もあります。素材の作成から、加工、編集まで一通り対応可能です。
                   </p>
-                  <p>PC・ソフトウェア・電気製品全般も得意領域です。</p>
+                  <p>PC・ソフトウェア・電気製品全般の知識経験も豊富にあります。</p>
                   <hr className="my-4" />
                   <Badge>画像編集制作 (Figma,Illustrator,Photoshop)</Badge>
                   <Badge>動画編集制作 (DaVinci,AfterEffects)</Badge>
                   <Badge>3DCG制作(Cinema4D)</Badge>
                   <Badge>写真撮影(NIKON)</Badge>
-                  <Badge>Officeソフト系(VBA)</Badge>
+                  <Badge>Officeソフト系(マクロ)</Badge>
                   <Badge>家電修理</Badge>
+                  <Badge>PC自作</Badge>
                   <Badge>簿記3級</Badge>
                   <Badge>TOEIC 820点</Badge>
                 </div>

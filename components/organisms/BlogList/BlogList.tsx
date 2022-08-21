@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import Badge from "components/UIparts/Badge";
+import Badge from "components/molecules/Badge";
 import { getTagName } from "contents/tags";
 
 /**

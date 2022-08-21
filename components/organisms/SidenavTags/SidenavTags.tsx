@@ -1,4 +1,4 @@
-import Badge from "components/UIparts/Badge";
+import Badge from "components/molecules/Badge";
 import { NextPage } from "next";
 import { tagList } from "contents/tags";
 

@@ -3,12 +3,19 @@ import Head from "next/head";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import "zenn-content-css";
 import { JSDOM } from "jsdom";
-import Header2 from "components/Header/Header2";
-import Footer from "components/Footer/Footer";
-import Badge from "components/UIparts/Badge";
+import Header2 from "components/organisms/Header/Header2";
+import Footer from "components/organisms/Footer/Footer";
+import Badge from "components/molecules/Badge";
 import { getTagName } from "contents/tags";
 import { ParsedUrlQuery } from "querystring";
-import { Content, getContentById, getContentsIds } from "lib/microcms/api";
+import {
+  Comment,
+  Content,
+  getCommentsById,
+  getContentById,
+  getContentsIds,
+} from "lib/microcms/api";
+import CommentFiledContainer from "components/organisms/CommentFiled/CommentFiledContainer";
 
 interface Params extends ParsedUrlQuery {
   id: string;
@@ -77,7 +84,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
 /**
  * １ブログ記事のコンポーネント
  */
-const Blog: NextPage<Props> = (props: Props) => {
+const Blog: NextPage<Props> = (props) => {
   const { content, tableOfContent } = props;
 
   return (
@@ -90,25 +97,30 @@ const Blog: NextPage<Props> = (props: Props) => {
       <Header2 sticky={false} />
 
       <div
-        className="max-w-screen-lg mx-auto px-3 sm:px-6 py-6 min-h-[calc(100vh_-_6rem)]"
+        className="max-w-screen-xl mx-auto px-3 sm:px-6 py-6 min-h-[calc(100vh_-_6rem)]"
         id="article"
       >
         <div className="flex flex-row">
-          <div className="w-auto md:w-[calc(100%_-_18rem)] p-4 sm:p-8 mr-3 shadow-md rounded-xl bg-white">
-            <small className="text-gray-500">投稿日 : {content.revisedAt}</small>
-            <h1 className="text-3xl font-bold my-3">{content.title}</h1>
-            {content.tags.map((tag) => {
-              return (
-                <div key={tag} className="inline-block">
-                  <Badge>{getTagName(tag)}</Badge>
-                </div>
-              );
-            })}
-            <div
-              className="znc mt-10"
-              dangerouslySetInnerHTML={{ __html: content.body }}
-            />
+          <div className="w-full md:w-[calc(100%_-_18rem)] mr-3">
+            <div className="p-4 sm:p-8 shadow-md rounded-xl bg-white">
+              <small className="text-gray-500">投稿日 : {content.revisedAt}</small>
+              <h1 className="text-3xl font-bold my-3">{content.title}</h1>
+              {content.tags.map((tag) => {
+                return (
+                  <div key={tag} className="inline-block">
+                    <Badge>{getTagName(tag)}</Badge>
+                  </div>
+                );
+              })}
+              <div
+                className="znc mt-10"
+                dangerouslySetInnerHTML={{ __html: content.body }}
+              />
+            </div>
+            <div className="h-10" />
+            <CommentFiledContainer contentId={content.id} />
           </div>
+
           <div className="hidden md:block w-72 ml-3">
             <div className="flex flex-col sticky top-6">
               <div className="p-6 shadow-md rounded-xl mb-6 bg-white ">
