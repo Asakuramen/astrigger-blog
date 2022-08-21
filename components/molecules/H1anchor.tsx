@@ -4,26 +4,30 @@ import { ParsedUrlQueryInput } from "querystring";
 import styles from "./ButtonLink.module.css";
 
 type Props = {
-  text: string;
+  text?: string;
   id?: string;
   adjustJumpPosition?: boolean;
+  children?: React.ReactNode;
 };
 
 /**
- * h1タグをカスタマイズしたもの
+ * 共通h1タグ
  * @param text テキスト
  * @param id id属性
  * @param shiftAnchor aタグでジャンプした先の位置をヘッダー高さ分調整するか
+ * @param children children
  *
  */
 
-const H1anchor: NextPage<Props> = ({ text, id, adjustJumpPosition }) => {
+const H1anchor: NextPage<Props> = (props) => {
+  const { text, id, adjustJumpPosition, children } = props;
   return (
     <h1
       id={id}
-      className={`text-gray-800 text-3xl ${adjustJumpPosition && "pt-20 -mt-20 "} `}
+      className={`text-gray-800 text-3xl ${adjustJumpPosition && "pt-24 -mt-24 "} `}
     >
       {text}
+      {children}
     </h1>
   );
 };

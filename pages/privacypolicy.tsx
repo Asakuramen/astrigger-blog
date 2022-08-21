@@ -1,9 +1,9 @@
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import "zenn-content-css";
-import Header2 from "components/Header/Header2";
-import H1anchor from "components/UIparts/H1anchor";
-import Footer from "components/Footer/Footer";
+import Header2 from "components/organisms/Header/Header2";
+import H1anchor from "components/molecules/H1anchor";
+import Footer from "components/organisms/Footer/Footer";
 import { Content, getContentById } from "lib/microcms/api";
 
 /**
