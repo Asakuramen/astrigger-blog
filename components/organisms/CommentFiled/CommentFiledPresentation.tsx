@@ -6,13 +6,22 @@ import { AiOutlineComment } from "react-icons/ai";
 
 interface Props_CommentFiledPresentation {
   comments: Comment[];
-  name_id: string;
-  body_id: string;
+  inputName_id: string;
+  inputBody_id: string;
+  inputNameErrormsg: string;
+  inputBodyErrormsg: string;
   onsubmit: () => void;
 }
 
 const CommentFiledPresentation = (props: Props_CommentFiledPresentation) => {
-  const { comments, name_id, body_id, onsubmit } = props;
+  const {
+    comments,
+    inputName_id,
+    inputBody_id,
+    inputNameErrormsg,
+    inputBodyErrormsg,
+    onsubmit,
+  } = props;
 
   return (
     <>
@@ -41,12 +50,18 @@ const CommentFiledPresentation = (props: Props_CommentFiledPresentation) => {
           );
         })}
 
-        <InputTextBoxE title="ニックネーム" multiLine={false} id={name_id} />
+        <InputTextBoxE
+          title="ニックネーム"
+          multiLine={false}
+          id={inputName_id}
+          errorMessage={inputNameErrormsg}
+        />
         <InputTextBoxE
           title="コメント"
           multiLine={true}
-          id={body_id}
+          id={inputBody_id}
           placeholder="記事についてコメントする (400文字以内)"
+          errorMessage={inputBodyErrormsg}
         />
         <div className="flex flex-col sm:flex-row sm:justify-between">
           <div>

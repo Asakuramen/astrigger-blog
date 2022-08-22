@@ -20,13 +20,19 @@ const InputTextBoxE = (props: Props_InputTextBoxE) => {
           </label>
           {multiLine ? (
             <textarea
-              className="resize-y appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48"
+              className={
+                "h-48 resize-y appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" +
+                (errorMessage?.length && " border-red-600")
+              }
               placeholder={placeholder}
               id={id}
             ></textarea>
           ) : (
             <input
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 focus:outline-none focus:bg-white focus:border-gray-500"
+              className={
+                "appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 focus:outline-none focus:bg-white focus:border-gray-500" +
+                (errorMessage?.length && " border-red-600")
+              }
               placeholder={placeholder}
               type="text"
               id={id}
