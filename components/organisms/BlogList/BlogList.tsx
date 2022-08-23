@@ -67,7 +67,7 @@ const BlogList: NextPage<Props> = ({ blogMetaDatas, showThumbnail }) => {
           );
         })
       ) : (
-        <div className="text-gray-200 text-xl">
+        <div className="text-gray-400 text-xl">
           指定条件を満たす記事は見つかりませんでした。
         </div>
       )}

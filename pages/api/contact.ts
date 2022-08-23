@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 // クライアントへのresponce
-export type ResponceServer = {
+export type Api_Responce_ToClient_Contact = {
   // reCAPTCHA認証サーバからのレスポンス
   recaptcha: {
     success: string;
@@ -16,12 +16,24 @@ export type ResponceServer = {
   clinetMessage: string;
 };
 
+/**
+ * クライアントからサーバーへPOSTするコメント情報の型
+ */
+export interface Api_Post_ToServer_Contact {
+  name: string;
+  email: string;
+  title: string;
+  body: string;
+  token: string;
+}
+
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<ResponceServer>
+  res: NextApiResponse<Api_Responce_ToClient_Contact>
 ) {
   // reCAPTCHA認証サーバーに認証リクエストをPOSTし、認証結果を受け取る
-  const serverSecretKey = `secret=${process.env.RECAPTCHA_SERVER_SECRET_KEY}&response=${req.body.token}`;
+  const reqBody = req.body as Api_Post_ToServer_Contact;
+  const serverSecretKey = `secret=${process.env.RECAPTCHA_SERVER_SECRET_KEY}&response=${reqBody.token}`;
   const responce_recaptcha = await fetch(
     "https://www.google.com/recaptcha/api/siteverify",
     {
@@ -39,7 +51,7 @@ export default async function handler(
   // rechptcha認証に成功
   if (responceJson_recaptcha.success) {
     // Slackに問い合わせ内容をPOSTする
-    const sendText = `[recaptcha success] ${responceJson_recaptcha.success} \n [recaptcha hostname] ${responceJson_recaptcha.hostname} \n [recaptcha score] ${responceJson_recaptcha.score} \n [name] ${req.body.name} \n [email] ${req.body.email} \n [title] ${req.body.title} \n [message] \n ${req.body.message}`;
+    const sendText = `[recaptcha success] ${responceJson_recaptcha.success} \n [recaptcha hostname] ${responceJson_recaptcha.hostname} \n [recaptcha score] ${responceJson_recaptcha.score} \n [name] ${reqBody.name} \n [email] ${reqBody.email} \n [title] ${reqBody.title} \n [message] \n ${reqBody.body}`;
     const responce_slack = await fetch(process.env.SLACK_WEBHOOK_URL!, {
       method: "POST",
       headers: {
@@ -56,7 +68,7 @@ export default async function handler(
       res.status(200).json({
         recaptcha: responceJson_recaptcha,
         slack: responceText_slack,
-        clinetMessage: "問い合わせの送信に成功しました。内容を確認し後日返信いたします。",
+        clinetMessage: "問い合わせの送信に成功しました。",
       });
     }
     // Slack通知に失敗
@@ -64,8 +76,7 @@ export default async function handler(
       res.status(400).json({
         recaptcha: responceJson_recaptcha,
         slack: responceText_slack,
-        clinetMessage:
-          "reCAPTCHA認証は成功しましたが、サーバの内部エラーで問い合わせの送信に失敗しました。",
+        clinetMessage: "サーバの内部エラーで問い合わせの送信に失敗しました。",
       });
     }
   }

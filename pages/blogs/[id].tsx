@@ -9,7 +9,7 @@ import Badge from "components/molecules/Badge";
 import { getTagName } from "contents/tags";
 import { ParsedUrlQuery } from "querystring";
 import { Content, getContentById, getContentsIds } from "lib/microcms/api";
-import CommentFiledContainer from "components/organisms/CommentFiled/CommentFiledContainer";
+import CommentForm from "components/organisms/CommentForm/Container";
 
 interface Params extends ParsedUrlQuery {
   id: string;
@@ -112,7 +112,7 @@ const Blog: NextPage<Props> = (props) => {
               />
             </div>
             <div className="h-10" />
-            <CommentFiledContainer contentId={content.id} />
+            <CommentForm contentId={content.id} />
           </div>
 
           <div className="hidden md:block w-72 ml-3">

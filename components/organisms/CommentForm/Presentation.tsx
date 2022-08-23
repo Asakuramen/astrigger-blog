@@ -10,16 +10,18 @@ interface Props_CommentFiledPresentation {
   inputBody_id: string;
   inputNameErrormsg: string;
   inputBodyErrormsg: string;
+  isSending: boolean;
   onsubmit: () => void;
 }
 
-const CommentFiledPresentation = (props: Props_CommentFiledPresentation) => {
+const CommentForm_Presentaion = (props: Props_CommentFiledPresentation) => {
   const {
     comments,
     inputName_id,
     inputBody_id,
     inputNameErrormsg,
     inputBodyErrormsg,
+    isSending,
     onsubmit,
   } = props;
 
@@ -74,11 +76,13 @@ const CommentFiledPresentation = (props: Props_CommentFiledPresentation) => {
             </p>
           </div>
 
-          <Button onclick={onsubmit}>　送信　</Button>
+          <Button onclick={onsubmit} disabled={isSending}>
+            送信
+          </Button>
         </div>
       </div>
     </>
   );
 };
 
-export default CommentFiledPresentation;
+export default CommentForm_Presentaion;
