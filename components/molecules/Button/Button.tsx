@@ -1,9 +1,10 @@
-import { NextPage } from "next";
 import { ReactNode } from "react";
 import styles from "./Button.module.css";
 
 type Props = {
   children: ReactNode;
+  disabled?: boolean;
+  styleType?: "primary" | "secondary" | "disabled";
   onclick?: () => void;
 };
 
@@ -12,9 +13,19 @@ type Props = {
  * @param children コンポーネントで内包している子要素
  */
 const Button = (props: Props) => {
-  const { onclick, children } = props;
+  const { onclick, children, disabled, styleType } = props;
+
+  // カラー切替
+  let style = styles.primary;
+  if (styleType === "secondary") {
+    style = styles.secondary;
+  }
+  if (disabled) {
+    style = styles.disabled;
+  }
+
   return (
-    <button className={styles.buttonPrimary} onClick={onclick}>
+    <button className={style} onClick={onclick} disabled={disabled}>
       {children}
     </button>
   );
