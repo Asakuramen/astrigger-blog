@@ -6,19 +6,22 @@ import {
 } from "pages/api/comment";
 import { useEffect, useState } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import CommentFiledPresentation from "./CommentFiledPresentation";
+import CommentForm_Presentaion from "./Presentation";
 
 interface Props_CommentFiledContainer {
   contentId: string;
 }
 
-const CommentFiledContainer = (props: Props_CommentFiledContainer) => {
+const CommentForm = (props: Props_CommentFiledContainer) => {
   const { contentId } = props;
-  const [inputNameErrormsg, setInputNameErrormsg] = useState<string>("");
-  const [inputBodyErrormsg, setInputBodyErrormsg] = useState<string>("");
-
+  // input要素のhtmlidを定義
   const inputName_id = "input-comment-name";
   const inputBody_id = "input-comment-body";
+  // input要素のエラーメッセージを保持
+  const [inputNameErrormsg, setInputNameErrormsg] = useState<string>("");
+  const [inputBodyErrormsg, setInputBodyErrormsg] = useState<string>("");
+  // 送信中状態管理
+  const [isSending, setIsSending] = useState(false);
 
   // microCMSからサーバー経由でcontentIdに紐づくコメントを取得する
   const [comments, setComments] = useState<Comment[]>([]);
@@ -33,6 +36,7 @@ const CommentFiledContainer = (props: Props_CommentFiledContainer) => {
       console.log(res.data);
       setComments(res.data);
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // reCAPTCHAからtokenを取得する
@@ -50,24 +54,30 @@ const CommentFiledContainer = (props: Props_CommentFiledContainer) => {
     const commentName = commentName_Document.value;
     const commentBody = commentBody_Document.value;
 
-    // 各input項目の簡易バリデーションを行う（サーバー側でもバリデーションは実施する）
+    // 各input項目の簡易バリデーションを行う
+    // inputのエラーメッセージ解除
+    setInputNameErrormsg("");
+    setInputBodyErrormsg("");
     let errorFlag = false;
     // name 1~20文字
     if (commentName.length < 1 || commentName.length > 20) {
       setInputNameErrormsg("1~20文字で入力してください");
       errorFlag = true;
     }
+    // 本文1~400文字
     if (commentBody.length < 1 || commentBody.length > 400) {
       setInputBodyErrormsg("1~400文字で入力してください");
       errorFlag = true;
     }
-    // １つ以上の不正入力値を検出した場合は、コメント送信処理を実施しない。
+    // 不正入力箇所を１つ以上検出した場合は、コメント送信処理を実施しない。
     if (errorFlag) {
       alert(
         "入力内容の形式が正しくない項目があります。\n問い合わせ内容は送信されていません。"
       );
       return;
     }
+
+    setIsSending(true); // 送信ボタンdisabled
 
     // サーバーにreCAPTCHA認証のtokenとコメント情報をPOSTする。
     if (executeRecaptcha) {
@@ -94,8 +104,6 @@ const CommentFiledContainer = (props: Props_CommentFiledContainer) => {
       // フォームの入力値とエラーメッセージを消去する
       commentName_Document.value = "";
       commentBody_Document.value = "";
-      setInputNameErrormsg("");
-      setInputBodyErrormsg("");
     }
     // reCAPTCHA認証サーバーからtokenの取得に失敗
     else {
@@ -103,18 +111,21 @@ const CommentFiledContainer = (props: Props_CommentFiledContainer) => {
         "recaptcha認証サーバーとの通信に失敗しました。コメントは送信されていません。"
       );
     }
+
+    setIsSending(false); // 送信ボタンdisabled解除
   };
 
   return (
-    <CommentFiledPresentation
+    <CommentForm_Presentaion
       comments={comments}
       inputName_id={inputName_id}
       inputBody_id={inputBody_id}
       inputNameErrormsg={inputNameErrormsg}
       inputBodyErrormsg={inputBodyErrormsg}
+      isSending={isSending}
       onsubmit={sendComment}
     />
   );
 };
 
-export default CommentFiledContainer;
+export default CommentForm;

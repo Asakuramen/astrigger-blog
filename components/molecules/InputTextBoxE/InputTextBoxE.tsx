@@ -15,7 +15,10 @@ const InputTextBoxE = (props: Props_InputTextBoxE) => {
     <>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3">
-          <label className="block tracking-wide text-gray-700 text-xs font-bold mb-2">
+          <label
+            className="block tracking-wide text-gray-700 text-xs font-bold mb-2"
+            htmlFor={id}
+          >
             {title}
           </label>
           {multiLine ? (
