@@ -14,6 +14,7 @@ export const tagList = [
   { name: "デジタルアナログ回路", path: "analogdigitalcircuit" },
   { name: "Raspberrypi", path: "raspberrypi" },
   { name: "セキュリティ", path: "security" },
+  { name: "Git", path: "git" },
   { name: "すべての記事", path: "all" },
 ];
 

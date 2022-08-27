@@ -7,6 +7,9 @@ type Props = {
   href?: string;
 };
 
+/**
+ * propsでhrefを渡すとLink付きのBadgeとなります。
+ */
 const Badge: NextPage<Props> = ({ children, href }) => {
   return (
     <>
