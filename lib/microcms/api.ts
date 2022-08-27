@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import markdownToHtml from "zenn-markdown-html";
 
 /**
@@ -153,4 +153,71 @@ export async function getContentsIds(contentType: string) {
   const contentIds: { id: string }[] = contents;
 
   return contentIds;
+}
+
+/**
+ * microCMSから取得するcommentの型
+ */
+interface Api_Responce_FromMicrocms_Comment {
+  contents: [
+    {
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      publishedAt: string;
+      revisedAt: string;
+      name: string;
+      body: string;
+      emoji: string;
+    }
+  ];
+  totalCount: number;
+  offset: number;
+  limit: number;
+}
+
+/**
+ * １つのコメントの型
+ */
+export interface Comment {
+  name: string;
+  body: string;
+  emoji: string;
+  publishedAt: string;
+  id: string;
+}
+
+/**
+ * microCMSから特定のコンテンツIDに紐づくコメントを取得する
+ * @param contentId microCMSで採番されたコンテンツのID
+ */
+export async function getCommentsById(contentId: string) {
+  const microcmsParams = {
+    limit: 30,
+    orders: "-publishedAt",
+    filters: `contentId[equals]${contentId}`,
+  };
+
+  // microCMSからデータ取得、特定のcontentIDを持つcomment
+  const res: AxiosResponse<Api_Responce_FromMicrocms_Comment> = await axios.get(
+    process.env.MICROCMS_ENDPOINT_COMMENT!,
+    {
+      headers: { "X-MICROCMS-API-KEY": process.env.MICROCMS_API_KEY! },
+      params: microcmsParams,
+    }
+  );
+
+  // microCMSのデータを整形してコンポーネントに渡すPropsを作成する。
+  let comments: Comment[] = [];
+  comments = res.data.contents.map((comment) => {
+    return {
+      name: comment.name,
+      body: comment.body,
+      emoji: comment.emoji,
+      publishedAt: comment.publishedAt.split("T")[0], //不要な時刻を削除して日付のみ返す
+      id: comment.id,
+    };
+  });
+
+  return comments;
 }

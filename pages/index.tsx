@@ -1,26 +1,26 @@
 /* eslint-disable @next/next/no-img-element */
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import ServiceList from "components/ServiceList/ServiceList";
-import BlogList, { BlogMetaData } from "components/BlogList/BlogList";
-import WorkList from "components/WorkList/WorkList";
-import Aboutme from "components/Aboutme/Aboutme";
-import Job from "components/Job/Job";
-import Header2 from "components/Header/Header2";
-import H1anchor from "components/UIparts/H1anchor";
+import ServiceList from "components/organisms/ServiceList/ServiceList";
+import BlogList, { BlogMetaData } from "components/organisms/BlogList/BlogList";
+import WorkList from "components/organisms/WorkList/WorkList";
+import Aboutme from "components/organisms/Aboutme/Aboutme";
+import Job from "components/organisms/Job/Job";
+import Header2 from "components/organisms/Header/Header2";
+import H1anchor from "components/molecules/H1anchor";
 import Image from "next/image";
-import ButtonCommon from "components/UIparts/ButtonCommon";
 import { IoFish } from "react-icons/io5";
 import Link from "next/link";
 import { useEffect } from "react";
-import Footer from "components/Footer/Footer";
+import Footer from "components/organisms/Footer/Footer";
 import { ContentMetadata, getContentMetadatasByTag } from "lib/microcms/api";
+import Button from "components/molecules/Button/Button";
 
 // ServerSideGeneration
 export const getStaticProps: GetStaticProps<Props> = async () => {
   // 最新の3作品のみmicroCMSから取得して整形し、propsとしてコンポーネントに渡す
   const workContentsMetaDatas = await getContentMetadatasByTag("work", 3, "all");
-  // 最新の４記事のみmicroCMSから取得して整形し、propsとしてコンポーネントに渡す
+  // 最新の4記事のみmicroCMSから取得して整形し、propsとしてコンポーネントに渡す
   const blogMetaDatas = await getContentMetadatasByTag("blog", 4, "all");
 
   return {
@@ -161,7 +161,7 @@ const Home: NextPage<Props> = (props) => {
           <div className="my-10 text-center">
             <Link href={"/works/all/1"}>
               <a>
-                <ButtonCommon>View more</ButtonCommon>
+                <Button>View more</Button>
               </a>
             </Link>
           </div>
@@ -177,7 +177,7 @@ const Home: NextPage<Props> = (props) => {
           <div className="my-10 text-center">
             <Link href={"/blogs/all/1"}>
               <a>
-                <ButtonCommon>View more</ButtonCommon>
+                <Button>View more</Button>
               </a>
             </Link>
           </div>
