@@ -75,7 +75,7 @@ const Blog: NextPage<Props> = (props) => {
   return (
     <>
       <Head>
-        <title>{`ブログ記事 ${getTagName(tag)}`}</title>
+        <title>{`${getTagName(tag)} に関連する記事`}</title>
         <meta
           name="description"
           content={`新しい技術のキャッチアップ情報や、エンジニアに役立つ情報をお届けします。`}

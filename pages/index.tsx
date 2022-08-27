@@ -20,7 +20,7 @@ import Button from "components/molecules/Button/Button";
 export const getStaticProps: GetStaticProps<Props> = async () => {
   // 最新の3作品のみmicroCMSから取得して整形し、propsとしてコンポーネントに渡す
   const workContentsMetaDatas = await getContentMetadatasByTag("work", 3, "all");
-  // 最新の４記事のみmicroCMSから取得して整形し、propsとしてコンポーネントに渡す
+  // 最新の4記事のみmicroCMSから取得して整形し、propsとしてコンポーネントに渡す
   const blogMetaDatas = await getContentMetadatasByTag("blog", 4, "all");
 
   return {

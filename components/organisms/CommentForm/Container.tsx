@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from "axios";
+import { IEmojiData } from "emoji-picker-react";
 import { Comment } from "lib/microcms/api";
 import {
   Api_Post_ToServer_CommentBody,
@@ -15,8 +16,9 @@ interface Props_CommentFiledContainer {
 const CommentForm = (props: Props_CommentFiledContainer) => {
   const { contentId } = props;
   // input要素のhtmlidを定義
-  const inputName_id = "input-comment-name";
-  const inputBody_id = "input-comment-body";
+  const inputNameHtmlId = "input-comment-name";
+  const inputBodyHtmlId = "input-comment-body";
+  const inputEmojiHtmlId = "comment-input-emoji";
   // input要素のエラーメッセージを保持
   const [inputNameErrormsg, setInputNameErrormsg] = useState<string>("");
   const [inputBodyErrormsg, setInputBodyErrormsg] = useState<string>("");
@@ -24,6 +26,7 @@ const CommentForm = (props: Props_CommentFiledContainer) => {
   const [isSending, setIsSending] = useState(false);
 
   // microCMSからサーバー経由でcontentIdに紐づくコメントを取得する
+  // コンポーネント読み込み時の一度だけ実行
   const [comments, setComments] = useState<Comment[]>([]);
   useEffect(() => {
     (async () => {
@@ -44,15 +47,20 @@ const CommentForm = (props: Props_CommentFiledContainer) => {
 
   // サーバー経由でmicroCMSにコメント情報をPOSTする、サーバーでreCPATCHA認証あり
   const sendComment = async () => {
-    // inputからお名前とコメント本文を取得する
+    // inputからニックネームとコメント本文を取得する
     const commentName_Document = document.getElementById(
-      inputName_id
+      inputNameHtmlId
     ) as HTMLInputElement;
     const commentBody_Document = document.getElementById(
-      inputBody_id
+      inputBodyHtmlId
     ) as HTMLTextAreaElement;
+    const commentEmoji_Document = document.getElementById(
+      inputEmojiHtmlId
+    ) as HTMLInputElement;
+
     const commentName = commentName_Document.value;
     const commentBody = commentBody_Document.value;
+    const commentEmoji = commentEmoji_Document.value;
 
     // 各input項目の簡易バリデーションを行う
     // inputのエラーメッセージ解除
@@ -60,12 +68,12 @@ const CommentForm = (props: Props_CommentFiledContainer) => {
     setInputBodyErrormsg("");
     let errorFlag = false;
     // name 1~20文字
-    if (commentName.length < 1 || commentName.length > 20) {
-      setInputNameErrormsg("1~20文字で入力してください");
+    if (commentName.length < 1 || commentName.length > 10) {
+      setInputNameErrormsg("1~10文字で入力してください");
       errorFlag = true;
     }
     // 本文1~400文字
-    if (commentBody.length < 1 || commentBody.length > 400) {
+    if (commentBody.length < 1 || commentBody.length > 300) {
       setInputBodyErrormsg("1~400文字で入力してください");
       errorFlag = true;
     }
@@ -83,10 +91,12 @@ const CommentForm = (props: Props_CommentFiledContainer) => {
     if (executeRecaptcha) {
       // reCAPTCHA認証のtokenを取得する
       const token = await executeRecaptcha("postComment");
+
       const postBody: Api_Post_ToServer_CommentBody = {
         token: token,
         commentName: commentName,
         commentBody: commentBody,
+        commentEmoji: commentEmoji,
         contentId: contentId,
       };
       const serverEndpoint = "/api/comment";
@@ -118,8 +128,9 @@ const CommentForm = (props: Props_CommentFiledContainer) => {
   return (
     <CommentForm_Presentaion
       comments={comments}
-      inputName_id={inputName_id}
-      inputBody_id={inputBody_id}
+      inputNameHtmlId={inputNameHtmlId}
+      inputBodyHtmlId={inputBodyHtmlId}
+      inputEmojiHtmlId={inputEmojiHtmlId}
       inputNameErrormsg={inputNameErrormsg}
       inputBodyErrormsg={inputBodyErrormsg}
       isSending={isSending}

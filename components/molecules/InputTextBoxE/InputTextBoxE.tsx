@@ -24,7 +24,7 @@ const InputTextBoxE = (props: Props_InputTextBoxE) => {
           {multiLine ? (
             <textarea
               className={
-                "h-48 resize-y appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" +
+                "block w-full h-48 resize-y bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" +
                 (errorMessage?.length && " border-red-600")
               }
               placeholder={placeholder}
@@ -33,7 +33,7 @@ const InputTextBoxE = (props: Props_InputTextBoxE) => {
           ) : (
             <input
               className={
-                "appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 focus:outline-none focus:bg-white focus:border-gray-500" +
+                "block w-full h-12 bg-gray-200 text-gray-700 border rounded px-4 mb-3 focus:outline-none focus:bg-white focus:border-gray-500" +
                 (errorMessage?.length && " border-red-600")
               }
               placeholder={placeholder}
