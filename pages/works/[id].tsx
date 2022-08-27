@@ -94,7 +94,7 @@ const Blog: NextPage<Props> = (props: Props) => {
         id="article"
       >
         <div className="flex flex-row">
-          <div className="w-auto md:w-[calc(100%_-_18rem)] p-4 sm:p-8 mr-3 shadow-md rounded-xl bg-white">
+          <div className="w-auto md:w-[calc(100%_-_20rem)] p-4 sm:p-8 mr-3 shadow-md rounded-xl bg-white">
             <small className="text-gray-500">投稿日 : {content.revisedAt}</small>
             <h1 className="text-3xl font-bold my-3">{content.title}</h1>
             {content.tags.map((tag) => {
@@ -109,7 +109,7 @@ const Blog: NextPage<Props> = (props: Props) => {
               dangerouslySetInnerHTML={{ __html: content.body }}
             />
           </div>
-          <div className="hidden md:block w-72 ml-3">
+          <div className="hidden md:block w-80 ml-3">
             <div className="flex flex-col sticky top-6">
               <div className="p-6 shadow-md rounded-xl mb-6 bg-white ">
                 <p className="text-xl text-bold mb-4">目次</p>

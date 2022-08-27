@@ -168,6 +168,7 @@ interface Api_Responce_FromMicrocms_Comment {
       revisedAt: string;
       name: string;
       body: string;
+      emoji: string;
     }
   ];
   totalCount: number;
@@ -181,6 +182,7 @@ interface Api_Responce_FromMicrocms_Comment {
 export interface Comment {
   name: string;
   body: string;
+  emoji: string;
   publishedAt: string;
   id: string;
 }
@@ -211,6 +213,7 @@ export async function getCommentsById(contentId: string) {
     return {
       name: comment.name,
       body: comment.body,
+      emoji: comment.emoji,
       publishedAt: comment.publishedAt.split("T")[0], //不要な時刻を削除して日付のみ返す
       id: comment.id,
     };
