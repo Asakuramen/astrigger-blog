@@ -25,6 +25,7 @@ export interface Api_Post_ToServer_CommentBody {
   commentName: string;
   commentBody: string;
   contentId: string;
+  commentEmoji: string;
   token: string;
 }
 
@@ -34,6 +35,7 @@ export interface Api_Post_ToServer_CommentBody {
 interface Api_Post_ToMicrocms_Comment {
   name: string;
   body: string;
+  emoji: string;
   contentId: string;
 }
 
@@ -59,6 +61,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         commentName: req.body.commentName,
         commentBody: req.body.commentBody,
         contentId: req.body.contentId,
+        commentEmoji: req.body.commentEmoji,
         token: req.body.token,
       };
 
@@ -82,6 +85,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const postBody: Api_Post_ToMicrocms_Comment = {
           name: reqBody.commentName,
           body: reqBody.commentBody,
+          emoji: reqBody.commentEmoji,
           contentId: reqBody.contentId,
         };
         const res_microcms = await axios.post(
