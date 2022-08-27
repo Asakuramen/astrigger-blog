@@ -59,21 +59,20 @@ const ContactForm_Presentation = (props: Props_ContactForm_Presentation) => {
         errorMessage={inputBody_errormsg}
       />
 
-      <div className="flex flex-col sm:flex-row sm:justify-between">
-        <div>
-          <p className="pb-2 text-left text-xs text-gray-400">
-            ※ bot対策のためreCAPTCHA(v3)による認証機能を設けております。
-          </p>
-          <p className="pb-2 text-left text-xs text-gray-400">
-            ※
-            管理者が社会通念上不適切と判断した投稿は、事前通知なしに削除させていただきます。
-          </p>
-        </div>
-
+      <div className="mb-6 sm:w-64">
         <Button onclick={onSubmit} disabled={isSending}>
           送信
         </Button>
       </div>
+      <p className="pb-2 text-left text-xs text-gray-400">
+        ※ このサイトはreCAPTCHAによって保護されています。Google社の
+        <a href="https://policies.google.com/privacy">プライバシーポリシー</a>と
+        <a href="https://policies.google.com/terms">利用規約</a>
+        が適用されます。
+      </p>
+      <p className="pb-2 text-left text-xs text-gray-400">
+        ※ 管理者が社会通念上不適切と判断した投稿は、事前通知なしに削除させていただきます。
+      </p>
     </>
   );
 };

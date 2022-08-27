@@ -68,7 +68,7 @@ export default async function handler(
       res.status(200).json({
         recaptcha: responceJson_recaptcha,
         slack: responceText_slack,
-        clinetMessage: "問い合わせの送信に成功しました。",
+        clinetMessage: "問い合わせを送信しました。内容を確認し、後日返信いたします。",
       });
     }
     // Slack通知に失敗
