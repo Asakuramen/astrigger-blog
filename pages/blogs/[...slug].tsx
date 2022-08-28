@@ -75,10 +75,10 @@ const Blog: NextPage<Props> = (props) => {
   return (
     <>
       <Head>
-        <title>{`${getTagName(tag)} に関連する記事`}</title>
+        <title>{`Blog - ${getTagName(tag)}`}</title>
         <meta
           name="description"
-          content={`新しい技術のキャッチアップ情報や、エンジニアに役立つ情報をお届けします。`}
+          content={`フロントエンド・バックエンドを中心として、新しい技術のキャッチアップ情報や、エンジニアに役立つ情報をお届けします。`}
         />
       </Head>
       <Header2 sticky={false} />

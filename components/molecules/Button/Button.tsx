@@ -4,7 +4,7 @@ import styles from "./Button.module.css";
 type Props = {
   children: ReactNode;
   disabled?: boolean;
-  styleType?: "primary" | "secondary" | "disabled";
+  styleType?: "primary" | "secondary" | "danger" | "disabled";
   onclick?: () => void;
 };
 
@@ -19,6 +19,10 @@ const Button = (props: Props) => {
   let style = styles.primary;
   if (styleType === "secondary") {
     style = styles.secondary;
+  } else if (styleType === "danger") {
+    style = styles.danger;
+  } else if (styleType === "disabled") {
+    style = styles.disabled;
   }
   if (disabled) {
     style = styles.disabled;
