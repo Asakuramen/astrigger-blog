@@ -1,7 +1,6 @@
 import { IEmojiData } from "emoji-picker-react";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
-
 const Picker = dynamic(() => import("emoji-picker-react"), { ssr: false });
 
 interface Props_EmojiSelectBox {
@@ -20,11 +19,8 @@ const EmojiSelectBox: React.FC<Props_EmojiSelectBox> = (props) => {
   const { inputHtmlId } = props;
 
   const inputRef = useRef<HTMLDivElement>(null);
-
   const [showPicker, setShowPicker] = useState(false);
-
   const [chosenEmoji, setChosenEmoji] = useState<IEmojiData>(initialEmoji);
-
   const onEmojiClick = (event: React.MouseEvent, emojiObject: IEmojiData) => {
     setChosenEmoji(emojiObject);
   };
