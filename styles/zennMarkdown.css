@@ -78,10 +78,14 @@
 .znc h6 + p {
   margin-top: 0.3em;
 }
-.znc h1,
+.znc h1 {
+  padding-top: 4rem;
+  margin-top: 1rem !important;
+  margin-bottom: 0.7em;
+}
 .znc h2 {
-  padding-top: 3rem;
-  margin-top: -1em !important;
+  padding-top: 2rem;
+  margin-top: -0em !important;
   margin-bottom: 0.7em;
 }
 .znc h3,
