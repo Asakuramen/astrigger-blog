@@ -1,4 +1,3 @@
-import styles from "./[id].module.css";
 import Head from "next/head";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import "zenn-content-css";
@@ -10,6 +9,8 @@ import { getTagName } from "contents/tags";
 import { ParsedUrlQuery } from "querystring";
 import { Content, getContentById, getContentsIds } from "lib/microcms/api";
 import CommentForm from "components/organisms/CommentForm/Container";
+import TableOfContent from "components/organisms/TableOfContent/Container";
+import { MdEditNote, MdAutorenew } from "react-icons/md";
 
 interface Params extends ParsedUrlQuery {
   id: string;
@@ -35,7 +36,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 // ----------------------------------------------------------
 // ----------------------------------------------------------
 
-type TableOfContent = {
+export type TableOfContent = {
   level: string;
   title: string;
   href: string;
@@ -94,15 +95,27 @@ const Blog: NextPage<Props> = (props) => {
         className="max-w-screen-xl mx-auto px-3 sm:px-6 py-6 min-h-[calc(100vh_-_6rem)]"
         id="article"
       >
+        {/* メインコンテンツ領域 */}
         <div className="flex flex-row">
           <div className="w-full md:w-[calc(100%_-_20rem)] mr-3">
-            <div className="p-4 sm:p-8 shadow-md rounded-xl bg-white">
-              <small className="text-gray-500">投稿日 : {content.revisedAt}</small>
+            <div className="p-4 sm:p-8 shadow-sm rounded-xl bg-white">
+              <div className="flex items-center text-gray-500">
+                <MdEditNote />
+                <span className="pl-1  text-sm text-gray-500 pr-6">
+                  公開{content.publishedAt}
+                </span>
+
+                <MdAutorenew />
+                <span className="pl-1 text-sm text-gray-500">
+                  更新{content.revisedAt}
+                </span>
+              </div>
+
               <h1 className="text-3xl font-bold my-3">{content.title}</h1>
               {content.tags.map((tag) => {
                 return (
                   <div key={tag} className="inline-block">
-                    <Badge>{getTagName(tag)}</Badge>
+                    <Badge href={`/blogs/${tag}/1`}>{getTagName(tag)}</Badge>
                   </div>
                 );
               })}
@@ -115,28 +128,10 @@ const Blog: NextPage<Props> = (props) => {
             <CommentForm contentId={content.id} />
           </div>
 
+          {/* サイドバー領域 */}
           <div className="hidden md:block w-80 ml-3">
             <div className="flex flex-col sticky top-6">
-              <div className="p-6 shadow-md rounded-xl mb-6 bg-white ">
-                <p className="text-xl text-bold mb-4">目次</p>
-                <ul className={`${styles.ul_h1} ${styles.ul_h2}`}>
-                  {tableOfContent.map((anchor: TableOfContent) => {
-                    if (anchor.level === "H1") {
-                      return (
-                        <li className={styles.li_h1} key={anchor.href}>
-                          <a href={anchor.href}>{anchor.title}</a>
-                        </li>
-                      );
-                    } else {
-                      return (
-                        <li className={styles.li_h2} key={anchor.href}>
-                          <a href={anchor.href}>{anchor.title}</a>
-                        </li>
-                      );
-                    }
-                  })}
-                </ul>
-              </div>
+              <TableOfContent tableOfContent={tableOfContent} />
             </div>
           </div>
         </div>
