@@ -2,7 +2,7 @@
 .ul_h1 .li_h1 {
   position: relative;
   padding-left: 25px;
-  @apply py-1 text-gray-500 hover:text-gray-800;
+  @apply py-1 text-sm text-gray-500 hover:text-gray-800;
 }
 
 .ul_h1 .li_h1:before {
@@ -23,7 +23,7 @@
 .ul_h2 .li_h2 {
   position: relative;
   padding-left: 40px;
-  @apply py-1 text-gray-500 hover:text-gray-800;
+  @apply py-1 text-sm text-gray-500 hover:text-gray-800;
 }
 
 .ul_h2 .li_h2:before {

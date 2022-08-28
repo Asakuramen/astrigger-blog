@@ -4,6 +4,13 @@ module.exports = {
   content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      colors: {
+        primary: "var(--color-primary)",
+        secondary: "var(--color-secondary)",
+        danger: "var(--color-danger)",
+        body: "var(--color-body)",
+        subbody: "var(--color-subbody)",
+      },
       animation: {
         "slide-in-bottom":
           "slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940)   both",
