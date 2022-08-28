@@ -78,11 +78,15 @@
 .znc h6 + p {
   margin-top: 0.3em;
 }
-.znc h1,
+.znc h1 {
+  padding-top: 4rem;
+  margin-top: 1rem !important;
+  margin-bottom: 0.7em;
+}
 .znc h2 {
-  padding-top: 1.2rem;
-  margin-top: -2em;
-  margin-bottom: 0.5em;
+  padding-top: 2rem;
+  margin-top: -0em !important;
+  margin-bottom: 0.7em;
 }
 .znc h3,
 .znc h4,
@@ -92,6 +96,7 @@
   margin-bottom: 0.5em;
 }
 .znc h1 {
+  font-weight: 700;
   padding-bottom: 0.2em;
   margin-bottom: 1.1rem;
   font-size: 1.7em;
@@ -99,6 +104,7 @@
   border-bottom: solid 1px rgba(92, 147, 187, 0.17);
 }
 .znc h2 {
+  font-weight: 600;
   font-size: 1.5em;
 }
 .znc h3 {

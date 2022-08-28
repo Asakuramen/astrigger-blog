@@ -6,10 +6,6 @@ body {
   @apply bg-gray-100;
 }
 
-/* html {
-  @apply scroll-smooth h-full;
-} */
-
 .grecaptcha-badge {
   visibility: hidden;
   bottom: 56px !important;
@@ -56,4 +52,14 @@ body {
 
 .skill-swiper .swiper-pagination-bullet-active {
   @apply bg-blue-500 text-gray-50;
+}
+
+/* 共通のカラーを定義 */
+/* https://coolors.co/2c302e-06d6a0-1b9aaa-ef476f-474a48*/
+:root {
+  --color-primary: #1b9aaa;
+  --color-secondary: #06d6a0;
+  --color-danger: #ef476f;
+  --color-body: #2c302e;
+  --color-subbody: #474a48;
 }
