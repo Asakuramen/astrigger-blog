@@ -2,12 +2,13 @@ import Head from "next/head";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import "zenn-content-css";
 import Header2 from "components/organisms/Header/Header2";
-import { getTagName, tagList } from "../../contents/tags";
+import { getTagName, tagList } from "../../lib/tags";
 import BlogList from "components/organisms/BlogList/BlogList";
 import SidenavTags from "components/organisms/SidenavTags/SidenavTags";
 import Footer from "components/organisms/Footer/Footer";
 import { ParsedUrlQuery } from "querystring";
 import { ContentMetadata, getContentMetadatasByTag } from "lib/microcms/api";
+import H1anchor from "components/molecules/H1anchor";
 
 interface Params extends ParsedUrlQuery {
   slug: string[];
@@ -72,13 +73,19 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
  */
 const Blog: NextPage<Props> = (props) => {
   const { contentMetaDatas, tag } = props;
+
+  let tagName = getTagName(tag);
+  if (tagName === "全ての記事") {
+    tagName = "全て";
+  }
+
   return (
     <>
       <Head>
-        <title>{`Blog - ${getTagName(tag)}`}</title>
+        <title>{`${tagName} の記事一覧`}</title>
         <meta
           name="description"
-          content={`フロントエンド・バックエンドを中心として、新しい技術のキャッチアップ情報や、エンジニアに役立つ情報をお届けします。`}
+          content={`フロントエンド、バックエンド、ハードウェア開発に関する、エンジニアに役立つ情報をお届けします。`}
         />
       </Head>
       <Header2 sticky={false} />
@@ -87,8 +94,13 @@ const Blog: NextPage<Props> = (props) => {
         className="max-w-screen-xl mx-auto px-3 sm:px-6 py-6 min-h-[calc(100vh_-_6rem)]"
         id="article"
       >
+        <div className="h-10" />
         <div className="flex flex-row">
           <div className="w-auto md:w-[calc(100%_-_18rem)] mr-3 ">
+            <H1anchor>{tagName}の記事一覧</H1anchor>
+            <div className="pb-4 border-b-2 border-gray-300"></div>
+            <div className="h-10" />
+
             <BlogList blogMetaDatas={contentMetaDatas} showThumbnail={true}></BlogList>
           </div>
           <div className="hidden md:block w-72 ml-3">

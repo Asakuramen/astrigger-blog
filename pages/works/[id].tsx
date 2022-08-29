@@ -5,7 +5,7 @@ import { JSDOM } from "jsdom";
 import Header2 from "components/organisms/Header/Header2";
 import Footer from "components/organisms/Footer/Footer";
 import Badge from "components/molecules/Badge";
-import { getTagName } from "contents/tags";
+import { getTagName } from "lib/tags";
 import { ParsedUrlQuery } from "querystring";
 import { Content, getContentById, getContentsIds } from "lib/microcms/api";
 import TableOfContent from "components/organisms/TableOfContent/Container";

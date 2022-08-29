@@ -10,7 +10,7 @@ const TableOfContent_Presentation = (props: Props_TableOfContent_Presentation) =
 
   return (
     <div className="p-6 shadow-sm rounded-xl mb-6 bg-white ">
-      <p className="text-xl text-bold mb-4">目次</p>
+      <p className="mb-4 text-xl text-sky-900 ">目次</p>
       <ul className={`${styles.ul_h1} ${styles.ul_h2}`}>
         {tableOfContent.map((anchor: TableOfContent) => {
           if (anchor.level === "H1") {
