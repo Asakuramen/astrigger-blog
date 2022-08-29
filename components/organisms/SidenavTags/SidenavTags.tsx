@@ -1,13 +1,13 @@
 import Badge from "components/molecules/Badge";
 import { NextPage } from "next";
-import { tagList } from "contents/tags";
+import { tagList } from "lib/tags";
 
 const SidenavTags: NextPage = () => {
   tagList;
 
   return (
     <>
-      <h1 className="text-lx pb-4">カテゴリー</h1>
+      <h1 className="pb-4 text-xl text-sky-900">カテゴリー</h1>
       {tagList.map((tag) => {
         return (
           <div key={tag.name} className="inline-block">

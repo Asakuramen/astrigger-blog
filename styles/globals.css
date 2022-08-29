@@ -51,7 +51,7 @@ body {
 }
 
 .skill-swiper .swiper-pagination-bullet-active {
-  @apply bg-blue-500 text-gray-50;
+  @apply bg-sky-500 text-gray-50;
 }
 
 /* 共通のカラーを定義 */

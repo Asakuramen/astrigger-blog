@@ -12,11 +12,11 @@
   width: 8px;
   height: 8px;
   position: absolute;
-  @apply rounded-lg bg-blue-500;
+  @apply rounded-lg bg-sky-500;
 }
 
 .ul_h1 .li_h1:hover:before {
-  @apply rounded-lg bg-blue-700;
+  @apply rounded-lg bg-sky-700;
 }
 
 /* h2タグ相当目次のmarker */
@@ -33,9 +33,9 @@
   width: 4px;
   height: 4px;
   position: absolute;
-  @apply rounded-lg bg-blue-500;
+  @apply rounded-lg bg-sky-500;
 }
 
 .ul_h2 .li_h2:hover:before {
-  @apply rounded-lg bg-blue-700;
+  @apply rounded-lg bg-sky-700;
 }
