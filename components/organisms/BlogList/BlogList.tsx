@@ -23,12 +23,12 @@ type Props = {
 
 const BlogList: NextPage<Props> = ({ blogMetaDatas, showThumbnail }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {blogMetaDatas.length !== 0 ? (
         blogMetaDatas.map((blogMetaData: BlogMetaData, index) => {
           return (
             <div
-              className="bg-white rounded overflow-hidden shadow-md hover:shadow-xl transition duration-200 hover:-translate-y-1"
+              className="bg-white overflow-hidden shadow-md rounded-xl hover:shadow-xl transition duration-200 hover:-translate-y-1"
               key={blogMetaData.id}
             >
               <Link href={`/blogs/${blogMetaData.id}`}>

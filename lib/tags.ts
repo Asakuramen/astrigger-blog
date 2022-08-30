@@ -1,21 +1,20 @@
-import { DiReact } from "react-icons/di";
-
 export const tagList = [
-  { name: "Next.js", path: "nextjs", icon: DiReact },
-  { name: "React", path: "react", icon: DiReact },
-  { name: "Javascript", path: "javascript", icon: DiReact },
-  { name: "Typescript", path: "typescript", icon: DiReact },
-  { name: "CSS", path: "css", icon: DiReact },
-  { name: "Tailwindcss", path: "tailwindcss", icon: DiReact },
-  { name: "Firebase", path: "firebase", icon: DiReact },
-  { name: "AWS", path: "aws", icon: DiReact },
-  { name: "Node.js", path: "nodejs", icon: DiReact },
-  { name: "Python", path: "python", icon: DiReact },
-  { name: "3Dプリンタ", path: "3dprinter", icon: DiReact },
-  { name: "デジタルアナログ回路", path: "analogdigitalcircuit", icon: DiReact },
-  { name: "Raspberrypi", path: "raspberrypi", icon: DiReact },
-  { name: "セキュリティ", path: "security", icon: DiReact },
-  { name: "全ての記事", path: "all", icon: DiReact },
+  { name: "Next.js", path: "nextjs", category: "frontend" },
+  { name: "React", path: "react", category: "frontend" },
+  { name: "Javascript", path: "javascript", category: "frontend" },
+  { name: "Typescript", path: "typescript", category: "frontend" },
+  { name: "CSS", path: "css", category: "frontend" },
+  { name: "Tailwindcss", path: "tailwindcss", category: "frontend" },
+  { name: "Firebase", path: "firebase", category: "cloud" },
+  { name: "AWS", path: "aws", category: "cloud" },
+  { name: "Node.js", path: "nodejs", category: "backend" },
+  { name: "Python", path: "python", category: "backend" },
+  { name: "3Dプリンタ", path: "3dprinter", category: "hardware" },
+  { name: "デジタルアナログ回路", path: "analogdigitalcircuit", category: "hardware" },
+  { name: "Raspberrypi", path: "raspberrypi", category: "hardware" },
+  { name: "セキュリティ", path: "security", category: "other" },
+  { name: "買ってよかったもの", path: "goods", category: "everyday" },
+  { name: "全ての記事", path: "all", category: "none" },
 ];
 
 /**
@@ -32,13 +31,13 @@ export const getTagName = (path: string) => {
 };
 
 /**
- * tagのpathをアイコンコンポーネントに変換する
+ * 指定カテゴリーを持つtagの表示名称を返す
  */
-export const getTagIcon = (path: string) => {
-  const findIcon = tagList.find((tag) => tag.path === path);
+export const getTagIcon = (category: string) => {
+  const findTag = tagList.find((tag) => tag.category === category);
 
-  if (findIcon) {
-    return findIcon.icon;
+  if (findTag) {
+    return findTag;
   } else {
     return;
   }

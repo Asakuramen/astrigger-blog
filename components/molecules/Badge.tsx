@@ -16,7 +16,7 @@ const Badge: NextPage<Props> = ({ children, href }) => {
       {href ? (
         <Link href={href}>
           <a>
-            <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
+            <div className="inline-block  mr-2 mb-2  bg-gray-200 hover:bg-gray-300 rounded-full px-3 py-1 text-xs font-semibold text-gray-700transition duration-200">
               {children}
             </div>
           </a>
