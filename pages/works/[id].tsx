@@ -5,11 +5,12 @@ import { JSDOM } from "jsdom";
 import Header2 from "components/organisms/Header/Header2";
 import Footer from "components/organisms/Footer/Footer";
 import Badge from "components/molecules/Badge";
-import { getTagName } from "contents/tags";
+import { getTagName } from "lib/tags";
 import { ParsedUrlQuery } from "querystring";
 import { Content, getContentById, getContentsIds } from "lib/microcms/api";
 import TableOfContent from "components/organisms/TableOfContent/Container";
 import { MdEditNote, MdAutorenew } from "react-icons/md";
+import AboutMeBox from "components/organisms/AboutMeBox/AboutmeBox";
 
 interface Params extends ParsedUrlQuery {
   id: string;
@@ -98,7 +99,7 @@ const Works: NextPage<Props> = (props: Props) => {
           <div className="w-auto md:w-[calc(100%_-_20rem)] p-4 sm:p-8 mr-3 shadow-md rounded-xl bg-white">
             <div className="flex items-center text-gray-500">
               <MdEditNote />
-              <span className="pl-1  text-sm text-gray-500 pr-6">
+              <span className="pl-1 text-sm text-gray-500 pr-6">
                 公開{content.publishedAt}
               </span>
 
@@ -119,7 +120,10 @@ const Works: NextPage<Props> = (props: Props) => {
             />
           </div>
           <div className="hidden md:block w-80 ml-3">
-            <div className="flex flex-col sticky top-6">
+            <div className="mb-6">
+              <AboutMeBox />
+            </div>
+            <div className="sticky top-6">
               <TableOfContent tableOfContent={tableOfContent} />
             </div>
           </div>

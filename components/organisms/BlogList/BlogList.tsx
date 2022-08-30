@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Badge from "components/molecules/Badge";
-import { getTagName } from "contents/tags";
+import { getTagName } from "lib/tags";
 
 /**
  * Blogのメタデータの型　Blog一覧表示のコンポーネントで使用
@@ -23,12 +23,12 @@ type Props = {
 
 const BlogList: NextPage<Props> = ({ blogMetaDatas, showThumbnail }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {blogMetaDatas.length !== 0 ? (
         blogMetaDatas.map((blogMetaData: BlogMetaData, index) => {
           return (
             <div
-              className="bg-gray-50 rounded overflow-hidden shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-2"
+              className="bg-white overflow-hidden shadow-md rounded-xl hover:shadow-xl transition duration-200 hover:-translate-y-1"
               key={blogMetaData.id}
             >
               <Link href={`/blogs/${blogMetaData.id}`}>
@@ -46,7 +46,7 @@ const BlogList: NextPage<Props> = ({ blogMetaDatas, showThumbnail }) => {
                     </div>
                   )}
 
-                  <div className="p-3 sm:p-6">
+                  <div className="p-3 sm:p-6 border-t-2 border-gray-200">
                     <p className="text-gray-400 text-sm">{blogMetaData.revisedAt}</p>
                     <div className="font-bold text-xl mt-1 mb-1">
                       {blogMetaData.title}
@@ -67,7 +67,7 @@ const BlogList: NextPage<Props> = ({ blogMetaDatas, showThumbnail }) => {
           );
         })
       ) : (
-        <div className="text-gray-400 text-xl">
+        <div className="text-gray-500 text-xl">
           指定条件を満たす記事は見つかりませんでした。
         </div>
       )}
