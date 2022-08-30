@@ -9,6 +9,8 @@ import Footer from "components/organisms/Footer/Footer";
 import { ParsedUrlQuery } from "querystring";
 import { ContentMetadata, getContentMetadatasByTag } from "lib/microcms/api";
 import H1anchor from "components/molecules/H1anchor";
+import RecentContent from "components/organisms/RecentContent/RecentContent";
+import AboutMeBox from "components/organisms/AboutMeBox/AboutmeBox";
 
 interface Params extends ParsedUrlQuery {
   slug: string[];
@@ -44,6 +46,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
  */
 interface Props {
   contentMetaDatas: ContentMetadata[];
+  recentContentMetaDatas: ContentMetadata[];
   tag: string;
 }
 
@@ -53,6 +56,9 @@ interface Props {
 export const getStaticProps: GetStaticProps<Props, Params> = async (context) => {
   // 特定のtagを持つcontentをmicroCMSから取得して整形し、propsとしてコンポーネントに渡す
   const SHOW_CONTENT_NUMBER_PER_PAGE = 10;
+  const SHOW_RECENT_CONTENT_NUMBER_PER_PAGE = 5;
+
+  // tagに一致する記事のメタデータを取得
   const tag: string = context.params!.slug[0];
   const contentMetaDatas = await getContentMetadatasByTag(
     "blog",
@@ -60,8 +66,19 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
     tag
   );
 
+  // 全tagから最新何件かの記事のメタデータを取得
+  const recentContentMetaDatas = await getContentMetadatasByTag(
+    "blog",
+    SHOW_RECENT_CONTENT_NUMBER_PER_PAGE,
+    "all"
+  );
+
   return {
-    props: { contentMetaDatas: contentMetaDatas, tag: tag },
+    props: {
+      contentMetaDatas: contentMetaDatas,
+      tag: tag,
+      recentContentMetaDatas: recentContentMetaDatas,
+    },
   };
 };
 
@@ -72,7 +89,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
  * １ブログ記事のコンポーネント
  */
 const Blog: NextPage<Props> = (props) => {
-  const { contentMetaDatas, tag } = props;
+  const { contentMetaDatas, recentContentMetaDatas, tag } = props;
 
   let tagName = getTagName(tag);
   if (tagName === "全ての記事") {
@@ -96,18 +113,20 @@ const Blog: NextPage<Props> = (props) => {
       >
         <div className="h-10" />
         <div className="flex flex-row">
-          <div className="w-auto md:w-[calc(100%_-_18rem)] mr-3 ">
-            <H1anchor>{tagName}の記事一覧</H1anchor>
-            <div className="pb-4 border-b-2 border-gray-300"></div>
+          <div className="w-auto  mr-5">
+            <h1 className="text-3xl text-sky-900">{tagName}の記事一覧</h1>
+            <div className="pb-4 border-b"></div>
             <div className="h-10" />
 
             <BlogList blogMetaDatas={contentMetaDatas} showThumbnail={true}></BlogList>
           </div>
-          <div className="hidden md:block w-72 ml-3">
-            <div className="flex flex-col sticky top-6">
-              <div className="p-4 shadow-md rounded-md mb-6 bg-white ">
-                <SidenavTags />
-              </div>
+          <div className="hidden md:block w-80 ml-5">
+            <div className="flex flex-col top-6">
+              <AboutMeBox />
+              <div className="h-6" />
+              <SidenavTags />
+              <div className="h-6" />
+              <RecentContent blogMetaDatas={recentContentMetaDatas} />
             </div>
           </div>
         </div>
