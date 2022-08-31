@@ -113,14 +113,14 @@ const Blog: NextPage<Props> = (props) => {
       >
         <div className="h-10" />
         <div className="flex flex-row">
-          <div className="w-auto  mr-5">
+          <div className="w-auto">
             <h1 className="text-3xl text-sky-900">{tagName}の記事一覧</h1>
             <div className="pb-4 border-b"></div>
             <div className="h-10" />
 
             <BlogList blogMetaDatas={contentMetaDatas} showThumbnail={true}></BlogList>
           </div>
-          <div className="hidden md:block w-80 ml-5">
+          <div className="hidden md:block w-80 ml-10">
             <div className="flex flex-col top-6">
               <AboutMeBox />
               <div className="h-6" />
