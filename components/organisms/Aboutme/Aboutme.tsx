@@ -42,10 +42,12 @@ const Aboutme: NextPage = () => {
 
       <div className="h-8" />
 
-      <div className="flex-auto text-gray-700">
-        <p>ペンネーム：あさくらーめん</p>
-        <p>仕事でも休日でも、いつも手を動かして何か作るのが好きな人です。</p>
-        <p>20代、東京在住。</p>
+      <div className="px-4 text-gray-700">
+        <p>あさくらーめん</p>
+        <p>東京在住のフルスタックエンジニアです。WEB開発を主軸に活動しています。</p>
+        <p>
+          本業ではインフラ系SIer 兼 SW開発ベンダで仕事をしています。とても好奇心旺盛です。
+        </p>
       </div>
     </div>
   );

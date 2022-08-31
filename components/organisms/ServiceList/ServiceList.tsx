@@ -25,7 +25,7 @@ const ServiceList: React.FC = () => {
     <div>
       <Swiper
         // cssMode={true}
-        navigation={true}
+        // navigation={true}
         pagination={pagination}
         modules={[Navigation, Pagination, Autoplay]}
         autoplay={{
@@ -59,9 +59,9 @@ const ServiceList: React.FC = () => {
                     <span className={styles.text_gradient_hyper}>フロントエンド開発</span>
                   </div>
 
-                  <p>WEBサイト制作、WEBアプリケーション開発を行っております。</p>
+                  <p>WEBサイト制作、WEBアプリケーション開発を承ります。</p>
                   <p>
-                    ReactおよびNext.jsを主軸に置き、SPA・SSR・SSG構成のシステム開発経験があります。全てのプロジェクトでTypescriptを導入しています。
+                    モダンなフレームワークであるNext.jsやReactを利用した、高速でユーザー体験のよいWEB制作のノウハウが強みです。
                   </p>
                   <hr className="my-4" />
                   <Badge>HTML</Badge>
@@ -72,6 +72,7 @@ const ServiceList: React.FC = () => {
                   <Badge>React</Badge>
                   <Badge>Redux(Toolkit)</Badge>
                   <Badge>Next.js</Badge>
+                  <Badge>JAMstack</Badge>
                   <Badge>Tailwindcss</Badge>
                   <Badge>Bootstrap</Badge>
                   <Badge>Material-UI</Badge>
@@ -103,7 +104,7 @@ const ServiceList: React.FC = () => {
                     <span className={styles.text_gradient_oceanic}>バックエンド開発</span>
                   </div>
                   <p>
-                    システム要件定義、基本・詳細設計、コーディング、単体・結合試験まで、全工程の経験があります。Linux系や.NET系の開発経験が最も多いです。
+                    システム要件定義、基本・詳細設計、コーディング、単体・結合試験まで、全工程において柔軟に対応可能です。
                   </p>
                   <p>
                     また、昨今のクラウド関連技術をキャッチアップし、業務に活かすよう尽力しています。
@@ -153,7 +154,7 @@ const ServiceList: React.FC = () => {
                     様々なものづくりの技術を駆使して、デジタル世界とリアル世界を繋ぎます。
                   </p>
                   <p>
-                    センサー・センシング系のシステムの開発には５年以上携わっており得意領域です。
+                    センサー・センシング系のシステムの開発には５年以上携わっており、業界に精通しています。
                   </p>
                   <hr className="my-4" />
                   <Badge>アナログ・デシタル回路設計</Badge>
@@ -191,15 +192,15 @@ const ServiceList: React.FC = () => {
                   </div>
 
                   <p>
-                    動画・画像の制作編集の実務経験もあります。素材の作成から、加工、編集まで一通り対応可能です。
+                    動画・画像の制作編集の実務経験があります。素材の作成から、加工、編集まで一通りの対応が可能です。
                   </p>
                   <p>PC・ソフトウェア・電気製品全般の知識経験も豊富にあります。</p>
                   <hr className="my-4" />
                   <Badge>画像編集制作 (Figma,Illustrator,Photoshop)</Badge>
                   <Badge>動画編集制作 (DaVinci,AfterEffects)</Badge>
-                  <Badge>3DCG制作(Cinema4D)</Badge>
+                  <Badge>3DCG制作</Badge>
                   <Badge>写真撮影(NIKON)</Badge>
-                  <Badge>Officeソフト系(マクロ)</Badge>
+                  <Badge>Office系(マクロ可)</Badge>
                   <Badge>家電修理</Badge>
                   <Badge>PC自作</Badge>
                   <Badge>簿記3級</Badge>
