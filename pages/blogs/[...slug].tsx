@@ -8,7 +8,6 @@ import SidenavTags from "components/organisms/SidenavTags/SidenavTags";
 import Footer from "components/organisms/Footer/Footer";
 import { ParsedUrlQuery } from "querystring";
 import { ContentMetadata, getContentMetadatasByTag } from "lib/microcms/api";
-import H1anchor from "components/molecules/H1anchor";
 import RecentContent from "components/organisms/RecentContent/RecentContent";
 import AboutMeBox from "components/organisms/AboutMeBox/AboutmeBox";
 
@@ -120,7 +119,7 @@ const Blog: NextPage<Props> = (props) => {
 
             <BlogList blogMetaDatas={contentMetaDatas} showThumbnail={true}></BlogList>
           </div>
-          <div className="hidden md:block w-80 ml-10">
+          <div className="hidden lg:block w-80 ml-10">
             <div className="flex flex-col top-6">
               <AboutMeBox />
               <div className="h-6" />

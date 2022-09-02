@@ -61,7 +61,7 @@ const ServiceList: React.FC = () => {
 
                   <p>WEBサイト制作、WEBアプリケーション開発を承ります。</p>
                   <p>
-                    モダンなフレームワークであるNext.jsやReactを利用した、高速でユーザー体験のよいWEB制作のノウハウが強みです。
+                    モダンなフレームワークであるNext.js(React)を導入し、レスポンスが超高速でSEO対策効果の高いWEB制作のノウハウが強みです。
                   </p>
                   <hr className="my-4" />
                   <Badge>HTML</Badge>
@@ -194,11 +194,11 @@ const ServiceList: React.FC = () => {
                   <p>
                     動画・画像の制作編集の実務経験があります。素材の作成から、加工、編集まで一通りの対応が可能です。
                   </p>
-                  <p>PC・ソフトウェア・電気製品全般の知識経験も豊富にあります。</p>
+                  <p>PCに関する事は何でもお任せください。</p>
                   <hr className="my-4" />
                   <Badge>画像編集制作 (Figma,Illustrator,Photoshop)</Badge>
                   <Badge>動画編集制作 (DaVinci,AfterEffects)</Badge>
-                  <Badge>3DCG制作</Badge>
+                  <Badge>3DCG制作(Cinema4D)</Badge>
                   <Badge>写真撮影(NIKON)</Badge>
                   <Badge>Office系(マクロ可)</Badge>
                   <Badge>家電修理</Badge>

@@ -23,7 +23,7 @@ type Props = {
 
 const BlogList: NextPage<Props> = ({ blogMetaDatas, showThumbnail }) => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {blogMetaDatas.length !== 0 ? (
         blogMetaDatas.map((blogMetaData: BlogMetaData, index) => {
           return (
