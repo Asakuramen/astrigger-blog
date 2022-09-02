@@ -58,7 +58,7 @@ const Home: NextPage<Props> = (props) => {
       const options = {
         root: null, // 今回はビューポートをルート要素とする
         rootMargin: "9999px 0% -25% 0%", // ビューポートの中心を判定基準にする
-        threshold: 1, // thresholdを跨いだときにhandler関数が実行される
+        threshold: 0, // thresholdを跨いだときにhandler関数が実行される
       };
       const intersectionObserverH1 = new IntersectionObserver(
         handlerIntersection,
@@ -71,27 +71,6 @@ const Home: NextPage<Props> = (props) => {
     // クリーンアップ関数で全ての交差監視を削除
     return intersectionObserverH1?.disconnect();
   }, []);
-
-  // // DOM要素の交差を監視する
-  // // ヘッダー
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     const observeElement = document.getElementById("header3") as HTMLDivElement;
-
-  //     const optionsHeader = {
-  //       root: null, // 今回はビューポートをルート要素とする
-  //       rootMargin: "0px 0px",
-  //       threshold: 0.5, // thresholdを跨いだときにhandler関数が実行される
-  //     };
-  //     const intersectionObserverHeader = new IntersectionObserver(
-  //       handlerIntersectionHeader,
-  //       optionsHeader
-  //     );
-  //     // 監視対象のDOM要素を登録する
-  //     intersectionObserverHeader.observe(observeElement);
-  //   }
-  //   // クリーンアップ関数で監視を停止する
-  // }, []);
 
   /**
    * DOM要素が交差の条件を満たしたときに呼び出す関数
@@ -114,24 +93,6 @@ const Home: NextPage<Props> = (props) => {
       }
     });
   }
-
-  // /**
-  //  * DOM要素が交差の条件を満たしたときに呼び出す関数
-  //  */
-  // function handlerIntersectionHeader(
-  //   entries: IntersectionObserverEntry[],
-  //   _: IntersectionObserver
-  // ) {
-  //   // 交差を検知したDOM要素のアニメーションを変化させる
-  //   // console.log(entries[0].intersectionRatio);
-  //   console.log(entries[0].intersectionRatio);
-
-  //   if (entries[0].intersectionRatio < 0.5) {
-  //     setHeaderSlim(false); // ヘッダーを通常表示モードに変更
-  //   } else {
-  //     setHeaderSlim(true); // ヘッダーをスリム表示モードに変更
-  //   }
-  // }
 
   return (
     <>
