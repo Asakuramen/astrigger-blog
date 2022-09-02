@@ -35,7 +35,7 @@ const Header2: React.FC<Props> = ({ sticky }) => {
     >
       <div className="flex flex-row items-center w-full">
         <div className="ml-8">
-          <Link href="/blogs/all/1">
+          <Link href="/">
             <a className="text-lg font-bold transition-colors transform text-white lg:text-xl hover:text-gray-400">
               <div className="flex flex-row items-center">
                 <IoFish />
