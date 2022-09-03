@@ -61,7 +61,7 @@ const ServiceList: React.FC = () => {
 
                   <p>WEBサイト制作、WEBアプリケーション開発を承ります。</p>
                   <p>
-                    モダンなフレームワークであるNext.js(React)を導入し、レスポンスが超高速でSEO対策効果の高いWEB制作のノウハウが強みです。
+                    モダンなフレームワークであるNext.js(React)を導入し、超高速なレスポンスとSEO対策効果の高いWEB制作のノウハウが強みです。
                   </p>
                   <hr className="my-4" />
                   <Badge>HTML</Badge>
@@ -101,7 +101,9 @@ const ServiceList: React.FC = () => {
                     <div>
                       <BsFileEarmarkCode />
                     </div>
-                    <span className={styles.text_gradient_oceanic}>バックエンド開発</span>
+                    <span className={styles.text_gradient_oceanic}>
+                      バックエンド・システム開発
+                    </span>
                   </div>
                   <p>
                     システム要件定義、基本・詳細設計、コーディング、単体・結合試験まで、全工程において柔軟に対応可能です。
@@ -194,7 +196,7 @@ const ServiceList: React.FC = () => {
                   <p>
                     動画・画像の制作編集の実務経験があります。素材の作成から、加工、編集まで一通りの対応が可能です。
                   </p>
-                  <p>PCに関する事は何でもお任せください。</p>
+                  <p>PCに関する事も何でもお任せください。</p>
                   <hr className="my-4" />
                   <Badge>画像編集制作 (Figma,Illustrator,Photoshop)</Badge>
                   <Badge>動画編集制作 (DaVinci,AfterEffects)</Badge>
