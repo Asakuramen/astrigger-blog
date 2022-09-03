@@ -1,13 +1,11 @@
 .top_upper_div {
   position: relative;
-  height: 62vh;
+  @apply h-[52vh] sm:h-[62vh];
 }
 
 .top_lower_div {
   position: relative;
   height: 38vh;
-  /* background-color: rgb(243 244 246); */
-  /* background-color: rgb(250 250 250); */
 }
 
 .title_h1 {

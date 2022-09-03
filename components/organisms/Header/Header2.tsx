@@ -29,7 +29,7 @@ const Header2: React.FC<Props> = ({ sticky }) => {
 
   return (
     <nav
-      className={`h-12 mx-auto flex items-center z-10 bg-sky-900 shadow-sm ${
+      className={`h-12 mx-auto flex items-center z-10 bg-gradient-to-tl from-sky-900 to-sky-700 shadow-sm ${
         sticky && "sticky top-0"
       }`}
     >
