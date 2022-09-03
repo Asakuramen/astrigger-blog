@@ -6,21 +6,18 @@ import BlogList, { BlogMetaData } from "components/organisms/BlogList/BlogList";
 import WorkList from "components/organisms/WorkList/WorkList";
 import Aboutme from "components/organisms/Aboutme/Aboutme";
 import Job from "components/organisms/Job/Job";
-import Header2 from "components/organisms/Header/Header2";
 import H1anchor from "components/molecules/H1anchor";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import Footer from "components/organisms/Footer/Footer";
 import { ContentMetadata, getContentMetadatasByTag } from "lib/microcms/api";
 import Button from "components/molecules/Button/Button";
-import ParticleComponent from "components/misc/particles/ParticleComponent";
 import styles from "./index.module.css";
 import { BsGlobe } from "react-icons/bs";
 import { FaLaptopCode } from "react-icons/fa";
 import { IoHardwareChipSharp } from "react-icons/io5";
 import { BiMoviePlay } from "react-icons/bi";
-import Header3 from "components/organisms/Header/Header3";
 import SvgTypographyEnginner from "components/molecules/SVGs/SvgTypographyEnginner";
 import SvgTypographyGramy from "components/molecules/SVGs/SvgTypographyGramy";
 
@@ -100,7 +97,7 @@ const Home: NextPage<Props> = (props) => {
         <title>Gourami Engineering - Top</title>
         <meta
           name="description"
-          content="Gourami Engineering は、フロントエンド開発から、バックエンド開発、ものづくりまで、幅広い技術を駆使したサービス・システムのトータルコーディネート開発を行っております。"
+          content="Gourami Engineering は、フロントエンド開発から、バックエンド開発、ものづくりまで、幅広い技術を駆使したサービス・システムの開発を行っております。"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -125,7 +122,7 @@ const Home: NextPage<Props> = (props) => {
         />
         <div className={styles.container_borderpattern} />
 
-        <div className="absolute right-24 md:right-56 bottom-20 md:bottom-28 origin-right scale-[1] md:scale-[2]">
+        <div className="absolute right-24 md:right-56 bottom-20 md:bottom-28 origin-right scale-[1] md:scale-[2] ">
           <SvgTypographyGramy />
         </div>
         <div className="absolute right-4 md:right-12 bottom-12 md:bottom-12 origin-right scale-[1] md:scale-[2] ">
@@ -134,8 +131,6 @@ const Home: NextPage<Props> = (props) => {
       </div>
 
       <div className="h-2 bg-gray-800" />
-
-      <Header3 sticky={true} show={false} id={"header3"} />
 
       <div className={styles.top_lower_div}>
         <div className={styles.container_tile}>
@@ -193,8 +188,6 @@ const Home: NextPage<Props> = (props) => {
       </div>
 
       <div className="relative">
-        <ParticleComponent />
-
         <div className="max-w-screen-lg mx-auto py-24 px-3">
           <div className="intersection-observed mb-20 invisible">
             <div className="text-center">

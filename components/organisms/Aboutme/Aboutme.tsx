@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { NextPage } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { BsGithub, BsTwitter } from "react-icons/bs";
@@ -8,13 +9,17 @@ import { SiZenn } from "react-icons/si";
 const Aboutme: NextPage = () => {
   return (
     <div className="text-center">
-      <img
-        src="/top/mypicture.png"
-        width="128px"
-        height="128px"
-        alt="avator"
-        className="rounded-full mx-auto"
-      ></img>
+      <div className="relative w-32 h-32 mx-auto">
+        <Image
+          className="rounded-full"
+          src="/top/mypicture.png"
+          alt="Portrait"
+          layout="fill"
+          objectFit="cover"
+          priority={true}
+        />
+      </div>
+
       <div className="h-8" />
       <div className="flex flex-row justify-center">
         <Link href="https://github.com/TAPStar">

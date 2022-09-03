@@ -56,9 +56,7 @@ const AboutMeBox: NextPage = () => {
           東京在住のフルスタックエンジニアです。WEBサイト・サービス開発を主軸に活動しています。本業ではインフラ系SIer
           兼 SW開発ベンダで仕事をしています。好奇心旺盛です。
         </p>
-        <p className="text-sm leading-6">
-          家の床を補強するほど大きな水槽を整えて🐠さんを飼っています。
-        </p>
+        <p className="text-sm leading-6">熱帯魚🐠をたくさん飼っています。</p>
       </div>
     </div>
   );

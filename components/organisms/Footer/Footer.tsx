@@ -6,7 +6,7 @@ import { FiAlertTriangle } from "react-icons/fi";
 
 const Footer = () => {
   return (
-    <nav className={"h-80 sm:h-48 bg-gradient-to-tl from-sky-900 to-sky-800"}>
+    <nav className={"h-80 sm:h-52 bg-gradient-to-tl from-sky-900 to-sky-800"}>
       <div className="max-w-screen-lg mx-auto">
         <div className="pt-8 flex flex-col sm:flex-row w-full ">
           <div className="mx-auto sm:ml-12">
@@ -26,7 +26,7 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className="flex mx-auto mb-4">
+          <div className="flex mx-auto sm:mx-0 mb-4">
             <div className="flex flex-col w-36">
               <div className="py-1 text-sm text-gray-400">
                 <p>Content</p>
@@ -78,17 +78,19 @@ const Footer = () => {
                 </div>
               </Link>
 
-              <Link href="/privacypolicy">
-                <div className="flex items-center py-1 text-sm transform transition-colors text-gray-200 hover:text-gray-400">
-                  <FiAlertTriangle />
-                  <a>&nbsp; Privacy Policy</a>
-                </div>
-              </Link>
+              <div>
+                <Link href="/privacypolicy">
+                  <div className="flex items-center py-1 text-sm transform transition-colors text-gray-200 hover:text-gray-400">
+                    <FiAlertTriangle />
+                    <a>&nbsp; Privacy Policy</a>
+                  </div>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
 
-        <p className="block sm:hidden pt-4 text-center text-xs text-gray-200">
+        <p className="block sm:hidden pt-6 text-center text-xs text-gray-200">
           © 2022-present Gourami Enginnering.
         </p>
       </div>
