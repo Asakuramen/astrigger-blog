@@ -112,7 +112,7 @@ const Home: NextPage<Props> = (props) => {
           loading="eager"
         />
         <Image
-          className="animate-blink-sun-opacity"
+          className={styles.image_background}
           src="/top/LensFlare.png"
           alt="thumbnail"
           layout="fill"
@@ -132,58 +132,60 @@ const Home: NextPage<Props> = (props) => {
 
       <div className="h-2 bg-gray-800" />
 
-      <div className={styles.top_lower_div}>
-        <div className={styles.container_tile}>
-          <p className="text-lg font-bold text-gray-800">Life is what you make it.</p>
-          <div className="flex justify-between mt-1">
-            <div className="flex items-center w-16 h-10 bg-sky-400">
-              <div className="mx-auto text-2xl text-white">
-                <BsGlobe />
+      <div className="max-w-screen-lg mx-auto h-[40vh]">
+        <div className="relative">
+          <div className={styles.container_tile}>
+            <p className="text-lg font-bold text-gray-800">Life is what you make it.</p>
+            <div className="flex justify-between mt-1">
+              <div className="flex items-center w-16 h-10 bg-sky-400">
+                <div className="mx-auto text-2xl text-white">
+                  <BsGlobe />
+                </div>
+              </div>
+              <div className="flex items-center w-16 h-10 bg-sky-400">
+                <div className="mx-auto text-2xl text-white">
+                  <FaLaptopCode />
+                </div>
+              </div>
+              <div className="flex items-center w-16 h-10 bg-sky-400">
+                <div className="mx-auto text-2xl text-white">
+                  <IoHardwareChipSharp />
+                </div>
+              </div>
+              <div className="flex items-center w-16 h-10 bg-sky-400">
+                <div className="mx-auto text-2xl text-white">
+                  <BiMoviePlay />
+                </div>
               </div>
             </div>
-            <div className="flex items-center w-16 h-10 bg-sky-400">
-              <div className="mx-auto text-2xl text-white">
-                <FaLaptopCode />
-              </div>
+            <div className="flex justify-between mt-0.5">
+              <div className="w-16 h-1 bg-gray-800"></div>
+              <div className="w-16 h-1 bg-gray-800"></div>
+              <div className="w-16 h-1 bg-gray-800"></div>
+              <div className="w-16 h-1 bg-gray-800"></div>
             </div>
-            <div className="flex items-center w-16 h-10 bg-sky-400">
-              <div className="mx-auto text-2xl text-white">
-                <IoHardwareChipSharp />
-              </div>
+            <div className="flex justify-end mt-0.5">
+              <div className="w-4 h-1 bg-gray-800 animate-flicker-fast"></div>
             </div>
-            <div className="flex items-center w-16 h-10 bg-sky-400">
-              <div className="mx-auto text-2xl text-white">
-                <BiMoviePlay />
-              </div>
-            </div>
+            <p className="text-sm text-gray-800 leading-4">
+              Helping people make the world a better place through Software and Hardware
+              technorogy.
+            </p>
           </div>
-          <div className="flex justify-between mt-0.5">
-            <div className="w-16 h-1 bg-gray-800"></div>
-            <div className="w-16 h-1 bg-gray-800"></div>
-            <div className="w-16 h-1 bg-gray-800"></div>
-            <div className="w-16 h-1 bg-gray-800"></div>
-          </div>
-          <div className="flex justify-end mt-0.5">
-            <div className="w-4 h-1 bg-gray-800 animate-flicker-fast"></div>
-          </div>
-          <p className="text-sm text-gray-800 leading-4">
-            Helping people make the world a better place through Software and Hardware
-            technorogy.
-          </p>
-        </div>
 
-        <div className={styles.container_lightmode}>
-          <p className="text-xl text-right font-extrabold text-gray-400">LIGHT MODE</p>
-          <div className="absolute -top-1 -left-4 w-2 h-2 bg-gray-800 animate-flicker-fast" />
-          <div className="absolute -top-1 -right-4 w-2 h-2 bg-gray-800 animate-flicker-fast" />
-          <div className="absolute -bottom-1 -left-4 w-2 h-2 bg-gray-800 animate-flicker-fast" />
-          <div className="absolute -bottom-1 -right-4 w-2 h-2 bg-gray-800 animate-flicker-fast" />
-        </div>
+          <div className={styles.container_lightmode}>
+            <p className="text-xl text-right font-extrabold text-gray-400">LIGHT MODE</p>
+            <div className="absolute -top-1 -left-4 w-2 h-2 bg-gray-800 animate-flicker-fast" />
+            <div className="absolute -top-1 -right-4 w-2 h-2 bg-gray-800 animate-flicker-fast" />
+            <div className="absolute -bottom-1 -left-4 w-2 h-2 bg-gray-800 animate-flicker-fast" />
+            <div className="absolute -bottom-1 -right-4 w-2 h-2 bg-gray-800 animate-flicker-fast" />
+          </div>
 
-        <div className="absolute top-[24vh] w-full text-center">
-          <a href="#top-aboutme">
-            <p className={styles.text_start}>VIEW NEXT</p>
-          </a>
+          <div className="absolute top-[24vh] w-full text-center">
+            <a href="#top-aboutme">
+              <p className={styles.text_start}>VIEW NEXT</p>
+            </a>
+          </div>
         </div>
       </div>
 
