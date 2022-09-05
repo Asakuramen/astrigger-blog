@@ -60,9 +60,7 @@ const ServiceList: React.FC = () => {
                   </div>
 
                   <p>WEBサイト制作、WEBアプリケーション開発を承ります。</p>
-                  <p>
-                    モダンなフレームワークであるNext.js(React)を導入し、超高速なレスポンスとSEO対策効果の高いWEB制作のノウハウが強みです。
-                  </p>
+                  <p>ReactやNext.jsを得意とし、UI/UXに優れたサイト作りが強みです。</p>
                   <hr className="my-4" />
                   <Badge>HTML</Badge>
                   <Badge>CSS</Badge>
@@ -70,7 +68,7 @@ const ServiceList: React.FC = () => {
                   <Badge>Typescript</Badge>
                   <Badge>jquery</Badge>
                   <Badge>React</Badge>
-                  <Badge>Redux(Toolkit)</Badge>
+                  <Badge>Redux</Badge>
                   <Badge>Next.js</Badge>
                   <Badge>JAMstack</Badge>
                   <Badge>Tailwindcss</Badge>
@@ -118,10 +116,11 @@ const ServiceList: React.FC = () => {
                   <Badge>Python</Badge>
                   <Badge>L3 NW設計</Badge>
                   <Badge>Linux</Badge>
-                  <Badge>RDB(maridDB等)</Badge>
-                  <Badge>UML作成</Badge>
+                  <Badge>maridDB</Badge>
+                  <Badge>UML図</Badge>
                   <Badge>Firebase</Badge>
                   <Badge>AWS(EC2・RDB・IoT等)</Badge>
+                  <Badge>DNSサーバ</Badge>
                 </div>
               </div>
             </div>
@@ -155,9 +154,7 @@ const ServiceList: React.FC = () => {
                   <p>
                     様々なものづくりの技術を駆使して、デジタル世界とリアル世界を繋ぎます。
                   </p>
-                  <p>
-                    センサー・センシング系のシステムの開発には５年以上携わっており、業界に精通しています。
-                  </p>
+                  <p>センサー・センシング系のシステムの開発に長年携わっております。</p>
                   <hr className="my-4" />
                   <Badge>アナログ・デシタル回路設計</Badge>
                   <Badge>プリント基板設計・部品実装</Badge>
@@ -194,7 +191,7 @@ const ServiceList: React.FC = () => {
                   </div>
 
                   <p>
-                    動画・画像の制作編集の実務経験があります。素材の作成から、加工、編集まで一通りの対応が可能です。
+                    動画・画像の制作編集の実務経験があります。素材の作成から、加工、仕上げまで一通りの対応が可能です。
                   </p>
                   <p>PCに関する事も何でもお任せください。</p>
                   <hr className="my-4" />

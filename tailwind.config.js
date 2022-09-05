@@ -19,7 +19,7 @@ module.exports = {
         "fade-in": "fade-in 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000)   both",
         "fade-out-top":
           "fade-out-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940)   both",
-        "flicker-fast": "flicker-3pulse 1s linear  infinite both",
+        "flicker-fast": "flicker-3pulse 1.5s linear  infinite both",
         "flicker-slow": "flicker-75 2.2s linear  infinite both",
         "slide-in-right":
           "slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940)   both",
