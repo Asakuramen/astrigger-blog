@@ -60,7 +60,9 @@ const ServiceList: React.FC = () => {
                   </div>
 
                   <p>WEBサイト制作、WEBアプリケーション開発を承ります。</p>
-                  <p>ReactやNext.jsを得意とし、UI/UXに優れたサイト作りが強みです。</p>
+                  <p>
+                    React、Next.jsを主軸に、パフォーマンスの高いUI/UXに優れたサイト作りが強みです。
+                  </p>
                   <hr className="my-4" />
                   <Badge>HTML</Badge>
                   <Badge>CSS</Badge>
@@ -70,10 +72,11 @@ const ServiceList: React.FC = () => {
                   <Badge>React</Badge>
                   <Badge>Redux</Badge>
                   <Badge>Next.js</Badge>
-                  <Badge>JAMstack</Badge>
+                  <Badge>Jest</Badge>
                   <Badge>Tailwindcss</Badge>
                   <Badge>Bootstrap</Badge>
                   <Badge>Material-UI</Badge>
+                  <Badge>JAMstack</Badge>
                 </div>
               </div>
             </div>
@@ -117,6 +120,7 @@ const ServiceList: React.FC = () => {
                   <Badge>L3 NW設計</Badge>
                   <Badge>Linux</Badge>
                   <Badge>maridDB</Badge>
+                  <Badge>ヘッドレスCMS</Badge>
                   <Badge>UML図</Badge>
                   <Badge>Firebase</Badge>
                   <Badge>AWS(EC2・RDB・IoT等)</Badge>
