@@ -29,14 +29,14 @@ const Header2: React.FC<Props> = ({ sticky }) => {
 
   return (
     <nav
-      className={`h-12 mx-auto flex items-center z-10 bg-gray-800 shadow-sm ${
+      className={`h-12 mx-auto flex items-center z-10 bg-gradient-to-tl from-sky-900 to-sky-700 shadow-sm ${
         sticky && "sticky top-0"
       }`}
     >
       <div className="flex flex-row items-center w-full">
         <div className="ml-8">
           <Link href="/">
-            <a className="text-lg font-bold transition-colors transform text-white lg:text-xl hover:text-gray-300">
+            <a className="text-lg font-bold transition-colors transform text-white lg:text-xl hover:text-gray-400">
               <div className="flex flex-row items-center">
                 <IoFish />
                 <div className="mx-2">Gourami Engineering</div>
@@ -47,22 +47,22 @@ const Header2: React.FC<Props> = ({ sticky }) => {
       </div>
 
       <div className="hidden sm:flex items-center h-full">
-        <div className="mx-4 px-2 text-sm transform transition-colors text-gray-200 border-b-2 border-transparent hover:border-blue-500">
+        <div className="mx-4 px-2 text-sm transform transition-colors text-gray-200 border-b-2 border-transparent hover:border-sky-500">
           <Link href="/#top-aboutme">
             <a>About</a>
           </Link>
         </div>
-        <div className="mx-4 px-2 text-sm transform transition-colors text-gray-200 border-b-2 border-transparent hover:border-blue-500">
+        <div className="mx-4 px-2 text-sm transform transition-colors text-gray-200 border-b-2 border-transparent hover:border-sky-500">
           <Link href="/blogs/all/1">
             <a>Blog</a>
           </Link>
         </div>
-        <div className="mx-4 px-2 text-sm transform transition-colors text-gray-200 border-b-2 border-transparent hover:border-blue-500">
+        <div className="mx-4 px-2 text-sm transform transition-colors text-gray-200 border-b-2 border-transparent hover:border-sky-500">
           <Link href="/works/all/1">
             <a>Works</a>
           </Link>
         </div>
-        <div className="mx-4 px-2 text-sm transform transition-colors text-gray-200 border-b-2 border-transparent hover:border-blue-500">
+        <div className="mx-4 px-2 text-sm transform transition-colors text-gray-200 border-b-2 border-transparent hover:border-sky-500">
           <Link href="/contact">
             <a>Contact</a>
           </Link>

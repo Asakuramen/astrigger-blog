@@ -24,7 +24,7 @@ const H1anchor: NextPage<Props> = (props) => {
   return (
     <h1
       id={id}
-      className={`text-gray-800 text-3xl ${adjustJumpPosition && "pt-24 -mt-24 "} `}
+      className={`text-sky-900 text-3xl ${adjustJumpPosition && "pt-24 -mt-24 "} `}
     >
       {text}
       {children}

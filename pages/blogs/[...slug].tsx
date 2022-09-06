@@ -2,12 +2,14 @@ import Head from "next/head";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import "zenn-content-css";
 import Header2 from "components/organisms/Header/Header2";
-import { getTagName, tagList } from "../../contents/tags";
+import { getTagName, tagList } from "../../lib/tags";
 import BlogList from "components/organisms/BlogList/BlogList";
 import SidenavTags from "components/organisms/SidenavTags/SidenavTags";
 import Footer from "components/organisms/Footer/Footer";
 import { ParsedUrlQuery } from "querystring";
 import { ContentMetadata, getContentMetadatasByTag } from "lib/microcms/api";
+import RecentContent from "components/organisms/RecentContent/RecentContent";
+import AboutMeBox from "components/organisms/AboutMeBox/AboutmeBox";
 
 interface Params extends ParsedUrlQuery {
   slug: string[];
@@ -43,6 +45,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
  */
 interface Props {
   contentMetaDatas: ContentMetadata[];
+  recentContentMetaDatas: ContentMetadata[];
   tag: string;
 }
 
@@ -52,6 +55,9 @@ interface Props {
 export const getStaticProps: GetStaticProps<Props, Params> = async (context) => {
   // 特定のtagを持つcontentをmicroCMSから取得して整形し、propsとしてコンポーネントに渡す
   const SHOW_CONTENT_NUMBER_PER_PAGE = 10;
+  const SHOW_RECENT_CONTENT_NUMBER_PER_PAGE = 5;
+
+  // tagに一致する記事のメタデータを取得
   const tag: string = context.params!.slug[0];
   const contentMetaDatas = await getContentMetadatasByTag(
     "blog",
@@ -59,8 +65,19 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
     tag
   );
 
+  // 全tagから最新何件かの記事のメタデータを取得
+  const recentContentMetaDatas = await getContentMetadatasByTag(
+    "blog",
+    SHOW_RECENT_CONTENT_NUMBER_PER_PAGE,
+    "all"
+  );
+
   return {
-    props: { contentMetaDatas: contentMetaDatas, tag: tag },
+    props: {
+      contentMetaDatas: contentMetaDatas,
+      tag: tag,
+      recentContentMetaDatas: recentContentMetaDatas,
+    },
   };
 };
 
@@ -71,14 +88,20 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
  * １ブログ記事のコンポーネント
  */
 const Blog: NextPage<Props> = (props) => {
-  const { contentMetaDatas, tag } = props;
+  const { contentMetaDatas, recentContentMetaDatas, tag } = props;
+
+  let tagName = getTagName(tag);
+  if (tagName === "全ての記事") {
+    tagName = "全て";
+  }
+
   return (
     <>
       <Head>
-        <title>{`Blog - ${getTagName(tag)}`}</title>
+        <title>{`${tagName} の記事一覧`}</title>
         <meta
           name="description"
-          content={`フロントエンド・バックエンドを中心として、新しい技術のキャッチアップ情報や、エンジニアに役立つ情報をお届けします。`}
+          content={`フロントエンド、バックエンド、ハードウェア開発に関する、エンジニアに役立つ情報をお届けします。`}
         />
       </Head>
       <Header2 sticky={false} />
@@ -87,15 +110,22 @@ const Blog: NextPage<Props> = (props) => {
         className="max-w-screen-xl mx-auto px-3 sm:px-6 py-6 min-h-[calc(100vh_-_6rem)]"
         id="article"
       >
+        <div className="h-10" />
         <div className="flex flex-row">
-          <div className="w-auto md:w-[calc(100%_-_18rem)] mr-3 ">
+          <div className="w-auto">
+            <h1 className="text-3xl text-sky-900">{tagName}の記事一覧</h1>
+            <div className="pb-4 border-b"></div>
+            <div className="h-10" />
+
             <BlogList blogMetaDatas={contentMetaDatas} showThumbnail={true}></BlogList>
           </div>
-          <div className="hidden md:block w-72 ml-3">
-            <div className="flex flex-col sticky top-6">
-              <div className="p-4 shadow-md rounded-md mb-6 bg-white ">
-                <SidenavTags />
-              </div>
+          <div className="hidden lg:block w-80 ml-10">
+            <div className="flex flex-col top-6">
+              <AboutMeBox />
+              <div className="h-6" />
+              <SidenavTags />
+              <div className="h-6" />
+              <RecentContent blogMetaDatas={recentContentMetaDatas} />
             </div>
           </div>
         </div>

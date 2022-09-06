@@ -2,7 +2,7 @@ import Head from "next/head";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import "zenn-content-css";
 import Header2 from "components/organisms/Header/Header2";
-import { tagList } from "../../contents/tags";
+import { tagList } from "../../lib/tags";
 import Footer from "components/organisms/Footer/Footer";
 import { ParsedUrlQuery } from "querystring";
 import { ContentMetadata, getContentMetadatasByTag } from "lib/microcms/api";

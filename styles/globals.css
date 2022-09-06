@@ -2,8 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @apply bg-gray-100;
+}
+
+#tsparticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
 }
 
 .grecaptcha-badge {
@@ -51,7 +62,7 @@ body {
 }
 
 .skill-swiper .swiper-pagination-bullet-active {
-  @apply bg-blue-500 text-gray-50;
+  @apply bg-sky-500 text-gray-50;
 }
 
 /* 共通のカラーを定義 */
