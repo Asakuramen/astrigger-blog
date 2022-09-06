@@ -61,7 +61,7 @@ const ServiceList: React.FC = () => {
 
                   <p>WEBサイト制作、WEBアプリケーション開発を承ります。</p>
                   <p>
-                    React、Next.jsを主軸に、パフォーマンスの高いUI/UXに優れたサイト作りが強みです。
+                    React、Next.jsを主軸に、高パフォーマンスでUI/UXに優れたサイト作りが強みです。
                   </p>
                   <hr className="my-4" />
                   <Badge>HTML</Badge>
